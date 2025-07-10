@@ -17,6 +17,7 @@ import Collab from '../../Lazyindie/src/components/collab';
 import Community from '../../Lazyindie/src/components/community';
 import Connect from '../../Lazyindie/src/components/connect';
 import End from '../../Lazyindie/src/components/end';
+import Matches from '../../Lazyindie/src/ai_section_dummy_matches/matches';
 
 export default function App() {
   const location = useLocation();
@@ -41,6 +42,7 @@ export default function App() {
           <Route path="/join-community" element={<Community />} />
           <Route path="/connect" element={<Connect />} />
           <Route path="/end" element={<End />} />
+          <Route path="/matches" element={<Matches />} />
         </Routes>
       </AnimatePresence>
     </div>
