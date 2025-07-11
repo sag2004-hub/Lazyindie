@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { ShoppingCart } from 'lucide-react';
-import bgImage from '../assets/i8.png';
+import bgImage from '../assets/gif6.gif';
 import logo from '../assets/logo.png';
 
 export default function AiPopUp() {

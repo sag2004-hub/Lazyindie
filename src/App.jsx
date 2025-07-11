@@ -2,6 +2,14 @@ import React from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import Launch from '../../Lazyindie/src/launch_pages/launch';
+import Launch1 from '../../Lazyindie/src/launch_pages/launch1';
+import Launch2 from '../../Lazyindie/src/launch_pages/launch2';
+import Launch3 from '../../Lazyindie/src/launch_pages/launch3';
+import Launch4 from '../../Lazyindie/src/launch_pages/launch4';
+import Launch5 from '../../Lazyindie/src/launch_pages/launch5';
+import Launch6 from '../../Lazyindie/src/launch_pages/launch6';
+import Launch7 from '../../Lazyindie/src/launch_pages/launch7';
+import Launch8 from '../../Lazyindie/src/launch_pages/launch8';
 import SignUp from '../../Lazyindie/src/auth/SignUp';
 import SignIn from '../../Lazyindie/src/auth/SignIn';
 import Home from './components/home';
@@ -27,6 +35,14 @@ export default function App() {
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<Launch />} />
+          <Route path="/launch1" element={<Launch1 />} />
+          <Route path="/launch2" element={<Launch2 />} />
+          <Route path="/launch3" element={<Launch3 />} />
+          <Route path="/launch4" element={<Launch4 />} />
+          <Route path="/launch5" element={<Launch5 />} />
+          <Route path="/launch6" element={<Launch6 />} />
+          <Route path="/launch7" element={<Launch7 />} />
+          <Route path="/launch8" element={<Launch8 />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/home" element={<Home />} />

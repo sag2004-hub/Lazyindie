@@ -1,124 +1,73 @@
-import React, { useRef, useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { ShoppingCart } from 'lucide-react';
+import { ShoppingCart, Plus, Users, CheckCircle } from 'lucide-react';
+import { Link, useLocation } from 'react-router-dom';
 
-import i13 from '../assets/i13.png';
-import match1 from '../assets/match1.png';
-import match2 from '../assets/match2.png';
-import match3 from '../assets/match3.png';
+import bgImage from '../assets/i11.png';
 import logo from '../assets/logo.png';
+
+import artist1 from '../assets/artist9.jpg';
+import artist2 from '../assets/artist7.jpg';
+import artist3 from '../assets/artist6.jpg';
+import artist4 from '../assets/artist1.jpg';
+
+const navItems = [
+  { label: 'Home', path: '/' },
+  { label: 'Explore', path: '/explore' },
+  { label: 'Ai Chat', path: '/ai_chat_land' },
+  { label: 'Collaborations', path: '/collab' },
+  { label: 'Join Community', path: '/community' },
+  { label: 'Connect', path: '/connect' },
+];
+
+const artists = [
+  { name: 'Arijit Singh', image: artist1, path: '/artist/arijit' },
+  { name: 'Shreya Ghoshal', image: artist2, path: '/artist/shreya' },
+  { name: 'Sonu Nigam', image: artist3, path: '/artist/sonu' },
+  { name: 'Neha Kakkar', image: artist4, path: '/artist/neha' },
+];
 
 export default function Matches() {
   const location = useLocation();
-  const navigate = useNavigate();
-  const dragStartY = useRef(null);
-  const [dragging, setDragging] = useState(false);
-
-  const handleMouseDown = (e) => {
-    setDragging(true);
-    dragStartY.current = e.clientY;
-  };
-
-  const handleMouseUp = (e) => {
-    if (dragging) {
-      const endY = e.clientY;
-      const deltaY = dragStartY.current - endY;
-
-      if (deltaY > 100) {
-        navigate('/explore');
-      }
-
-      setDragging(false);
-      dragStartY.current = null;
-    }
-  };
-
-  const navItems = [
-    { label: 'Home', path: '/home' },
-    { label: 'Explore', path: '/explore' },
-    { label: 'AI Chat', path: '/ai_chat_land' },
-    { label: 'Collaborations', path: '/collaborations' },
-    { label: 'Join Community', path: '/join-community' },
-    { label: 'Connect', path: '/connect' },
-  ];
-
-  const matchImages = [match1, match2, match3];
 
   return (
     <div
-      onMouseDown={handleMouseDown}
-      onMouseUp={handleMouseUp}
-      className="relative w-full h-screen overflow-auto font-sans custom-scrollbar"
-      style={{ backgroundImage: `url(${i13})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+      className="relative w-full min-h-screen bg-cover bg-center overflow-y-scroll"
+      style={{ backgroundImage: `url(${bgImage})` }}
     >
+      {/* Inline Scrollbar Styling */}
       <style>{`
-        .stripe {
-          position: absolute;
-          top: 0;
-          height: 130px;
-          width: 23px;
-          transform: rotate(-13deg);
-          left: -100%;
+        /* Vertical Scrollbar */
+        div::-webkit-scrollbar {
+          width: 10px;
         }
-
-        .group:hover .stripe {
-          animation: stripe-slide 2s forwards;
+        div::-webkit-scrollbar-track {
+          background: transparent;
         }
-
-        .group:not(:hover) .stripe {
-          animation: stripe-return 2s forwards;
+        div::-webkit-scrollbar-thumb {
+          background: rgba(255, 255, 255, 0.2);
+          border-radius: 9999px;
+          border: 2px solid transparent;
+          background-clip: content-box;
         }
-
-        @keyframes stripe-slide {
-          0% { left: -100%; }
-          100% { left: 250%; }
-        }
-
-        @keyframes stripe-return {
-          0% { left: 250%; }
-          100% { left: -100%; }
-        }
-
-        .card-enter {
-          animation: card-fade-in 1s ease-out;
-        }
-
-        @keyframes card-fade-in {
-          from { opacity: 0; transform: scale(0.95) translateY(20px); }
-          to { opacity: 1; transform: scale(1) translateY(0); }
-        }
-
-        .custom-scrollbar::-webkit-scrollbar {
-          width: 8px;
-        }
-
-        .custom-scrollbar::-webkit-scrollbar-track {
-          background: rgba(255, 255, 255, 0.1);
-        }
-
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-          background: #a020f0;
-          border-radius: 4px;
-        }
-
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-          background: #c084fc;
-        }
-
-        .group:hover {
-          background-color: inherit !important;
+        div::-webkit-scrollbar-thumb:hover {
+          background: rgba(255, 255, 255, 0.4);
         }
       `}</style>
+
+      {/* Overlay */}
+      <div className="absolute top-0 left-0 w-full h-full bg-black/50 z-10" />
 
       {/* Navbar */}
       <motion.div
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8 }}
-        className="fixed top-0 left-0 w-full h-[80px] bg-white/5 backdrop-blur-md flex justify-between items-center px-8 md:px-24 z-50"
+        className="fixed top-0 left-0 w-full h-[80px] bg-white/5 backdrop-blur-md flex justify-between items-center px-8 md:px-24 z-50 border-b border-white/10"
       >
-        <img src={logo} alt="Logo" className="h-10 w-auto animate-pulse" />
+        <Link to="/">
+          <img src={logo} alt="Logo" className="h-10 w-auto" />
+        </Link>
         <div className="hidden md:flex items-center gap-8 text-white text-base font-medium">
           {navItems.map(({ label, path }, idx) => {
             const isActive = location.pathname === path;
@@ -138,103 +87,67 @@ export default function Matches() {
             );
           })}
           <Link to="/cart" className="hover:text-white text-white/80 transition duration-300">
-            <ShoppingCart className="w-5 h-5 animate-bounce" />
+            <ShoppingCart className="w-5 h-5" />
           </Link>
         </div>
       </motion.div>
 
-      {/* Content */}
-      <div className="pt-40 px-10 md:px-36 text-white">
-        <motion.h1
-          className="text-4xl md:text-5xl font-recoleta mb-6"
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1 }}
-        >
-          Here are the Top Artists according to your search
-        </motion.h1>
-
-        <motion.p
-          className="text-lg md:text-xl font-gilroy mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4, duration: 1 }}
-        >
-          Unlock a world of musical opportunities with our platform. Gain access to a diverse database
-          of pre-existing artists ready to collaborate. Our innovative chat bot will help you find
-          the perfect match for your next project.
-        </motion.p>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-24">
-          {matchImages.map((img, i) => (
+      {/* Card Section */}
+      <div className="relative z-20 pt-[120px] px-6 md:px-16 pb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+          {artists.map((artist, index) => (
             <motion.div
-              key={i}
-              className="bg-white/10 rounded-2xl backdrop-blur-md p-5 flex flex-col items-start card-enter"
-              whileHover={{ scale: 1.03 }}
-              transition={{ type: 'spring', stiffness: 300 }}
+              key={index}
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.5 }}
+              whileHover={{ scale: 1.05 }}
+              className="rounded-[40px] shadow-lg bg-black/90 backdrop-blur-2xl border border-white/10 flex flex-col overflow-hidden"
             >
-              <img src={img} alt={`Artist ${i + 1}`} className="w-full h-64 object-cover rounded-xl mb-4" />
-              <div className="text-2xl font-extrabold font-gilroy mb-2">Artist {i + 1}</div>
-              <div className="text-base font-gilroy mb-4">Artist few details...</div>
-              <div className="flex gap-3">
-                <Link
-                  to={`/artist/${i + 1}`}
-                  className="relative px-6 py-3 text-white border border-white rounded-lg overflow-hidden group transition"
-                >
-                  <span className="relative z-10">Add to cart</span>
-                  <div className="stripe bg-white z-0"></div>
-                  <div className="stripe bg-purple-700 z-0" style={{ left: '-44px' }}></div>
+              <Link to={artist.path}>
+                <div className="aspect-[4/3] w-full overflow-hidden rounded-t-[40px]">
+                  <img
+                    src={artist.image}
+                    alt={artist.name}
+                    className="w-full h-full object-cover object-center"
+                  />
+                </div>
+              </Link>
+
+              <div className="p-6 text-white">
+                <Link to={artist.path}>
+                  <div className="flex items-center gap-3 mb-4">
+                    <h2 className="text-[24px] font-[Gilroy-Medium]">{artist.name}</h2>
+                    <CheckCircle className="text-blue-400 w-5 h-5" />
+                  </div>
                 </Link>
-                <Link
-                  to={`/artist/${i + 1}/details`}
-                  className="relative px-6 py-3 text-white border border-white rounded-lg overflow-hidden group transition"
-                >
-                  <span className="relative z-10">Show More</span>
-                  <div className="stripe bg-white z-0"></div>
-                  <div className="stripe bg-purple-700 z-0" style={{ left: '-44px' }}></div>
-                </Link>
+                <p className="text-[#929292] text-[16px] leading-[24px] font-[Gilroy-UltraLight] whitespace-pre-line">
+                  Loren ipsum{'\n'}
+                  Loren ipsum{'\n'}
+                  Loren ipsum{'\n'}
+                  Loren ipsum{'\n'}
+                  Loren ipsum{'\n'}
+                  Loren ipsum
+                </p>
               </div>
-            </motion.div>
-          ))}
-        </div>
 
-        {/* Suggested Matches Section */}
-        <motion.h2
-          className="text-4xl md:text-5xl font-recoleta mb-6"
-          initial={{ opacity: 0, x: 50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1 }}
-        >
-          Suggested Matches
-        </motion.h2>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-          {matchImages.map((img, i) => (
-            <motion.div
-              key={`suggested-${i}`}
-              className="bg-white/10 rounded-2xl backdrop-blur-md p-5 flex flex-col items-start card-enter"
-              whileHover={{ scale: 1.03 }}
-              transition={{ type: 'spring', stiffness: 300 }}
-            >
-              <img src={img} alt={`Suggested Artist ${i + 1}`} className="w-full h-64 object-cover rounded-xl mb-4" />
-              <div className="text-2xl font-extrabold font-gilroy mb-2">Suggested Artist {i + 1}</div>
-              <div className="text-base font-gilroy mb-4">Some additional info here...</div>
-              <div className="flex gap-3">
+              <div className="flex items-center justify-between px-6 pb-6">
+                <div className="flex gap-5 text-white text-[16px] font-semibold">
+                  <Link to="/fans" className="flex items-center gap-2 hover:text-white/80">
+                    <Users className="w-5 h-5 text-gray-300" />
+                    312
+                  </Link>
+                  <Link to="/cart" className="flex items-center gap-2 hover:text-white/80">
+                    <ShoppingCart className="w-5 h-5 text-gray-300" />
+                    48
+                  </Link>
+                </div>
                 <Link
-                  to={`/suggested-artist/${i + 1}`}
-                  className="relative px-6 py-3 text-white border border-white rounded-lg overflow-hidden group transition"
+                  to="/cart"
+                  className="h-[48px] px-[20px] py-[10px] bg-[#343434] text-white rounded-full flex items-center gap-2 shadow-inner shadow-white/10 hover:bg-[#444] transition"
                 >
-                  <span className="relative z-10">Add to cart</span>
-                  <div className="stripe bg-white z-0"></div>
-                  <div className="stripe bg-purple-700 z-0" style={{ left: '-44px' }}></div>
-                </Link>
-                <Link
-                  to={`/suggested-artist/${i + 1}/details`}
-                  className="relative px-6 py-3 text-white border border-white rounded-lg overflow-hidden group transition"
-                >
-                  <span className="relative z-10">Show More</span>
-                  <div className="stripe bg-white z-0"></div>
-                  <div className="stripe bg-purple-700 z-0" style={{ left: '-44px' }}></div>
+                  <span className="text-[16px] font-[Gilroy-Medium]">Cart</span>
+                  <Plus className="w-5 h-5 text-white" />
                 </Link>
               </div>
             </motion.div>
