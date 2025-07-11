@@ -11,7 +11,7 @@ export default function ExplorePage2() {
   const navigate = useNavigate();
   const currentPath = location.pathname;
 
-  const pages = ['/explore', '/explore2', '/explore3', '/explore4', '/explore5'];
+  const pages = ['/explore1', '/explore2', '/explore3', '/explore4', '/explore5'];
 
   const navItems = [
     { name: 'Home', path: '/home' },
@@ -106,7 +106,7 @@ export default function ExplorePage2() {
           className="flex flex-col md:flex-row items-center justify-center mt-6 max-w-5xl gap-4 text-center"
         >
           <button
-            onClick={() => handleNavigate('/explore', -1)}
+            onClick={() => handleNavigate('/explore1', -1)}
             className="text-white text-2xl hover:-translate-x-1 transition-transform duration-300"
             title="Previous Explore Page"
           >

@@ -43,6 +43,14 @@ export default function Explore() {
     }
   };
 
+  const handleNavigate = (path, direction = 1) => {
+    if (direction === -1) {
+      navigate(path); // or navigate(-1) to go back
+    } else {
+      navigate(path);
+    }
+  };
+
   const navItems = [
     { name: 'Home', path: '/home' },
     { name: 'Explore', path: '/explore' },
@@ -52,7 +60,7 @@ export default function Explore() {
     { name: 'Connect', path: '/connect' },
   ];
 
-  const pages = ['/explore', '/explore2', '/explore3', '/explore4', '/explore5'];
+  const pages = ['/explore1', '/explore2', '/explore3', '/explore4', '/explore5'];
 
   return (
     <motion.div
@@ -115,22 +123,32 @@ export default function Explore() {
           transition={{ delay: 0.5, duration: 1 }}
           className="flex items-center justify-center mt-6 max-w-3xl px-4"
         >
-          <p className="text-white text-base md:text-lg font-light leading-relaxed">
+          {/* ← Back Button */}
+          <button
+            onClick={() => handleNavigate('/explore', -1)}
+            className="text-white text-2xl hover:-translate-x-1 transition-transform duration-300"
+            title="Previous Explore Page"
+          >
+            <i className="ri-arrow-left-wide-fill"></i>
+          </button>
+
+          <p className="text-white text-base md:text-lg font-light leading-relaxed mx-4">
             Discover a diverse collection of artists from around the globe on our platform.
             Explore sounds that transcend borders and cultures, broaden your musical horizons,
             and celebrate global music!
           </p>
 
+          {/* → Forward Link */}
           <Link
             to="/explore2"
-            className="ml-4 text-white text-2xl hover:translate-x-1 transition-transform duration-300"
+            className="text-white text-2xl hover:translate-x-1 transition-transform duration-300"
             title="Next Explore Page"
           >
             <i className="ri-arrow-right-wide-line"></i>
           </Link>
         </motion.div>
 
-        {/* Page Indicator Dots */}
+        {/* Page Dots */}
         <div className="flex gap-4 mt-10 mb-4">
           {pages.map((path, index) => (
             <Link
@@ -145,7 +163,7 @@ export default function Explore() {
           ))}
         </div>
 
-        {/* CHAT Button as Link to /ai_chat_land */}
+        {/* CHAT Button */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}

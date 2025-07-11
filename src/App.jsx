@@ -13,7 +13,8 @@ import Launch8 from '../../Lazyindie/src/launch_pages/launch8';
 import SignUp from '../../Lazyindie/src/auth/SignUp';
 import SignIn from '../../Lazyindie/src/auth/SignIn';
 import Home from './components/home';
-import Explore from '../../Lazyindie/src/components/explore';
+import Magazine from '../../Lazyindie/src/components/magazine';
+import Explore1 from '../../Lazyindie/src/components/explore';
 import Explore2 from '../../Lazyindie/src/components/explore2';
 import Explore3 from '../../Lazyindie/src/components/explore3';
 import Explore4 from '../../Lazyindie/src/components/explore4';
@@ -46,7 +47,8 @@ export default function App() {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/home" element={<Home />} />
-          <Route path="/explore" element={<Explore />} />
+          <Route path="/explore" element={<Magazine />} />
+          <Route path="/explore1" element={<Explore1 />} />
           <Route path="/explore2" element={<Explore2 />} />
           <Route path="/explore3" element={<Explore3 />} />
           <Route path="/explore4" element={<Explore4 />} />

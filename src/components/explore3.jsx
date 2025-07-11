@@ -20,7 +20,7 @@ export default function ExplorePage3() {
     { name: 'Connect', path: '/connect' },
   ];
 
-  const pages = ['/explore', '/explore2', '/explore3', '/explore4', '/explore5'];
+  const pages = ['/explore1', '/explore2', '/explore3', '/explore4', '/explore5'];
 
   const pageVariants = {
     initial: (direction) => ({
