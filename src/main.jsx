@@ -1,15 +1,24 @@
-// main.jsx
-import React from 'react'; // 👈 REQUIRED for JSX to work
+import React from 'react';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import './index.css';
-import App from './App.jsx';
 import { BrowserRouter } from 'react-router-dom';
+import './index.css';
+
+// ✅ Required styles for wallet UI
+import '@solana/wallet-adapter-react-ui/styles.css';
+
+// ✅ Your app entry
+import App from './App.jsx';
+
+// ✅ Solana wallet context (ConnectionProvider + WalletProvider + WalletModalProvider)
+import SolanaProvider from './context/SolanaProvider.jsx';
 
 createRoot(document.getElementById('root')).render(
   <BrowserRouter>
     <StrictMode>
-      <App />
+      <SolanaProvider>
+        <App />
+      </SolanaProvider>
     </StrictMode>
-  </BrowserRouter>,
+  </BrowserRouter>
 );
