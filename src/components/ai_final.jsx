@@ -154,14 +154,16 @@ export default function AiFinal() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="relative w-full h-screen font-sans overflow-hidden"
+      className="relative w-full h-screen font-sans overflow-hidden bg-black"
     >
-      {/* Background GIF full screen */}
-      <img
-        src={bgGif}
-        alt="background"
-        className="absolute top-0 left-0 w-[2000px] h-screen object-cover object-center"
-      />
+      {/* Background GIF centered */}
+      <div className="absolute inset-0 flex items-center justify-center z-0">
+        <img
+          src={bgGif}
+          alt="background"
+          className="max-w-full max-h-full object-contain"
+        />
+      </div>
 
       {/* Navbar */}
       <motion.nav
@@ -188,7 +190,7 @@ export default function AiFinal() {
         </div>
       </motion.nav>
 
-      {/* Content layout */}
+      {/* Chat Area */}
       <div className="relative z-10 flex flex-col md:flex-row justify-between items-start h-full px-10 md:px-24 pt-28">
         <motion.h1
           initial={{ x: -80, opacity: 0 }}

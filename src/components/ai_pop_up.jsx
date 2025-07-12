@@ -18,7 +18,7 @@ export default function AiPopUp() {
     { label: 'Connect', path: '/connect' },
   ];
 
-  // Auto-redirect after 2 seconds
+  // Auto-redirect after 1 second
   useEffect(() => {
     const timeout = setTimeout(() => {
       navigate('/ai_final');
@@ -31,14 +31,17 @@ export default function AiPopUp() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="relative w-full h-screen font-sans overflow-hidden"
-      style={{
-        backgroundImage: `url(${bgImage})`,
-        backgroundSize: 'cover',
-        backgroundRepeat: 'no-repeat',
-        backgroundPosition: 'center',
-      }}
+      className="relative w-full h-screen font-sans overflow-hidden bg-black"
     >
+      {/* Centered background GIF */}
+      <div className="absolute inset-0 flex items-center justify-center z-0">
+        <img
+          src={bgImage}
+          alt="background"
+          className="max-w-full max-h-full object-contain"
+        />
+      </div>
+
       {/* Navbar */}
       <motion.nav
         initial={{ y: -60, opacity: 0 }}
@@ -63,10 +66,6 @@ export default function AiPopUp() {
           </Link>
         </div>
       </motion.nav>
-
-      {/* Blurred background accents */}
-      <div className="absolute w-20 h-[150%] top-[-30%] left-[5%] bg-[#242329] blur-[85px] rounded-full z-0" />
-      <div className="absolute w-20 h-[150%] top-[-30%] right-[5%] bg-[#242329] blur-[85px] rounded-full z-0" />
 
       {/* Hero Content */}
       <div className="relative z-10 flex flex-col justify-center items-center h-full px-6 md:px-16 text-center gap-8">
