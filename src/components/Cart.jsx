@@ -73,11 +73,23 @@ export default function Cart() {
     navigate('/wallet-connect');
   };
 
+  const getCatalogRoute = (name) => {
+    const map = {
+      'Arijit Singh': '/catalog/arijitsingh',
+      'Shreya Ghoshal': '/catalog/shreyaghosal',
+      'Michel Clark': '/catalog/michelclrek',
+      'Sonu Nigam': '/catalog/sonunigam',
+      'Neha Kakkar': '/catalog/nehakakkar',
+      // Add more mappings here if needed
+    };
+    return map[name] || '/catalog/unknown';
+  };
+
   if (!wallet.publicKey) return <Navigate to="/wallet-connect" replace />;
 
   return (
     <div className="min-h-screen overflow-hidden relative font-sans text-white bg-black px-6 py-12">
-      {/* Glowing background */}
+      {/* Glowing Background */}
       <div className="fixed inset-0 flex items-center justify-center pointer-events-none z-0">
         <motion.div
           initial={{ opacity: 0.4, scale: 0.9 }}
@@ -160,7 +172,7 @@ export default function Cart() {
                 ))}
               </motion.div>
 
-              {/* Payment */}
+              {/* Payment Section */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -212,7 +224,7 @@ export default function Cart() {
           </div>
         )}
 
-        {/* Success Modal */}
+        {/* Success Popup */}
         <AnimatePresence>
           {showSuccessPopup && (
             <motion.div
@@ -270,7 +282,7 @@ export default function Cart() {
                         alt={item.name}
                         className="w-16 h-16 rounded-full mb-2"
                       />
-                      <Link to={`/catalog/${item.id}`}>
+                      <Link to={getCatalogRoute(item.name)}>
                         <h3 className="font-semibold text-blue-400 underline hover:text-blue-200">
                           {item.name}
                         </h3>

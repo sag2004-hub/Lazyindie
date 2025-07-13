@@ -36,6 +36,10 @@ import Matches from '../../Lazyindie/src/ai_section_dummy_matches/matches';
 import WalletConnectPage from '../../Lazyindie/src/components/WalletConnectPage';
 import Cart from '../../Lazyindie/src/components/Cart';
 
+import ArijitSinghCatalog from '../../Lazyindie/src/catalog/arijitsinghcatalog';
+import ShreyaGhosalCatalog from '../../Lazyindie/src/catalog/shreyaghoshal';
+import SonuNigamCatalog from './catalog/sonunigamcatalog';
+import NehaKakkarCatalog from './catalog/nehakakkarcatalog';
 
 export default function App() {
   const location = useLocation();
@@ -84,6 +88,10 @@ export default function App() {
           <Route path="/wallet-connect" element={<WalletConnectPage />} />
           <Route path="/cart" element={<Cart />} />
 
+          <Route path="/catalog/arijitsingh" element={<ArijitSinghCatalog />} />
+          <Route path="/catalog/shreyaghosal" element={<ShreyaGhosalCatalog />} />
+          <Route path="/catalog/sonunigam" element={<SonuNigamCatalog />} />
+          <Route path="/catalog/nehakakkar" element={<NehaKakkarCatalog />} />
         </Routes>
       </AnimatePresence>
     </div>
