@@ -2,6 +2,7 @@ import {
   LAMPORTS_PER_SOL,
   SystemProgram,
   Transaction,
+  PublicKey,
 } from '@solana/web3.js';
 
 /**
@@ -18,11 +19,13 @@ export async function sendSol(connection, wallet, recipient, amount) {
     throw new Error('Wallet not connected or not capable of signing.');
   }
 
+  const lamports = Math.round(amount * LAMPORTS_PER_SOL); // ✅ Fix: round to integer
+
   const transaction = new Transaction().add(
     SystemProgram.transfer({
       fromPubkey: wallet.publicKey,
-      toPubkey: recipient,
-      lamports: amount * LAMPORTS_PER_SOL,
+      toPubkey: new PublicKey(recipient),
+      lamports,
     })
   );
 

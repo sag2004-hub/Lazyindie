@@ -1,23 +1,27 @@
-import React from 'react';
-import { StrictMode } from 'react';
+import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 
-// ✅ Required styles for wallet UI
+// ✅ Wallet styles
 import '@solana/wallet-adapter-react-ui/styles.css';
 
-// ✅ Your app entry
+// ✅ App entry
 import App from './App.jsx';
 
-// ✅ Solana wallet context (ConnectionProvider + WalletProvider + WalletModalProvider)
+// ✅ Solana wallet provider
 import SolanaProvider from './context/SolanaProvider.jsx';
+
+// ✅ Cart provider for global cart state
+import { CartProvider } from './context/CartContext';
 
 createRoot(document.getElementById('root')).render(
   <BrowserRouter>
     <StrictMode>
       <SolanaProvider>
-        <App />
+        <CartProvider>
+          <App />
+        </CartProvider>
       </SolanaProvider>
     </StrictMode>
   </BrowserRouter>

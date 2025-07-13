@@ -36,6 +36,7 @@ import Matches from '../../Lazyindie/src/ai_section_dummy_matches/matches';
 import WalletConnectPage from '../../Lazyindie/src/components/WalletConnectPage';
 import Cart from '../../Lazyindie/src/components/Cart';
 
+
 export default function App() {
   const location = useLocation();
 
@@ -79,9 +80,10 @@ export default function App() {
           <Route path="/connect" element={<Connect />} />
           <Route path="/end" element={<End />} />
 
-          {/* New: Wallet + Cart */}
+          {/* Wallet + Cart */}
           <Route path="/wallet-connect" element={<WalletConnectPage />} />
           <Route path="/cart" element={<Cart />} />
+
         </Routes>
       </AnimatePresence>
     </div>
