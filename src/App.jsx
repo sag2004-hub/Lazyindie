@@ -2,42 +2,49 @@ import React from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 
-import Launch from '../../Lazyindie/src/launch_pages/launch';
-import Launch1 from '../../Lazyindie/src/launch_pages/launch1';
-import Launch2 from '../../Lazyindie/src/launch_pages/launch2';
-import Launch3 from '../../Lazyindie/src/launch_pages/launch3';
-import Launch4 from '../../Lazyindie/src/launch_pages/launch4';
-import Launch5 from '../../Lazyindie/src/launch_pages/launch5';
-import Launch6 from '../../Lazyindie/src/launch_pages/launch6';
-import Launch7 from '../../Lazyindie/src/launch_pages/launch7';
-import Launch8 from '../../Lazyindie/src/launch_pages/launch8';
+// Launch Screens
+import Launch from './launch_pages/launch';
+import Launch1 from './launch_pages/launch1';
+import Launch2 from './launch_pages/launch2';
+import Launch3 from './launch_pages/launch3';
+import Launch4 from './launch_pages/launch4';
+import Launch5 from './launch_pages/launch5';
+import Launch6 from './launch_pages/launch6';
+import Launch7 from './launch_pages/launch7';
+import Launch8 from './launch_pages/launch8';
 
-import SignUp from '../../Lazyindie/src/auth/SignUp';
-import SignIn from '../../Lazyindie/src/auth/SignIn';
+// Auth Pages
+import SignUp from './auth/SignUp';
+import SignIn from './auth/SignIn';
 
+// Main Pages
 import Home from './components/home';
-import Magazine from '../../Lazyindie/src/components/magazine';
-import Explore1 from '../../Lazyindie/src/components/explore';
-import Explore2 from '../../Lazyindie/src/components/explore2';
-import Explore3 from '../../Lazyindie/src/components/explore3';
-import Explore4 from '../../Lazyindie/src/components/explore4';
-import Explore5 from '../../Lazyindie/src/components/explore5';
+import Magazine from './components/magazine';
+import Explore1 from './components/explore';
+import Explore2 from './components/explore2';
+import Explore3 from './components/explore3';
+import Explore4 from './components/explore4';
+import Explore5 from './components/explore5';
 
-import Ai_land from '../../Lazyindie/src/components/ai_land';
-import Ai_pop_up from '../../Lazyindie/src/components/ai_pop_up';
-import Ai_final from '../../Lazyindie/src/components/ai_final';
+// AI/Match Flow
+import Ai_land from './components/ai_land';
+import Ai_pop_up from './components/ai_pop_up';
+import Ai_final from './components/ai_final';
+import Matches from './ai_section_dummy_matches/matches';
 
-import Collab from '../../Lazyindie/src/components/collab';
-import Community from '../../Lazyindie/src/components/community';
-import Connect from '../../Lazyindie/src/components/connect';
-import End from '../../Lazyindie/src/components/end';
-import Matches from '../../Lazyindie/src/ai_section_dummy_matches/matches';
+// Community Pages
+import Collab from './components/collab';
+import Community from './components/community';
+import Connect from './components/connect';
+import End from './components/end';
 
-import WalletConnectPage from '../../Lazyindie/src/components/WalletConnectPage';
-import Cart from '../../Lazyindie/src/components/Cart';
+// Wallet and Cart
+import WalletConnectPage from './components/WalletConnectPage';
+import Cart from './components/Cart';
 
-import ArijitSinghCatalog from '../../Lazyindie/src/catalog/arijitsinghcatalog';
-import ShreyaGhosalCatalog from '../../Lazyindie/src/catalog/shreyaghoshal';
+// Catalogs
+import ArijitSinghCatalog from './catalog/arijitsinghcatalog';
+import ShreyaGhosalCatalog from './catalog/shreyaghoshal';
 import SonuNigamCatalog from './catalog/sonunigamcatalog';
 import NehaKakkarCatalog from './catalog/nehakakkarcatalog';
 
@@ -63,7 +70,7 @@ export default function App() {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/signin" element={<SignIn />} />
 
-          {/* Main pages */}
+          {/* Main Pages */}
           <Route path="/home" element={<Home />} />
           <Route path="/explore" element={<Magazine />} />
           <Route path="/explore1" element={<Explore1 />} />
@@ -72,7 +79,7 @@ export default function App() {
           <Route path="/explore4" element={<Explore4 />} />
           <Route path="/explore5" element={<Explore5 />} />
 
-          {/* AI/Match flow */}
+          {/* AI & Matches */}
           <Route path="/ai_chat_land" element={<Ai_land />} />
           <Route path="/ai_pop_up" element={<Ai_pop_up />} />
           <Route path="/ai_final" element={<Ai_final />} />
@@ -88,6 +95,7 @@ export default function App() {
           <Route path="/wallet-connect" element={<WalletConnectPage />} />
           <Route path="/cart" element={<Cart />} />
 
+          {/* Catalog */}
           <Route path="/catalog/arijitsingh" element={<ArijitSinghCatalog />} />
           <Route path="/catalog/shreyaghosal" element={<ShreyaGhosalCatalog />} />
           <Route path="/catalog/sonunigam" element={<SonuNigamCatalog />} />
