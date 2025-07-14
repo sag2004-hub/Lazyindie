@@ -155,7 +155,7 @@ export default function ExplorePage3() {
           transition={{ delay: 1, duration: 0.5 }}
         >
         <Link
-          to="/ai_land"
+          to="/ai_chat_land"
           className="px-6 py-3 text-white border border-white rounded-xl font-medium hover:bg-white hover:text-black transition duration-300"
         >
           CHAT
