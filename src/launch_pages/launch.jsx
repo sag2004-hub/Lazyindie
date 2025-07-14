@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import bg from '../assets/v1.mp4';
 import { motion } from 'framer-motion';
 
@@ -28,7 +28,7 @@ function Launch() {
     if (dragging.current) {
       const dy = dragStart.current.y - e.clientY;
       if (dy > 100) {
-        navigate('/launch1'); // navigate on drag up
+        navigate('/launch1');
       }
     }
     dragging.current = false;
@@ -48,13 +48,10 @@ function Launch() {
       onMouseDown={handleMouseDown}
       onMouseUp={handleMouseUp}
     >
-      {/* 🎥 Background Video */}
       <video className="absolute inset-0 w-full h-full object-cover z-0" src={bg} autoPlay muted loop playsInline />
 
-      {/* Overlay */}
       <div className={`absolute inset-0 ${bgOverlay} z-0 transition-all duration-700`} />
 
-      {/* 🍪 Cookie Notice */}
       <div className="absolute top-4 left-1/2 transform -translate-x-1/2 z-20 group">
         <div className="relative px-6 py-3 opacity-30 group-hover:opacity-100 bg-white/10 hover:bg-white/5 transition-all duration-300 backdrop-blur-md border border-white/30 rounded-lg text-white text-sm md:text-base flex gap-2 items-center cursor-pointer overflow-hidden hover:shadow-[0_0_20px_rgba(255,255,255,0.3)]">
           <span className="font-light">This website uses cookies.</span>
@@ -65,7 +62,6 @@ function Launch() {
         </div>
       </div>
 
-      {/* 🔥 Main Content */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4 space-y-8 transition-colors duration-700">
         <motion.h1
           className={`text-7xl md:text-9xl font-bold ${textColor}`}
@@ -86,7 +82,7 @@ function Launch() {
           where musicians find their creative match
         </motion.p>
 
-        {/* Buttons */}
+        {/* Buttons with Link */}
         <motion.div
           className="flex gap-6"
           initial={{ opacity: 0, y: 30 }}
@@ -95,8 +91,8 @@ function Launch() {
         >
           {[{ text: 'Sign in', href: '/signin' }, { text: 'Sign up', href: '/signup' }].map((btn, i) => (
             <div className="w-[200px] h-[50px]" key={btn.text}>
-              <a
-                href={btn.href}
+              <Link
+                to={btn.href}
                 className={`relative w-full h-full rounded-md ${borderColor} border overflow-hidden group block transition-colors duration-700 ${
                   i === 1 ? buttonBg : ''
                 }`}
@@ -110,13 +106,13 @@ function Launch() {
                   <div className={`stripe ${stripeWhite}`} />
                   <div className="stripe" style={{ background: '#A020F0', width: '15px' }} />
                 </div>
-              </a>
+              </Link>
             </div>
           ))}
         </motion.div>
       </div>
 
-      {/* 🌙 Mode Toggle */}
+      {/* Mode toggle button */}
       <div className="absolute bottom-6 left-6 z-50">
         <button
           onClick={() => setDarkMode(!darkMode)}
@@ -127,7 +123,7 @@ function Launch() {
         </button>
       </div>
 
-      {/* 👆 Swipe Up Blinking Indicator */}
+      {/* Swipe up hint */}
       <motion.div
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-lg font-light z-30"
         initial={{ opacity: 0 }}
@@ -137,7 +133,7 @@ function Launch() {
         <span className={textColor}>⬆️ Swipe up to See</span>
       </motion.div>
 
-      {/* Stripe Animation */}
+      {/* Stripe animation style */}
       <style>{`
         .stripe {
           position: absolute;
