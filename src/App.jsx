@@ -4,14 +4,7 @@ import { AnimatePresence } from 'framer-motion';
 
 // Launch Screens
 import Launch from './launch_pages/launch';
-import Launch1 from './launch_pages/launch1';
-import Launch2 from './launch_pages/launch2';
-import Launch3 from './launch_pages/launch3';
-import Launch4 from './launch_pages/launch4';
-import Launch5 from './launch_pages/launch5';
-import Launch6 from './launch_pages/launch6';
-import Launch7 from './launch_pages/launch7';
-import Launch8 from './launch_pages/launch8';
+
 
 // Auth Pages
 import SignUp from './auth/SignUp';
@@ -33,10 +26,7 @@ import Ai_final from './components/ai_final';
 import Matches from './ai_section_dummy_matches/matches';
 
 // Community Pages
-import Collab from './components/collab';
-import Community from './components/community';
-import Connect from './components/connect';
-import End from './components/end';
+
 
 // Wallet and Cart
 import WalletConnectPage from './components/WalletConnectPage';
@@ -47,6 +37,7 @@ import ArijitSinghCatalog from './catalog/arijitsinghcatalog';
 import ShreyaGhosalCatalog from './catalog/shreyaghoshal';
 import SonuNigamCatalog from './catalog/sonunigamcatalog';
 import NehaKakkarCatalog from './catalog/nehakakkarcatalog';
+import MyPurchase from './components/my_purchase';
 
 export default function App() {
   const location = useLocation();
@@ -57,14 +48,6 @@ export default function App() {
         <Routes location={location} key={location.pathname}>
           {/* Launch Screens */}
           <Route path="/" element={<Launch />} />
-          <Route path="/launch1" element={<Launch1 />} />
-          <Route path="/launch2" element={<Launch2 />} />
-          <Route path="/launch3" element={<Launch3 />} />
-          <Route path="/launch4" element={<Launch4 />} />
-          <Route path="/launch5" element={<Launch5 />} />
-          <Route path="/launch6" element={<Launch6 />} />
-          <Route path="/launch7" element={<Launch7 />} />
-          <Route path="/launch8" element={<Launch8 />} />
 
           {/* Auth */}
           <Route path="/signup" element={<SignUp />} />
@@ -86,14 +69,12 @@ export default function App() {
           <Route path="/matches" element={<Matches />} />
 
           {/* Community */}
-          <Route path="/collaborations" element={<Collab />} />
-          <Route path="/join-community" element={<Community />} />
-          <Route path="/connect" element={<Connect />} />
-          <Route path="/end" element={<End />} />
+          
 
           {/* Wallet + Cart */}
           <Route path="/wallet-connect" element={<WalletConnectPage />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path='/my_purchase' element={<MyPurchase/>}/>
 
           {/* Catalog */}
           <Route path="/catalog/arijitsingh" element={<ArijitSinghCatalog />} />

@@ -37,11 +37,8 @@ export default function AILand() {
 
   const navItems = [
     { name: 'Home', path: '/home' },
-    { name: 'Explore', path: '/explore' },
     { name: 'AI Chat', path: '/ai_chat_land' },
-    { name: 'Collaborations', path: '/collaborations' },
-    { name: 'Join Community', path: '/join-community' },
-    { name: 'Connect', path: '/connect' },
+    { name: 'My Purchase', path: '/my_purchase' }, // ✅ fixed label->name
   ];
 
   const pageVariants = {
@@ -80,7 +77,6 @@ export default function AILand() {
       onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp}
     >
-
       {/* Navbar */}
       <motion.nav
         initial={{ y: -60, opacity: 0 }}
@@ -134,28 +130,28 @@ export default function AILand() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.8, duration: 0.4 }}
-            className="h-22 w-72 px-8 py-1 text-white border border-white rounded-4xl text-3xl uppercase hover:bg-white hover:text-black transition duration-300"
+            className="h-22 w-72 px-8 py-1 text-white border border-white rounded-full text-3xl uppercase hover:bg-white hover:text-black transition duration-300"
           >
             CHAT
           </motion.button>
         </Link>
       </main>
-      {/* Swipe Prompt */}
-<motion.div
-  initial={{ opacity: 0, y: 10 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{
-    delay: 1.5,
-    duration: 0.8,
-    repeat: Infinity,
-    repeatType: 'loop',
-    repeatDelay: 2,
-  }}
-  className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white text-base animate-bounce"
->
-  swipe up
-</motion.div>
 
+      {/* Swipe Prompt */}
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{
+          delay: 1.5,
+          duration: 0.8,
+          repeat: Infinity,
+          repeatType: 'loop',
+          repeatDelay: 2,
+        }}
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white text-base animate-bounce"
+      >
+        
+      </motion.div>
     </motion.div>
   );
 }
