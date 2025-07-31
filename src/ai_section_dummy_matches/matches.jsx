@@ -103,11 +103,8 @@ export default function Matches() {
         <div className="hidden md:flex items-center gap-8 text-white text-base font-medium">
           {[
             { label: 'Home', path: '/' },
-            { label: 'Explore', path: '/explore' },
             { label: 'Ai Chat', path: '/ai_chat_land' },
-            { label: 'Collaborations', path: '/collab' },
-            { label: 'Join Community', path: '/community' },
-            { label: 'Connect', path: '/connect' },
+            {label: 'My Purchase', path: '/my_purchase'}
           ].map(({ label, path }) => {
             const isActive = location.pathname === path;
             return (
