@@ -26,8 +26,7 @@ import Ai_final from './components/ai_final';
 import Matches from './ai_section_dummy_matches/matches';
 
 // Community Pages
-
-
+import Artist_dashboard from './components/artist_dashboard';
 // Wallet and Cart
 import WalletConnectPage from './components/WalletConnectPage';
 import Cart from './components/Cart';
@@ -69,7 +68,7 @@ export default function App() {
           <Route path="/matches" element={<Matches />} />
 
           {/* Community */}
-          
+          <Route path="/artist_dashboard" element={<Artist_dashboard/>}/>
 
           {/* Wallet + Cart */}
           <Route path="/wallet-connect" element={<WalletConnectPage />} />

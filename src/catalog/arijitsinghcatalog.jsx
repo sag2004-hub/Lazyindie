@@ -427,7 +427,7 @@ const ArtistProfile = () => {
           <img
             src={i15}
             alt="Background"
-            className="absolute top-0 left-1/2 -translate-x-1/2 h-full w-auto z-0 opacity-60 pointer-events-none"
+            className="absolute top-0 left-1/2 -translate-x-1/2 h-full w-screen z-0 opacity-60 pointer-events-none"
             style={{ objectFit: "contain" }}
           />
           <div className="absolute inset-0 bg-black/40 z-0" />
@@ -676,7 +676,7 @@ const ArtistProfile = () => {
         <img
           src={v2Gif}
           alt="Background Animation"
-          className="absolute inset-0 w-full h-full object-cover z-0"
+          className="absolute inset-0 w-screen h-full object-cover z-0"
         />
 
         <div className="relative z-10 flex flex-col md:flex-row gap-8 max-w-6xl w-full justify-center">
