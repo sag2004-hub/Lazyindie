@@ -3,11 +3,20 @@ import { motion } from "framer-motion";
 import { FaFlagUsa } from "react-icons/fa";
 import profileImg from "../assets/artist5.jpg";
 import bgImg from "../assets/catalog1.png";
+import v2Gif from "../assets/gif9.gif";
 
 // Imports from the second code block
 import { Star, User } from "lucide-react";
 import { FaMusic } from "react-icons/fa";
-import { FaInstagram, FaFacebookF, FaXTwitter, FaYoutube, FaSpotify, FaSoundcloud, FaApple } from "react-icons/fa6";
+import {
+  FaInstagram,
+  FaFacebookF,
+  FaXTwitter,
+  FaYoutube,
+  FaSpotify,
+  FaSoundcloud,
+  FaApple,
+} from "react-icons/fa6";
 import { Link } from "react-router-dom";
 
 // Asset imports from the second code block
@@ -31,9 +40,9 @@ const containerVariants = {
     opacity: 1,
     transition: {
       staggerChildren: 0.2,
-      delayChildren: 0.3
-    }
-  }
+      delayChildren: 0.3,
+    },
+  },
 };
 
 const itemVariants = {
@@ -43,17 +52,17 @@ const itemVariants = {
     opacity: 1,
     transition: {
       duration: 0.5,
-      ease: "easeOut"
-    }
-  }
+      ease: "easeOut",
+    },
+  },
 };
 
 const fadeIn = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { duration: 0.8 }
-  }
+    transition: { duration: 0.8 },
+  },
 };
 
 // Album data (from Discography)
@@ -159,7 +168,7 @@ const ReviewCard = ({ name, rating, text, width, index }) => (
       flexShrink: 0, // Ensure cards don't shrink in horizontal layout
       marginBottom: 20,
       backdropFilter: "blur(10px)",
-      border: "1px solid rgba(255,255,255,0.1)"
+      border: "1px solid rgba(255,255,255,0.1)",
     }}
   >
     <div
@@ -175,13 +184,15 @@ const ReviewCard = ({ name, rating, text, width, index }) => (
     >
       <div style={{ display: "flex", alignItems: "center", gap: 7 }}>
         <User size={24} color="white" />
-        <div style={{
-          color: "white",
-          fontSize: 20,
-          fontFamily: "Monda",
-          fontWeight: "400",
-          wordWrap: "break-word",
-        }}>
+        <div
+          style={{
+            color: "white",
+            fontSize: 20,
+            fontFamily: "Monda",
+            fontWeight: "400",
+            wordWrap: "break-word",
+          }}
+        >
           {name}
         </div>
       </div>
@@ -215,7 +226,6 @@ const ReviewCard = ({ name, rating, text, width, index }) => (
     </div>
   </motion.div>
 );
-
 
 const tabs = ["Bio", "Artistic Background", "Career Highlights"];
 
@@ -375,15 +385,15 @@ const ArtistProfile = () => {
                     onMouseEnter={() => setHovered(index)}
                     onMouseLeave={() => setHovered(null)}
                     className={`relative rounded-xl overflow-hidden transition-all duration-500 flex-shrink-0
-                      ${
-                        isHovered
-                          ? "w-[60vw] md:w-[35vw]"
-                          : isAnyHovered
-                          ? "w-[7vw] md:w-[6vw]"
-                          : index === 0
-                          ? "w-[60vw] md:w-[35vw]"
-                          : "w-[10vw] md:w-[8vw]"
-                      } h-full group cursor-pointer`}
+                     ${
+                       isHovered
+                         ? "w-[60vw] md:w-[35vw]"
+                         : isAnyHovered
+                         ? "w-[7vw] md:w-[6vw]"
+                         : index === 0
+                         ? "w-[60vw] md:w-[35vw]"
+                         : "w-[10vw] md:w-[8vw]"
+                     } h-full group cursor-pointer`}
                   >
                     <img
                       src={album.src}
@@ -405,7 +415,6 @@ const ArtistProfile = () => {
           </div>
         </div>
       </motion.section>
-
 
       {/* Creative Process Section */}
       <section className="relative w-full min-h-screen overflow-hidden">
@@ -441,38 +450,63 @@ const ArtistProfile = () => {
             viewport={{ once: true, margin: "-100px" }}
             className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16"
           >
-            <motion.div variants={itemVariants} className="bg-white/10 border border-white/20 p-6 rounded-2xl shadow-md backdrop-blur-sm">
-              <h3 className="text-xl font-semibold mb-4">Songwriting Process</h3>
+            <motion.div
+              variants={itemVariants}
+              className="bg-white/10 border border-white/20 p-6 rounded-2xl shadow-md backdrop-blur-sm"
+            >
+              <h3 className="text-xl font-semibold mb-4">
+                Songwriting Process
+              </h3>
               <p className="text-sm md:text-base">
-                "I typically start with a melody that comes to me in the early morning hours.
-                I record voice memos on my phone, then build from there. Lyrics usually come
-                last, and I draw inspiration from personal experiences, dreams, and literature."
+                "I typically start with a melody that comes to me in the early
+                morning hours. I record voice memos on my phone, then build from
+                there. Lyrics usually come last, and I draw inspiration from
+                personal experiences, dreams, and literature."
               </p>
               <p className="mt-4 font-semibold">— Weeknd</p>
             </motion.div>
 
-            <motion.div variants={itemVariants} className="bg-white/10 border border-white/20 p-6 rounded-2xl shadow-md backdrop-blur-sm">
-              <h3 className="text-xl font-semibold mb-4">Production Process</h3>
+            <motion.div
+              variants={itemVariants}
+              className="bg-white/10 border border-white/20 p-6 rounded-2xl shadow-md backdrop-blur-sm"
+            >
+              <h3 className="text-xl font-semibold mb-4">
+                Production Process
+              </h3>
               <p className="text-sm md:text-base">
-                "I produce most of my music in my home studio in Los Angeles. I use a
-                combination of analog synths and digital processing to create layered,
-                atmospheric soundscapes. I'm particularly fond of incorporating found sounds
-                and field recordings."
+                "I produce most of my music in my home studio in Los Angeles. I
+                use a combination of analog synths and digital processing to
+                create layered, atmospheric soundscapes. I'm particularly fond
+                of incorporating found sounds and field recordings."
               </p>
               <p className="mt-4 font-semibold">— Weeknd</p>
             </motion.div>
 
-            <motion.div variants={itemVariants} className="bg-white/10 border border-white/20 p-6 rounded-2xl shadow-md backdrop-blur-sm">
-              <h3 className="text-xl font-semibold mb-4">Current Projects</h3>
+            <motion.div
+              variants={itemVariants}
+              className="bg-white/10 border border-white/20 p-6 rounded-2xl shadow-md backdrop-blur-sm"
+            >
+              <h3 className="text-xl font-semibold mb-4">
+                Current Projects
+              </h3>
               <p className="text-sm md:text-base">
-                Currently working on new material that explores darker themes while pushing sonic boundaries. Collaborating with innovative producers to create something that feels both fresh and authentically Weeknd.
+                Currently working on new material that explores darker themes
+                while pushing sonic boundaries. Collaborating with innovative
+                producers to create something that feels both fresh and
+                authentically Weeknd.
               </p>
             </motion.div>
 
-            <motion.div variants={itemVariants} className="bg-white/10 border border-white/20 p-6 rounded-2xl shadow-md backdrop-blur-sm">
+            <motion.div
+              variants={itemVariants}
+              className="bg-white/10 border border-white/20 p-6 rounded-2xl shadow-md backdrop-blur-sm"
+            >
               <h3 className="text-xl font-semibold mb-4">Looking For</h3>
               <p className="text-sm md:text-base">
-                Seeking unique visual artists and directors who can help bring the next chapter to life. Also interested in collaborating with forward-thinking producers who understand the Weeknd aesthetic but can bring new perspectives.
+                Seeking unique visual artists and directors who can help bring
+                the next chapter to life. Also interested in collaborating with
+                forward-thinking producers who understand the Weeknd aesthetic
+                but can bring new perspectives.
               </p>
             </motion.div>
           </motion.div>
@@ -542,7 +576,7 @@ const ArtistProfile = () => {
           <div className="absolute inset-0 bg-black/60 z-10" />
         </motion.div>
 
-        <div className="relative z-20 flex flex-col items-center justify-center h-full py-16 px-6 text-white w-full max-w-7xl">
+        <div className="relative z-20 flex flex-col items-center justify-around h-full py-16 px-6 text-white w-full max-w-7xl">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -636,9 +670,16 @@ const ArtistProfile = () => {
         </div>
       </section>
 
-      {/* Streaming Platforms and Quotes Section */}
-      <section className="w-full min-h-screen bg-black flex items-center justify-center px-4 py-16">
-        <div className="flex flex-col md:flex-row gap-8 max-w-6xl w-full justify-center">
+      {/* Streaming Platforms and Quotes Section with Background GIF */}
+      <section className="relative w-full min-h-screen flex items-center justify-center px-4 py-16 overflow-hidden">
+        {/* Background GIF */}
+        <img
+          src={v2Gif}
+          alt="Background Animation"
+          className="absolute inset-0 w-full h-full object-cover z-0"
+        />
+
+        <div className="relative z-10 flex flex-col md:flex-row gap-8 max-w-6xl w-full justify-center">
           {/* Streaming Platforms Card */}
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -647,12 +688,17 @@ const ArtistProfile = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-8 text-white w-full md:w-1/2 shadow-lg"
           >
-            <h2 className="text-xl md:text-2xl font-bold text-white mb-1">STREAMING PLATFORMS</h2>
-            <p className="text-sm text-white/60 mb-4">now streaming on various platforms</p>
+            <h2 className="text-xl md:text-2xl font-bold text-white mb-1">
+              STREAMING PLATFORMS
+            </h2>
+            <p className="text-sm text-white/60 mb-4">
+              now streaming on various platforms
+            </p>
             <p className="text-sm text-white/80 mb-6 leading-relaxed">
-              “Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-              ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud in reprehenderit
-              in voluptate velit esse cillum dolore eu fugiat nulla “
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud in reprehenderit in voluptate
+              velit esse cillum dolore eu fugiat nulla "
             </p>
             <div className="flex flex-wrap gap-6 text-white/90">
               <div className="flex items-center gap-2">
@@ -678,17 +724,22 @@ const ArtistProfile = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-8 text-white w-full md:w-1/2 shadow-lg"
           >
-            <h2 className="text-xl md:text-2xl font-bold text-white mb-4">QUOTES</h2>
+            <h2 className="text-xl md:text-2xl font-bold text-white mb-4">
+              QUOTES
+            </h2>
             <p className="text-sm text-white/80 leading-relaxed mb-4">
-              “Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-              ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud in reprehenderit
-              in voluptate velit esse cillum dolore eu fugiat nulla “
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud in reprehenderit in voluptate
+              velit esse cillum dolore eu fugiat nulla "
             </p>
             <p className="text-sm text-white/80 leading-relaxed">
-              “Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-              ut labore et dolore magna aliqua. <span className="text-blue-300">Ut enim ad minim veniam</span>,
-              quis nostrud in <span className="text-blue-300">reprehenderit in voluptate</span> velit esse
-              cillum dolore eu fugiat nulla “
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua.{" "}
+              <span className="text-blue-300">Ut enim ad minim veniam</span>,
+              quis nostrud in{" "}
+              <span className="text-blue-300">reprehenderit in voluptate</span>{" "}
+              velit esse cillum dolore eu fugiat nulla "
             </p>
           </motion.div>
         </div>
@@ -706,7 +757,8 @@ const ArtistProfile = () => {
           <div className="flex flex-col md:flex-row justify-between gap-10">
             <div className="max-w-md">
               <p className="text-lg font-serif">
-                NetGenome is the platform<br />every music artist dreams of.
+                NetGenome is the platform<br />
+                every music artist dreams of.
               </p>
             </div>
 
@@ -714,24 +766,40 @@ const ArtistProfile = () => {
               <div>
                 <h4 className="text-white/60 mb-2">LEGAL</h4>
                 <ul className="space-y-1">
-                  <li><a href="#">Terms and Conditions</a></li>
-                  <li><a href="#">Privacy Policy</a></li>
+                  <li>
+                    <a href="#">Terms and Conditions</a>
+                  </li>
+                  <li>
+                    <a href="#">Privacy Policy</a>
+                  </li>
                 </ul>
               </div>
               <div>
                 <h4 className="text-white/60 mb-2">SOCIALS</h4>
                 <ul className="space-y-1">
-                  <li><a href="#">Instagram</a></li>
-                  <li><a href="#">Twitter</a></li>
-                  <li><a href="#">Facebook</a></li>
+                  <li>
+                    <a href="#">Instagram</a>
+                  </li>
+                  <li>
+                    <a href="#">Twitter</a>
+                  </li>
+                  <li>
+                    <a href="#">Facebook</a>
+                  </li>
                 </ul>
               </div>
               <div>
                 <h4 className="text-white/60 mb-2">IMPORTANT</h4>
                 <ul className="space-y-1">
-                  <li><Link to="/home">Home</Link></li>
-                  <li><a href="#">Find Artist</a></li>
-                  <li><a href="#">Sponsors</a></li>
+                  <li>
+                    <Link to="/home">Home</Link>
+                  </li>
+                  <li>
+                    <a href="#">Find Artist</a>
+                  </li>
+                  <li>
+                    <a href="#">Sponsors</a>
+                  </li>
                 </ul>
               </div>
             </div>
