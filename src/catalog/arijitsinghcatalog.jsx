@@ -672,11 +672,11 @@ const ArtistProfile = () => {
 
       {/* Streaming Platforms and Quotes Section with Background GIF */}
       <section className="relative w-full min-h-screen flex items-center justify-center px-4 py-16 overflow-hidden">
-        {/* Background GIF */}
+        {/* Full-bleed Background GIF */}
         <img
           src={v2Gif}
           alt="Background Animation"
-          className="absolute inset-0 w-screen h-full object-cover z-0"
+          className="absolute inset-0 w-full h-full object-cover z-0"
         />
 
         <div className="relative z-10 flex flex-col md:flex-row gap-8 max-w-6xl w-full justify-center">

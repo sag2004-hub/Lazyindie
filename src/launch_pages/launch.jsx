@@ -130,7 +130,7 @@ function Launch() {
         animate={{ opacity: [1, 0, 1] }}
         transition={{ duration: 1.5, repeat: Infinity }}
       >
-        <span className={textColor}>⬆️ Swipe up to See</span>
+        <span className={textColor}></span>
       </motion.div>
 
       {/* Stripe animation style */}
