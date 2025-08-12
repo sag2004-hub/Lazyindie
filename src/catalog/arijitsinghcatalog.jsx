@@ -357,16 +357,19 @@ const ArtistProfile = () => {
         );
       case "Artistic Background":
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 overflow-hidden">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {/* Roles Card */}
-        <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 border border-white/20 p-4 rounded-xl backdrop-blur-sm">
-          <h3 className="text-green-400 font-bold mb-2">ROLES</h3>
+        <div className="bg-gradient-to-br from-gray-800/60 to-gray-900/60 border border-white/10 p-4 rounded-xl backdrop-blur-sm shadow-[0_8px_32px_0_rgba(0,0,0,0.3)]">
+          <div className="flex items-center gap-2 mb-3">
+            <div className="w-2 h-6 bg-white rounded-full"></div>
+            <h3 className="text-white font-bold text-lg">ROLES</h3>
+          </div>
           <div className="flex flex-wrap gap-2">
             {artistData.artistic_background.roles.map((role, index) => (
               <span 
                 key={index} 
-                className="bg-gray-700/50 px-3 py-1 rounded-full text-sm"
+                className="bg-gray-700/60 px-3 py-1.5 rounded-lg text-sm text-gray-200 border border-white/10"
               >
                 {role}
               </span>
@@ -375,13 +378,16 @@ const ArtistProfile = () => {
         </div>
 
         {/* Genres Card */}
-        <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 border border-white/20 p-4 rounded-xl backdrop-blur-sm">
-          <h3 className="text-purple-400 font-bold mb-2">GENRES</h3>
+        <div className="bg-gradient-to-br from-gray-800/60 to-gray-900/60 border border-white/10 p-4 rounded-xl backdrop-blur-sm shadow-[0_8px_32px_0_rgba(0,0,0,0.3)]">
+          <div className="flex items-center gap-2 mb-3">
+            <div className="w-2 h-6 bg-white rounded-full"></div>
+            <h3 className="text-white font-bold text-lg">GENRES</h3>
+          </div>
           <div className="flex flex-wrap gap-2">
             {artistData.artistic_background.genres.map((genre, index) => (
               <span 
                 key={index} 
-                className="bg-gray-700/50 px-3 py-1 rounded-full text-sm"
+                className="bg-gray-700/60 px-3 py-1.5 rounded-lg text-sm text-gray-200 border border-white/10"
               >
                 {genre}
               </span>
@@ -390,13 +396,16 @@ const ArtistProfile = () => {
         </div>
 
         {/* Influences Card */}
-        <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 border border-white/20 p-4 rounded-xl backdrop-blur-sm">
-          <h3 className="text-blue-400 font-bold mb-2">INFLUENCES</h3>
+        <div className="bg-gradient-to-br from-gray-800/60 to-gray-900/60 border border-white/10 p-4 rounded-xl backdrop-blur-sm shadow-[0_8px_32px_0_rgba(0,0,0,0.3)]">
+          <div className="flex items-center gap-2 mb-3">
+            <div className="w-2 h-6 bg-white rounded-full"></div>
+            <h3 className="text-white font-bold text-lg">INFLUENCES</h3>
+          </div>
           <div className="flex flex-wrap gap-2">
             {artistData.artistic_background.influences.map((influence, index) => (
               <span 
                 key={index} 
-                className="bg-gray-700/50 px-3 py-1 rounded-full text-sm"
+                className="bg-gray-700/60 px-3 py-1.5 rounded-lg text-sm text-gray-200 border border-white/10"
               >
                 {influence}
               </span>
@@ -405,13 +414,16 @@ const ArtistProfile = () => {
         </div>
 
         {/* Skills Card */}
-        <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 border border-white/20 p-4 rounded-xl backdrop-blur-sm">
-          <h3 className="text-yellow-400 font-bold mb-2">SKILLS</h3>
+        <div className="bg-gradient-to-br from-gray-800/60 to-gray-900/60 border border-white/10 p-4 rounded-xl backdrop-blur-sm shadow-[0_8px_32px_0_rgba(0,0,0,0.3)]">
+          <div className="flex items-center gap-2 mb-3">
+            <div className="w-2 h-6 bg-white rounded-full"></div>
+            <h3 className="text-white font-bold text-lg">SKILLS</h3>
+          </div>
           <div className="flex flex-wrap gap-2">
             {artistData.artistic_background.skills.map((skill, index) => (
               <span 
                 key={index} 
-                className="bg-gray-700/50 px-3 py-1 rounded-full text-sm"
+                className="bg-gray-700/60 px-3 py-1.5 rounded-lg text-sm text-gray-200 border border-white/10"
               >
                 {skill}
               </span>
@@ -421,37 +433,141 @@ const ArtistProfile = () => {
       </div>
 
       {/* Signature Style Card */}
-      <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 border border-white/20 p-5 rounded-xl backdrop-blur-sm">
-        <h3 className="text-pink-400 font-bold mb-3">SIGNATURE STYLE</h3>
-        <p className="text-gray-300">
+      <div className="bg-gradient-to-br from-gray-800/60 to-gray-900/60 border border-white/10 p-5 rounded-xl backdrop-blur-sm shadow-[0_8px_32px_0_rgba(0,0,0,0.3)]">
+        <div className="flex items-center gap-2 mb-3">
+          <div className="w-2 h-6 bg-white rounded-full"></div>
+          <h3 className="text-white font-bold text-lg">SIGNATURE STYLE</h3>
+        </div>
+        <p className="text-gray-300 pl-2">
           {artistData.artistic_background.signature_style || "No signature style specified"}
         </p>
       </div>
 
       {/* View More Button */}
-      <div className="flex justify-center mt-4">
-        <button className="text-sm bg-gradient-to-r from-blue-500 to-purple-500 px-5 py-2 rounded-full hover:scale-105 transition-transform duration-300">
-          VIEW MORE
+      <div className="flex justify-center mt-6">
+        <button className="text-sm bg-gradient-to-r from-gray-700 to-black border border-white/20 px-6 py-3 rounded-lg hover:bg-gray-600 transition-all duration-300 flex items-center gap-2 group">
+          <span>VIEW MORE</span>
+          <svg 
+            xmlns="http://www.w3.org/2000/svg" 
+            className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" 
+            viewBox="0 0 20 20" 
+            fill="currentColor"
+          >
+            <path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+          </svg>
         </button>
       </div>
     </div>
   );
       case "Career Highlights":
-        return (
-          <>
-            <p className="text-sm text-gray-300 leading-relaxed">
-              Education: {artistData.career.education}<br />
-              Collaborations: {artistData.career.collaborations.join(", ")}<br />
-              Performances: {artistData.career.performances.join(", ")}<br />
-              Awards: {artistData.career.awards.join(", ")}<br />
-              Career Evolution: {artistData.career.career_evolution || "Not specified"}<br />
-              Years Active: {artistData.career.years_active || "Not specified"}
-            </p>
-            <button className="text-sm text-blue-400 hover:underline">
-              VIEW MORE
-            </button>
-          </>
-        );
+  return (
+    <div className="space-y-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {/* Education Card */}
+        <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 border border-white/20 p-4 rounded-xl backdrop-blur-sm">
+          <h3 className="text-white font-bold mb-2 flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z" />
+            </svg>
+            EDUCATION
+          </h3>
+          <p className="text-gray-300">{artistData.career.education || "Not specified"}</p>
+        </div>
+
+        {/* Collaborations Card */}
+        <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 border border-white/20 p-4 rounded-xl backdrop-blur-sm">
+          <h3 className="text-white font-bold mb-2 flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path fillRule="evenodd" d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z" clipRule="evenodd" />
+            </svg>
+            COLLABORATIONS
+          </h3>
+          <div className="flex flex-wrap gap-2">
+            {artistData.career.collaborations.map((collab, index) => (
+              <span 
+                key={index} 
+                className="bg-gray-700/50 px-3 py-1 rounded-full text-sm text-gray-300"
+              >
+                {collab}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* Performances Card */}
+        <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 border border-white/20 p-4 rounded-xl backdrop-blur-sm">
+          <h3 className="text-white font-bold mb-2 flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
+            </svg>
+            PERFORMANCES
+          </h3>
+          <div className="flex flex-wrap gap-2">
+            {artistData.career.performances.map((performance, index) => (
+              <span 
+                key={index} 
+                className="bg-gray-700/50 px-3 py-1 rounded-full text-sm text-gray-300"
+              >
+                {performance}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* Awards Card */}
+        <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 border border-white/20 p-4 rounded-xl backdrop-blur-sm">
+          <h3 className="text-white font-bold mb-2 flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+            </svg>
+            AWARDS
+          </h3>
+          <div className="flex flex-wrap gap-2">
+            {artistData.career.awards.map((award, index) => (
+              <span 
+                key={index} 
+                className="bg-gray-700/50 px-3 py-1 rounded-full text-sm text-gray-300"
+              >
+                {award}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* Career Evolution Card */}
+        <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 border border-white/20 p-4 rounded-xl backdrop-blur-sm">
+          <h3 className="text-white font-bold mb-2 flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path fillRule="evenodd" d="M12.395 2.553a1 1 0 00-1.45-.385c-.345.23-.614.558-.822.88-.214.33-.403.713-.57 1.116-.334.804-.614 1.768-.84 2.734a31.365 31.365 0 00-.613 3.58 2.64 2.64 0 01-.945-1.067c-.328-.68-.398-1.534-.398-2.654A1 1 0 005.05 6.05 6.981 6.981 0 003 11a7 7 0 1011.95-4.95c-.592-.591-.98-.985-1.348-1.467-.363-.476-.724-1.063-1.207-2.03zM12.12 15.12A3 3 0 017 13s.879.5 2.5.5c0-1 .5-4 1.25-4.5.5 1 .786 1.293 1.371 1.879A2.99 2.99 0 0113 13a2.99 2.99 0 01-.879 2.121z" clipRule="evenodd" />
+            </svg>
+            CAREER EVOLUTION
+          </h3>
+          <p className="text-gray-300">{artistData.career.career_evolution || "Not specified"}</p>
+        </div>
+
+        {/* Years Active Card */}
+        <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 border border-white/20 p-4 rounded-xl backdrop-blur-sm">
+          <h3 className="text-white font-bold mb-2 flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
+            </svg>
+            YEARS ACTIVE
+          </h3>
+          <p className="text-gray-300">{artistData.career.years_active || "Not specified"}</p>
+        </div>
+      </div>
+
+      {/* View More Button */}
+      <div className="flex justify-center mt-4">
+        <button className="text-sm bg-gradient-to-r from-gray-700 to-black border border-white/20 px-6 py-3 rounded-lg hover:scale-105 transition-transform duration-300 flex items-center gap-2">
+          VIEW MORE
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+            <path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  );
       default:
         return null;
     }
@@ -533,18 +649,46 @@ const ArtistProfile = () => {
         </div>
 
         {/* Right section */}
-        <div className="flex-1">
-          <p className="text-gray-400 uppercase text-sm">{artistData.artistic_background.roles[0]}</p>
-          <h1 className="text-5xl font-bold mt-1">{artistData.displayName}</h1>
+<div className="flex-1">
+  <p className="text-gray-400 uppercase text-sm">{artistData.artistic_background.roles[0]}</p>
+  
+  {/* Artist Name with Stats */}
+  <div className="flex flex-wrap items-center gap-4 mt-1">
+    <h1 className="text-5xl font-bold">{artistData.displayName}</h1>
+    
+    {/* Star Rating */}
+    <div className="flex items-center gap-1 bg-black/30 px-3 py-1 rounded-full">
+      <div className="flex items-center">
+        {Array(5).fill().map((_, i) => (
+          <Star
+            key={i}
+            size={20}
+            color={i < 4 ? "#FFBE0B" : "#555"}
+            fill={i < 4 ? "#FFBE0B" : "none"}
+          />
+        ))}
+      </div>
+      <span className="text-sm font-bold ml-1">4.8</span>
+    </div>
+    
+    {/* Followers Count */}
+    <div className="flex items-center gap-1 bg-black/30 px-3 py-1 rounded-full">
+      <User size={16} />
+      <span className="text-sm font-bold">
+        12.8M Followers
+      </span>
+    </div>
+  </div>
 
-          <div className="flex gap-4 mt-4">
-            <span className="px-4 py-1 bg-gray-800 rounded-full text-sm">
-              ID : {artistData.artistID}
-            </span>
-            <span className="px-4 py-1 bg-gray-800 rounded-full text-sm">
-              Price : ${artistData.priceUSD.toLocaleString()} USD
-            </span>
-          </div>
+  {/* Rest of the code remains the same */}
+  <div className="flex gap-4 mt-4">
+    <span className="px-4 py-1 bg-gray-800 rounded-full text-sm">
+      ID : {artistData.artistID}
+    </span>
+    <span className="px-4 py-1 bg-gray-800 rounded-full text-sm">
+      Price : ${artistData.priceUSD.toLocaleString()} USD
+    </span>
+  </div>
 
           {/* Tabs */}
           <div className="flex gap-6 mt-8 border-b border-gray-700">
