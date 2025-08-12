@@ -33,6 +33,40 @@ import launch1 from "../assets/launch1.png";
 import gif6 from "../assets/gif6.gif";
 import footerImg from "../assets/footer.png";
 
+// Availability page imports
+import bgImage from "../assets/i17.png";
+import artist6 from "../assets/artist6.jpg";
+import i18 from "../assets/i18.png";
+
+// Icons for Availability section
+const StarIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.516 8.271-7.444-3.908-7.444 3.908 1.516-8.271-6.064-5.828 8.332-1.151z" />
+  </svg>
+);
+
+const MagnifyingGlassIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+  </svg>
+);
+
+// Glassmorphism Card Component (more white version)
+const GlassCard = ({ title, children }) => (
+  <div
+    className="p-6 rounded-2xl border border-white/40 hover:shadow-lg hover:scale-[1.02] transition-all duration-300"
+    style={{
+      background: "rgba(255, 255, 255, 0.4)",
+      backdropFilter: "blur(18px) saturate(200%)",
+      WebkitBackdropFilter: "blur(18px) saturate(200%)",
+      boxShadow: "0 8px 30px rgba(0,0,0,0.15)"
+    }}
+  >
+    <h3 className="text-black text-xl font-bold mb-2">{title}</h3>
+    <div className="text-black text-sm leading-relaxed">{children}</div>
+  </div>
+);
+
 // Animation variants (from ArtistProfile)
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -232,6 +266,22 @@ const tabs = ["Bio", "Artistic Background", "Career Highlights"];
 const ArtistProfile = () => {
   const [activeTab, setActiveTab] = useState("Bio");
   const [hovered, setHovered] = useState(null); // State for Discography component
+  const [searchTerm, setSearchTerm] = useState("");
+
+  // Gallery data for Availability section
+  const gallery = Array.from({ length: 10 }).map((_, i) => ({
+    id: i,
+    title: `Artist ${i + 1}`,
+    img: artist6,
+  }));
+
+  const filteredGallery = gallery.filter((item) =>
+    item.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const handleSearch = () => {
+    alert(`Searching for: ${searchTerm}`);
+  };
 
   return (
     <div className="min-h-screen bg-black text-white font-sans relative overflow-hidden">
@@ -240,18 +290,29 @@ const ArtistProfile = () => {
         className="relative w-full h-[220px] bg-cover bg-center"
         style={{ backgroundImage: `url(${bgImg})` }}
         initial={{ y: -100, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
+        animate={{ y: 0, opacity: 50 }}
         transition={{ duration: 1 }}
       >
         <div className="absolute inset-0 bg-black opacity-60" />
       </motion.div>
 
+      {/* Additional background section with i18.png */}
+      <motion.div
+        className="relative w-full h-[450px] bg-cover bg-center"
+        style={{ backgroundImage: `url(${i18})` }}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, delay: 0.5 }}
+      >
+        <div className="absolute inset-0 bg-black/30" />
+      </motion.div>
+
       {/* Main content */}
       <motion.div
-        className="relative z-10 -mt-16 flex flex-col lg:flex-row p-8 gap-8 max-w-7xl mx-auto"
+        className="relative z-10 -mt-100 flex flex-col lg:flex-row max-w-7xl mx-auto"
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, delay: 1 }} // delay to wait for bg animation
+        transition={{ duration: 1, delay: 1.2 }} // Increased delay to wait for both bg animations
       >
         {/* Left section */}
         <div className="lg:w-1/3 flex flex-col items-center lg:items-start">
@@ -513,7 +574,162 @@ const ArtistProfile = () => {
         </div>
       </section>
 
-      {/* Review Section */}
+      {/* Availability & Opportunities Section */}
+      <section
+        className="relative w-full min-h-screen flex flex-col items-center p-4 lg:p-10 font-sans"
+        style={{
+          backgroundImage: `url(${bgImage})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
+        {/* Light Overlay */}
+        <div className="absolute inset-0 bg-white/1 z-0"></div>
+
+        <div className="w-full max-w-7xl flex flex-col gap-6 relative z-10">
+          {/* Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="flex items-center gap-4"
+          >
+            <div className="bg-black p-2 rounded">
+              <StarIcon />
+            </div>
+            <h1
+              className="text-black text-2xl md:text-3xl font-bold tracking-wider"
+              style={{ textShadow: "2px 2px 4px rgba(0,0,0,0.5)" }}
+            >
+              AVAILABILITY & OPPORTUNITIES
+            </h1>
+          </motion.div>
+
+          {/* Search Bar */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="flex items-center gap-2 mt-2"
+          >
+            <input
+              type="text"
+              placeholder="CURRENT PROJECTS..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="px-4 py-2 border border-black bg-white/35 rounded-lg text-black font-bold w-64"
+            />
+            <button
+              onClick={handleSearch}
+              className="p-2 border border-black bg-white/35 rounded-lg hover:bg-gray-200"
+            >
+              <MagnifyingGlassIcon />
+            </button>
+          </motion.div>
+
+          {/* Image Gallery */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="flex gap-4 overflow-x-auto mt-4 pb-4 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-transparent"
+          >
+            {filteredGallery.map((item, index) => (
+              <motion.div
+                key={item.id}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
+                className="flex-shrink-0 w-72 h-56 rounded-lg overflow-hidden shadow-md border border-purple-300 hover:scale-105 transition-transform"
+              >
+                <img src={item.img} alt={item.title} className="w-full h-full object-cover" />
+              </motion.div>
+            ))}
+            {filteredGallery.length === 0 && (
+              <p className="text-white italic">No results found.</p>
+            )}
+          </motion.div>
+
+          {/* Middle Cards */}
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 8, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6"
+          >
+            <GlassCard title="COMMERCE" className='bg-amber-100'>
+              <p className="text-lg">Merchandise now available on</p>
+              <p className="text-sm italic my-2">
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua."
+              </p>
+              <div className="flex justify-center mt-4">
+                <button className="flex items-center gap-2 px-6 py-3 rounded-full text-white font-bold shadow-lg bg-black hover:scale-105 transition-all duration-300">
+                  Store
+                </button>
+              </div>
+            </GlassCard>
+
+            <GlassCard title="SOCIAL IMPACT">
+              <p className="text-lg">Highlight advocacy or charity work.</p>
+              <p className="text-sm italic my-2">
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua."
+              </p>
+              <div className="flex flex-wrap justify-center gap-3 mt-4">
+                {["WORK 1", "WORK 2", "WORK 3", "WORK 4"].map((work, idx) => (
+                  <button
+                    key={idx}
+                    className="px-4 py-2 rounded-full text-white font-bold text-sm shadow-md bg-black hover:scale-105 transition-all duration-300"
+                  >
+                    {work}
+                  </button>
+                ))}
+              </div>
+            </GlassCard>
+          </motion.div>
+
+          {/* Bottom Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6"
+          >
+            <div
+              className="p-6 rounded-2xl font-mono text-white"
+              style={{
+                background: "rgba(0, 0, 0, 0.4)",
+                backdropFilter: "blur(14px) saturate(180%)",
+                WebkitBackdropFilter: "blur(14px) saturate(180%)",
+                boxShadow: "0 4px 30px rgba(0,0,0,0.3)"
+              }}
+            >
+              <span className="text-purple-300">//classification</span> → Internal categorization (e.g., genre bucket, label type).
+            </div>
+
+            <div
+              className="p-6 rounded-2xl font-mono text-black hover:scale-[1.02] transition-all duration-300"
+              style={{
+                background: "rgba(255, 255, 255, 0.9)",
+                backdropFilter: "blur(20px) saturate(200%)",
+                WebkitBackdropFilter: "blur(20px) saturate(200%)",
+                boxShadow: "0 8px 40px rgba(255,255,255,0.4), inset 0 1px 0 rgba(255,255,255,0.6)"
+              }}
+            >
+              <span className="text-purple-600 font-bold">lazie_indie_association</span> → Specific Org membership.
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Review Section (Online Presence) */}
       <section className="w-full px-4 md:px-20 py-16 bg-black text-white">
         <motion.div
           initial={{ opacity: 0 }}
