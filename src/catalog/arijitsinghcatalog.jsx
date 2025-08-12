@@ -37,10 +37,18 @@ import footerImg from "../assets/footer.png";
 import bgImage from "../assets/i17.png";
 import artist6 from "../assets/artist6.jpg";
 import i18 from "../assets/i18.png";
+import i19 from "../assets/i19.png";
+import i20 from "../assets/i20.png";
 
 // Icons for Availability section
 const StarIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.516 8.271-7.444-3.908-7.444 3.908 1.516-8.271-6.064-5.828 8.332-1.151z" />
+  </svg>
+);
+
+const StarIcon2 = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-black" viewBox="0 0 24 24" fill="currentColor">
     <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.516 8.271-7.444-3.908-7.444 3.908 1.516-8.271-6.064-5.828 8.332-1.151z" />
   </svg>
 );
@@ -348,20 +356,86 @@ const ArtistProfile = () => {
           </>
         );
       case "Artistic Background":
-        return (
-          <>
-            <p className="text-sm text-gray-300 leading-relaxed">
-              Roles: {artistData.artistic_background.roles.join(", ")}<br />
-              Genres: {artistData.artistic_background.genres.join(", ")}<br />
-              Influences: {artistData.artistic_background.influences.join(", ")}<br />
-              Skills: {artistData.artistic_background.skills.join(", ")}<br />
-              Signature Style: {artistData.artistic_background.signature_style || "Not specified"}
-            </p>
-            <button className="text-sm text-blue-400 hover:underline">
-              VIEW MORE
-            </button>
-          </>
-        );
+  return (
+    <div className="space-y-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {/* Roles Card */}
+        <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 border border-white/20 p-4 rounded-xl backdrop-blur-sm">
+          <h3 className="text-green-400 font-bold mb-2">ROLES</h3>
+          <div className="flex flex-wrap gap-2">
+            {artistData.artistic_background.roles.map((role, index) => (
+              <span 
+                key={index} 
+                className="bg-gray-700/50 px-3 py-1 rounded-full text-sm"
+              >
+                {role}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* Genres Card */}
+        <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 border border-white/20 p-4 rounded-xl backdrop-blur-sm">
+          <h3 className="text-purple-400 font-bold mb-2">GENRES</h3>
+          <div className="flex flex-wrap gap-2">
+            {artistData.artistic_background.genres.map((genre, index) => (
+              <span 
+                key={index} 
+                className="bg-gray-700/50 px-3 py-1 rounded-full text-sm"
+              >
+                {genre}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* Influences Card */}
+        <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 border border-white/20 p-4 rounded-xl backdrop-blur-sm">
+          <h3 className="text-blue-400 font-bold mb-2">INFLUENCES</h3>
+          <div className="flex flex-wrap gap-2">
+            {artistData.artistic_background.influences.map((influence, index) => (
+              <span 
+                key={index} 
+                className="bg-gray-700/50 px-3 py-1 rounded-full text-sm"
+              >
+                {influence}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* Skills Card */}
+        <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 border border-white/20 p-4 rounded-xl backdrop-blur-sm">
+          <h3 className="text-yellow-400 font-bold mb-2">SKILLS</h3>
+          <div className="flex flex-wrap gap-2">
+            {artistData.artistic_background.skills.map((skill, index) => (
+              <span 
+                key={index} 
+                className="bg-gray-700/50 px-3 py-1 rounded-full text-sm"
+              >
+                {skill}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Signature Style Card */}
+      <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 border border-white/20 p-5 rounded-xl backdrop-blur-sm">
+        <h3 className="text-pink-400 font-bold mb-3">SIGNATURE STYLE</h3>
+        <p className="text-gray-300">
+          {artistData.artistic_background.signature_style || "No signature style specified"}
+        </p>
+      </div>
+
+      {/* View More Button */}
+      <div className="flex justify-center mt-4">
+        <button className="text-sm bg-gradient-to-r from-blue-500 to-purple-500 px-5 py-2 rounded-full hover:scale-105 transition-transform duration-300">
+          VIEW MORE
+        </button>
+      </div>
+    </div>
+  );
       case "Career Highlights":
         return (
           <>
@@ -497,73 +571,105 @@ const ArtistProfile = () => {
       </motion.div>
 
       {/* Discography Section */}
-      <motion.section
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-        className="w-full min-h-screen bg-black text-white font-monda px-8 py-16"
-      >
-        <div className="flex flex-col lg:flex-row gap-20">
-          {/* Info Section */}
-          <div className="lg:w-[25%] flex flex-col space-y-5">
-            <div className="flex items-center space-x-4">
-              <FaMusic className="text-green-400 text-7xl" />
-              <h1 className="text-3xl md:text-5xl font-bold">DISCOGRAPHY</h1>
-            </div>
-            <img src={logo} alt="Logo" className="w-20" />
-            <h2 className="text-xl md:text-3xl font-bold">RECENTS</h2>
-            <p className="text-sm md:text-base leading-relaxed text-justify">
-              Explore {artistData.displayName}'s musical evolution through each of these iconic {artistData.discography.length} releases.
-              From ethereal sounds to bold lyrical storytelling, this collection
-              showcases versatility and emotional depth. Get lost in melodies,
-              lyrics, and moods.
-            </p>
-          </div>
-
-          {/* Album Carousel */}
-          <div className="flex-1 overflow-x-auto scrollbar-thin scrollbar-track-gray-800 scrollbar-thumb-green-500 rounded-md">
-            <div className="flex gap-6 h-[500px] md:h-[600px]">
-              {albums.map((album, index) => {
-                const isHovered = hovered === index;
-                const isAnyHovered = hovered !== null;
-
-                return (
-                  <div
-                    key={index}
-                    onMouseEnter={() => setHovered(index)}
-                    onMouseLeave={() => setHovered(null)}
-                    className={`relative rounded-xl overflow-hidden transition-all duration-500 flex-shrink-0
-                     ${
-                       isHovered
-                         ? "w-[60vw] md:w-[35vw]"
-                         : isAnyHovered
-                         ? "w-[7vw] md:w-[6vw]"
-                         : index === 0
-                         ? "w-[60vw] md:w-[35vw]"
-                         : "w-[10vw] md:w-[8vw]"
-                     } h-full group cursor-pointer`}
-                  >
-                    <img
-                      src={album.src}
-                      alt={`Album ${album.name}`}
-                      className="w-full h-full object-cover rounded-xl"
-                    />
-                    <div className="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-start p-4 text-white">
-                      <p className="text-lg md:text-xl font-bold mb-2">
-                        {album.name}
-                      </p>
-                      <p className="text-sm">Release: {album.releaseDate}</p>
-                      <p className="text-sm">Label: {album.label}</p>
-                      <p className="text-sm mt-2">{album.details}</p>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
+<motion.section
+  initial={{ opacity: 0, y: 50 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true, margin: "-100px" }}
+  transition={{ duration: 0.6, ease: "easeOut" }}
+  className="w-full min-h-screen bg-black text-white font-monda px-8 py-16"
+>
+  <div className="flex flex-col lg:flex-row gap-20">
+    {/* Info Section */}
+    <div className="lg:w-[25%] flex flex-col space-y-5">
+      <div className="flex items-center space-x-4">
+        {/* Enhanced logo with larger size and visual effects */}
+        <div className="relative flex-shrink-0">
+          <div className="absolute inset-0 bg-gradient-to-br from-green-500/40 to-purple-500/40 rounded-full blur-xl z-[-1] animate-pulse-slow"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-green-500/20 to-purple-500/20 rounded-full blur-md z-[-1]"></div>
+          <img 
+            src={i20} 
+            alt="Artist Logo" 
+            className="w-10 h-10 object-contain transition-all duration-500 hover:scale-110"
+          />
         </div>
-      </motion.section>
+        <h1 className="text-3xl md:text-5xl font-bold">DISCOGRAPHY</h1>
+      </div>
+      
+      {/* Release Date Filter */}
+      <div className="space-y-3">
+        <div className="text-white text-xl font-bold">RELEASE DATE</div>
+        
+        <div className="flex flex-wrap gap-2">
+          {[2020, 2021, 2022, 2023, 2024, 2025].map(year => (
+            <div 
+              key={year}
+              className="px-4 py-2 flex items-center justify-center transition-all duration-200 hover:scale-105 cursor-pointer"
+              style={{
+                background: 'radial-gradient(ellipse 92.09% 170.98% at 50.00% 50.00%, #242934 0%, #111111 69%)',
+                borderRadius: '11.05px',
+                backdropFilter: 'blur(12.78px)',
+              }}
+            >
+              <div className="text-white text-sm font-normal">{year}</div>
+            </div>
+          ))}
+        </div>
+        
+        <div className="text-white/40 text-sm font-normal">Select Year</div>
+      </div>
+      
+      <h2 className="text-xl md:text-3xl font-bold">RECENTS</h2>
+      <p className="text-sm md:text-base leading-relaxed text-justify">
+        Explore {artistData.displayName}'s musical evolution through each of these iconic {artistData.discography.length} releases.
+        From ethereal sounds to bold lyrical storytelling, this collection
+        showcases versatility and emotional depth. Get lost in melodies,
+        lyrics, and moods.
+      </p>
+    </div>
+
+    {/* Album Carousel */}
+    <div className="flex-1 overflow-x-auto scrollbar-thin scrollbar-track-gray-800 scrollbar-thumb-green-500 rounded-md">
+      <div className="flex gap-6 h-[500px] md:h-[600px]">
+        {albums.map((album, index) => {
+          const isHovered = hovered === index;
+          const isAnyHovered = hovered !== null;
+
+          return (
+            <div
+              key={index}
+              onMouseEnter={() => setHovered(index)}
+              onMouseLeave={() => setHovered(null)}
+              className={`relative rounded-xl overflow-hidden transition-all duration-500 flex-shrink-0
+               ${
+                 isHovered
+                   ? "w-[60vw] md:w-[35vw]"
+                   : isAnyHovered
+                   ? "w-[7vw] md:w-[6vw]"
+                   : index === 0
+                   ? "w-[60vw] md:w-[35vw]"
+                   : "w-[10vw] md:w-[8vw]"
+               } h-full group cursor-pointer`}
+            >
+              <img
+                src={album.src}
+                alt={`Album ${album.name}`}
+                className="w-full h-full object-cover rounded-xl"
+              />
+              <div className="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-start p-4 text-white">
+                <p className="text-lg md:text-xl font-bold mb-2">
+                  {album.name}
+                </p>
+                <p className="text-sm">Release: {album.releaseDate}</p>
+                <p className="text-sm">Label: {album.label}</p>
+                <p className="text-sm mt-2">{album.details}</p>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  </div>
+</motion.section>
 
       {/* Creative Process Section */}
       <section className="relative w-full min-h-screen overflow-hidden">
@@ -589,7 +695,10 @@ const ArtistProfile = () => {
             transition={{ delay: 0.2 }}
             className="text-3xl md:text-5xl font-bold mb-10 flex items-center gap-2"
           >
-            <span>🧠 CREATIVE PROCESSES</span>
+            <div className="bg-white p-2 rounded">
+              <StarIcon2 />
+            </div>
+            <span>CREATIVE PROCESSES</span>
           </motion.h2>
 
           <motion.div
@@ -807,7 +916,7 @@ const ArtistProfile = () => {
       </section>
 
       {/* Review Section (Online Presence) */}
-      <section className="w-full px-4 md:px-20 py-16 bg-black text-white">
+      {/* <section className="w-full px-4 md:px-20 py-16 bg-black text-white">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -841,7 +950,49 @@ const ArtistProfile = () => {
             ))}
           </div>
         </motion.div>
-      </section>
+      </section> */}
+      {/* Review Section (Online Presence) */}
+<section className="w-full px-4 md:px-20 py-16 bg-black text-white">
+  <motion.div
+    initial={{ opacity: 0 }}
+    whileInView={{ opacity: 1 }}
+    viewport={{ once: true, margin: "-100px" }}
+    transition={{ duration: 0.6 }}
+    className="mb-6"
+  >
+    <h2 className="text-2xl md:text-3xl font-bold flex items-center gap-2">
+      {/* Cloud icon replaced with your i19.png logo */}
+      <img 
+        src={i19} 
+        alt="Online Presence" 
+        className="w-8 h-8 object-contain"
+      />
+      <span>ONLINE PRESENCE</span>
+    </h2>
+    <p className="mt-2 font-semibold uppercase">Fan & Press Quotes</p>
+    <p className="text-sm text-white/50 mt-1">Scroll to explore →</p>
+  </motion.div>
+
+  <motion.div
+    initial={{ opacity: 0 }}
+    whileInView={{ opacity: 1 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.8 }}
+    className="relative"
+  >
+    <div
+      className="flex gap-5 overflow-x-auto pb-4 scroll-smooth"
+      style={{
+        scrollbarWidth: "thin",
+        scrollbarColor: "rgba(255,255,255,0.3) rgba(255,255,255,0.1)",
+      }}
+    >
+      {reviews.map((review, idx) => (
+        <ReviewCard key={idx} index={idx} {...review} />
+      ))}
+    </div>
+  </motion.div>
+</section>
 
       {/* Social Media Section */}
       <section className="relative w-full min-h-screen bg-black overflow-hidden flex items-center justify-center">
@@ -944,6 +1095,40 @@ const ArtistProfile = () => {
             </motion.div>
           </motion.div>
         </div>
+      </section>
+
+      <section className="w-full px-4 md:px-20 py-16 bg-black text-white">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+          className="mb-6"
+        >
+          <h2 className="text-2xl md:text-3xl font-bold flex items-center gap-2">
+            <span></span>PROFESSIONAL PRESS COVERAGE
+          </h2>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="relative"
+        >
+          <div
+            className="flex gap-5 overflow-x-auto pb-4 scroll-smooth"
+            style={{
+              scrollbarWidth: "thin",
+              scrollbarColor: "rgba(255,255,255,0.3) rgba(255,255,255,0.1)",
+            }}
+          >
+            {reviews.map((review, idx) => (
+              <ReviewCard key={idx} index={idx} {...review} />
+            ))}
+          </div>
+        </motion.div>
       </section>
 
       {/* Streaming Platforms and Quotes Section with Background GIF */}
