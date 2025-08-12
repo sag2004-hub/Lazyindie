@@ -99,93 +99,137 @@ const fadeIn = {
   },
 };
 
-// Album data (from Discography)
-const albums = [
-  {
-    src: album1,
-    name: "Echoes of Silence",
-    releaseDate: "2020-06-12",
-    label: "XO Records",
-    details: "A haunting yet melodic journey through heartbreak and mystery.",
+// Sample artist data aligned with the schema
+const artistData = {
+  artistID: "ART378238264",
+  displayName: "Weeknd",
+  priceUSD: 2400,
+  imageUrl: profileImg,
+  vibeTags: ["Dark R&B", "Synthwave", "Pop"],
+  identity: {
+    realName: "Abel Makkonen Tesfaye",
+    aliases: ["The Weeknd", "Starboy"],
+    origin: "Toronto, Canada",
+    location: "Los Angeles, USA",
+    languages: ["English", "Amharic"],
+    gender: "Male",
+    birthYear: 1990,
   },
-  {
-    src: album2,
-    name: "Dawn FM",
-    releaseDate: "2022-01-07",
-    label: "Republic Records",
-    details: "A synthwave experience wrapped in nostalgia and vision.",
+  artistic_background: {
+    roles: ["Singer", "Songwriter", "Producer"],
+    genres: ["R&B", "Pop", "Synthwave", "Electronic"],
+    influences: ["Michael Jackson", "Prince", "Depeche Mode"],
+    skills: ["Vocal Performance", "Music Production", "Songwriting"],
+    signature_style: "Cinematic, moody soundscapes with introspective lyrics",
   },
-  {
-    src: album3,
-    name: "After Hours",
-    releaseDate: "2020-03-20",
-    label: "XO & Republic",
-    details: "Dark, vulnerable, and captivating storytelling through R&B.",
+  career: {
+    education: "Self-taught",
+    collaborations: ["Daft Punk", "Drake", "Lana Del Rey"],
+    performances: ["Coachella 2018", "Super Bowl LV Halftime Show"],
+    awards: ["Grammy Award for Best Urban Contemporary Album", "Juno Award for Artist of the Year"],
+    career_evolution: "From underground mixtapes to global pop stardom",
+    years_active: "2010-present",
   },
-  {
-    src: album4,
-    name: "Starboy",
-    releaseDate: "2016-11-25",
-    label: "XO & Republic",
-    details: "Blending electronic, pop, and urban music into a global hit.",
+  discography: [
+    {
+      title: "Echoes of Silence",
+      type: "Mixtape",
+      year: 2011,
+      label: "XO Records",
+      details: "A haunting yet melodic journey through heartbreak and mystery.",
+    },
+    {
+      title: "Dawn FM",
+      type: "Album",
+      year: 2022,
+      label: "Republic Records",
+      details: "A synthwave experience wrapped in nostalgia and vision.",
+    },
+    {
+      title: "After Hours",
+      type: "Album",
+      year: 2020,
+      label: "XO & Republic",
+      details: "Dark, vulnerable, and captivating storytelling through R&B.",
+    },
+    {
+      title: "Starboy",
+      type: "Album",
+      year: 2016,
+      label: "XO & Republic",
+      details: "Blending electronic, pop, and urban music into a global hit.",
+    },
+    {
+      title: "Beauty Behind the Madness",
+      type: "Album",
+      year: 2015,
+      label: "XO & Republic",
+      details: "The album that skyrocketed The Weeknd to superstardom.",
+    },
+    {
+      title: "Trilogy",
+      type: "Compilation",
+      year: 2012,
+      label: "XO & Republic",
+      details: "A compilation of three haunting mixtapes that defined a genre.",
+    },
+  ],
+  creative_process: {
+    songwriting_process: "I typically start with a melody that comes to me in the early morning hours. I record voice memos on my phone, then build from there. Lyrics usually come last, and I draw inspiration from personal experiences, dreams, and literature.",
+    production_process: "I produce most of my music in my home studio in Los Angeles. I use a combination of analog synths and digital processing to create layered, atmospheric soundscapes. I'm particularly fond of incorporating found sounds and field recordings.",
+    creative_rituals: "I often work at night with dim lighting to set the mood, and I always have coffee nearby.",
   },
-  {
-    src: album5,
-    name: "Beauty Behind the Madness",
-    releaseDate: "2015-08-28",
-    label: "XO & Republic",
-    details: "The album that skyrocketed The Weeknd to superstardom.",
+  availability: {
+    current_projects: ["New album in production", "World tour planning"],
+    looking_for: ["Visual artists for music videos", "Innovative producers"],
   },
-  {
-    src: album6,
-    name: "Trilogy",
-    releaseDate: "2012-11-13",
-    label: "XO & Republic",
-    details: "A compilation of three haunting mixtapes that defined a genre.",
+  online_presence: {
+    website: "https://www.theweeknd.com",
+    social_media: [
+      { platform: "Instagram", url: "https://www.instagram.com/weeknd_official", followers: "17.5M" },
+      { platform: "Facebook", url: "https://www.facebook.com/weeknd_official", followers: "5M" },
+      { platform: "Twitter", url: "https://twitter.com/weeknd", followers: "12M" },
+      { platform: "YouTube", url: "https://www.youtube.com/@weekndLive", followers: "10M" },
+    ],
+    streaming_platforms: [
+      { platform: "Apple Music", url: "https://music.apple.com/us/artist/the-weeknd", stats: "45M monthly listeners" },
+      { platform: "Spotify", url: "https://spotify.com/theweeknd", stats: "80M monthly listeners" },
+      { platform: "SoundCloud", url: "https://soundcloud.com/theweeknd", stats: "2M followers" },
+    ],
   },
-];
+  commerce: "Official merchandise available at https://shop.theweeknd.com",
+  social_impact: "Supports mental health awareness through the Dawn FM Fund, donating proceeds to community programs.",
+  quotes: [
+    "Music is my therapy and my escape.",
+    "I create to connect with people on a deeper level.",
+  ],
+  fan_press_quotes: [
+    "A transformative artist who redefines R&B with every release. - Rolling Stone",
+    "The Weeknd's ability to craft cinematic worlds is unmatched. - Pitchfork",
+  ],
+  classification: "Global Pop Icon",
+  lazie_indie_association: "Featured Artist in Lazie Indie 2025 Showcase",
+  long_narrative: "Abel Makkonen Tesfaye, known as The Weeknd, emerged from Toronto's underground scene with raw mixtapes that captivated listeners with their dark, cinematic sound. His journey from anonymity to global stardom is a testament to his relentless creativity and vision.",
+};
 
-// Review data (from ArtistProfile)
-const reviews = [
-  {
-    name: "Rupam Islam",
-    rating: 4,
-    text: "Weeknd's music has been transformative for my creative process. His unique blend of dark R&B and pop creates an atmosphere unlike any other artist today.",
-    width: 482,
-  },
-  {
-    name: "Sophie Chen",
-    rating: 5,
-    text: "The production quality on every track is exceptional. The way he layers vocals and instruments creates such a rich, immersive experience.",
-    width: 482,
-  },
-  {
-    name: "Arijit Singh",
-    rating: 4,
-    text: "As a fellow artist, I deeply admire Weeknd's songwriting. His ability to craft narratives that feel both deeply personal and universally relatable is remarkable. The way he blends vulnerability with confidence in his lyrics is something I strive for in my own work.",
-    width: 898,
-  },
-  {
-    name: "Kr$na",
-    rating: 4,
-    text: "Weeknd's evolution as an artist is inspiring. From the raw sounds of Trilogy to the polished production of After Hours, he's managed to stay true to his vision while pushing boundaries.",
-    width: 477,
-  },
-  {
-    name: "Maria Garcia",
-    rating: 5,
-    text: "The thematic depth in his albums is incredible. Each project tells a complete story, with visuals and music working together to create a cohesive artistic statement. The way he builds worlds around his music is something more artists should aspire to.",
-    width: 898,
-  },
-  {
-    name: "David Kim",
-    rating: 4,
-    text: "His vocal range and control are unmatched in contemporary R&B. The emotion he conveys through his voice alone is powerful enough to carry entire songs.",
-    width: 477,
-  },
-];
+// Album data (updated to match schema)
+const albums = artistData.discography.map((item, index) => ({
+  src: [album1, album2, album3, album4, album5, album6][index],
+  name: item.title,
+  releaseDate: item.year.toString(),
+  label: item.label,
+  details: item.details,
+}));
 
-// Review card component (from ArtistProfile)
+// Review data (updated to use fan_press_quotes)
+const reviews = artistData.fan_press_quotes.map((quote, index) => ({
+  name: ["Rolling Stone", "Pitchfork", "Billboard", "NME"][index % 4],
+  rating: 4 + (index % 2),
+  text: quote,
+  width: index % 2 === 0 ? 482 : 898,
+}));
+
+// Review card component (unchanged)
 const ReviewCard = ({ name, rating, text, width, index }) => (
   <motion.div
     initial={{ opacity: 0, x: index % 2 === 0 ? 50 : -50 }}
@@ -199,7 +243,7 @@ const ReviewCard = ({ name, rating, text, width, index }) => (
       background: "rgba(255, 255, 255, 0.05)",
       overflow: "hidden",
       borderRadius: 16,
-      flexShrink: 0, // Ensure cards don't shrink in horizontal layout
+      flexShrink: 0,
       marginBottom: 20,
       backdropFilter: "blur(10px)",
       border: "1px solid rgba(255,255,255,0.1)",
@@ -212,7 +256,7 @@ const ReviewCard = ({ name, rating, text, width, index }) => (
         position: "absolute",
         justifyContent: "flex-start",
         alignItems: "center",
-        gap: width > 800 ? 574 : width > 480 ? 136 : 209, // Original gap logic
+        gap: width > 800 ? 574 : width > 480 ? 136 : 209,
         display: "inline-flex",
       }}
     >
@@ -265,13 +309,13 @@ const tabs = ["Bio", "Artistic Background", "Career Highlights"];
 
 const ArtistProfile = () => {
   const [activeTab, setActiveTab] = useState("Bio");
-  const [hovered, setHovered] = useState(null); // State for Discography component
+  const [hovered, setHovered] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
 
-  // Gallery data for Availability section
-  const gallery = Array.from({ length: 10 }).map((_, i) => ({
+  // Gallery data for Availability section (updated to reflect current_projects)
+  const gallery = artistData.availability.current_projects.map((project, i) => ({
     id: i,
-    title: `Artist ${i + 1}`,
+    title: project,
     img: artist6,
   }));
 
@@ -281,6 +325,62 @@ const ArtistProfile = () => {
 
   const handleSearch = () => {
     alert(`Searching for: ${searchTerm}`);
+  };
+
+  // Render tab content based on activeTab
+  const renderTabContent = () => {
+    switch (activeTab) {
+      case "Bio":
+        return (
+          <>
+            <p className="text-sm text-gray-300 leading-relaxed">
+              {artistData.long_narrative || "No long narrative available."}
+            </p>
+            <p className="text-sm text-gray-300 leading-relaxed">
+              Real Name: {artistData.identity.realName}<br />
+              Aliases: {artistData.identity.aliases.join(", ")}<br />
+              Born: {artistData.identity.birthYear}<br />
+              Gender: {artistData.identity.gender || "Not specified"}
+            </p>
+            <button className="text-sm text-blue-400 hover:underline">
+              VIEW MORE
+            </button>
+          </>
+        );
+      case "Artistic Background":
+        return (
+          <>
+            <p className="text-sm text-gray-300 leading-relaxed">
+              Roles: {artistData.artistic_background.roles.join(", ")}<br />
+              Genres: {artistData.artistic_background.genres.join(", ")}<br />
+              Influences: {artistData.artistic_background.influences.join(", ")}<br />
+              Skills: {artistData.artistic_background.skills.join(", ")}<br />
+              Signature Style: {artistData.artistic_background.signature_style || "Not specified"}
+            </p>
+            <button className="text-sm text-blue-400 hover:underline">
+              VIEW MORE
+            </button>
+          </>
+        );
+      case "Career Highlights":
+        return (
+          <>
+            <p className="text-sm text-gray-300 leading-relaxed">
+              Education: {artistData.career.education}<br />
+              Collaborations: {artistData.career.collaborations.join(", ")}<br />
+              Performances: {artistData.career.performances.join(", ")}<br />
+              Awards: {artistData.career.awards.join(", ")}<br />
+              Career Evolution: {artistData.career.career_evolution || "Not specified"}<br />
+              Years Active: {artistData.career.years_active || "Not specified"}
+            </p>
+            <button className="text-sm text-blue-400 hover:underline">
+              VIEW MORE
+            </button>
+          </>
+        );
+      default:
+        return null;
+    }
   };
 
   return (
@@ -312,27 +412,27 @@ const ArtistProfile = () => {
         className="relative z-10 -mt-100 flex flex-col lg:flex-row max-w-7xl mx-auto"
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, delay: 1.2 }} // Increased delay to wait for both bg animations
+        transition={{ duration: 1, delay: 1.2 }}
       >
         {/* Left section */}
         <div className="lg:w-1/3 flex flex-col items-center lg:items-start">
           <img
-            src={profileImg}
-            alt="Weeknd"
+            src={artistData.imageUrl}
+            alt={artistData.displayName}
             className="rounded-full w-40 h-40 object-cover border-4 border-gray-700"
           />
           <div className="mt-6">
             <p className="uppercase text-gray-400 text-sm">Location</p>
             <div className="flex items-center space-x-2 mt-1">
               <FaFlagUsa className="text-red-500" />
-              <span>USA</span>
+              <span>{artistData.identity.location}</span>
             </div>
           </div>
 
           <div className="mt-6">
             <p className="uppercase text-gray-400 text-sm">Languages</p>
             <div className="flex flex-wrap gap-2 mt-2">
-              {["English", "French", "German"].map((lang) => (
+              {artistData.identity.languages.map((lang) => (
                 <span
                   key={lang}
                   className="px-3 py-1 text-sm rounded-full bg-gray-800"
@@ -344,14 +444,14 @@ const ArtistProfile = () => {
           </div>
 
           <div className="mt-6">
-            <p className="uppercase text-gray-400 text-sm">Genre</p>
+            <p className="uppercase text-gray-400 text-sm">Vibe Tags</p>
             <div className="flex flex-wrap gap-2 mt-2">
-              {["Rock", "Pop", "EDM", "Hip Hop", "Lorem Ipsum"].map((genre) => (
+              {artistData.vibeTags.map((tag) => (
                 <span
-                  key={genre}
+                  key={tag}
                   className="px-3 py-1 text-sm rounded-full bg-gray-800"
                 >
-                  {genre}
+                  {tag}
                 </span>
               ))}
             </div>
@@ -360,15 +460,15 @@ const ArtistProfile = () => {
 
         {/* Right section */}
         <div className="flex-1">
-          <p className="text-gray-400 uppercase text-sm">Singer</p>
-          <h1 className="text-5xl font-bold mt-1">Weeknd</h1>
+          <p className="text-gray-400 uppercase text-sm">{artistData.artistic_background.roles[0]}</p>
+          <h1 className="text-5xl font-bold mt-1">{artistData.displayName}</h1>
 
           <div className="flex gap-4 mt-4">
             <span className="px-4 py-1 bg-gray-800 rounded-full text-sm">
-              ID : 378238264
+              ID : {artistData.artistID}
             </span>
             <span className="px-4 py-1 bg-gray-800 rounded-full text-sm">
-              Price : $2,400 USD
+              Price : ${artistData.priceUSD.toLocaleString()} USD
             </span>
           </div>
 
@@ -391,24 +491,12 @@ const ArtistProfile = () => {
 
           {/* Tab Content */}
           <div className="mt-6 space-y-4 max-h-[250px] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-transparent">
-            <p className="text-sm text-gray-300 leading-relaxed">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-              commodo consequat.
-            </p>
-            <p className="text-sm text-gray-300 leading-relaxed">
-              Duis aute irure dolor in reprehenderit in voluptate velit esse
-              cillum dolore eu fugiat nulla pariatur.
-            </p>
-            <button className="text-sm text-blue-400 hover:underline">
-              VIEW MORE
-            </button>
+            {renderTabContent()}
           </div>
         </div>
       </motion.div>
 
-      {/* Discography Section (formerly Discography component) */}
+      {/* Discography Section */}
       <motion.section
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -426,7 +514,7 @@ const ArtistProfile = () => {
             <img src={logo} alt="Logo" className="w-20" />
             <h2 className="text-xl md:text-3xl font-bold">RECENTS</h2>
             <p className="text-sm md:text-base leading-relaxed text-justify">
-              Explore the musical evolution through each of these iconic albums.
+              Explore {artistData.displayName}'s musical evolution through each of these iconic {artistData.discography.length} releases.
               From ethereal sounds to bold lyrical storytelling, this collection
               showcases versatility and emotional depth. Get lost in melodies,
               lyrics, and moods.
@@ -458,7 +546,7 @@ const ArtistProfile = () => {
                   >
                     <img
                       src={album.src}
-                      alt={`Album ${index + 1}`}
+                      alt={`Album ${album.name}`}
                       className="w-full h-full object-cover rounded-xl"
                     />
                     <div className="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-start p-4 text-white">
@@ -519,12 +607,9 @@ const ArtistProfile = () => {
                 Songwriting Process
               </h3>
               <p className="text-sm md:text-base">
-                "I typically start with a melody that comes to me in the early
-                morning hours. I record voice memos on my phone, then build from
-                there. Lyrics usually come last, and I draw inspiration from
-                personal experiences, dreams, and literature."
+                {artistData.creative_process.songwriting_process}
               </p>
-              <p className="mt-4 font-semibold">— Weeknd</p>
+              <p className="mt-4 font-semibold">— {artistData.displayName}</p>
             </motion.div>
 
             <motion.div
@@ -535,12 +620,9 @@ const ArtistProfile = () => {
                 Production Process
               </h3>
               <p className="text-sm md:text-base">
-                "I produce most of my music in my home studio in Los Angeles. I
-                use a combination of analog synths and digital processing to
-                create layered, atmospheric soundscapes. I'm particularly fond
-                of incorporating found sounds and field recordings."
+                {artistData.creative_process.production_process}
               </p>
-              <p className="mt-4 font-semibold">— Weeknd</p>
+              <p className="mt-4 font-semibold">— {artistData.displayName}</p>
             </motion.div>
 
             <motion.div
@@ -548,26 +630,24 @@ const ArtistProfile = () => {
               className="bg-white/10 border border-white/20 p-6 rounded-2xl shadow-md backdrop-blur-sm"
             >
               <h3 className="text-xl font-semibold mb-4">
-                Current Projects
+                Creative Rituals
               </h3>
               <p className="text-sm md:text-base">
-                Currently working on new material that explores darker themes
-                while pushing sonic boundaries. Collaborating with innovative
-                producers to create something that feels both fresh and
-                authentically Weeknd.
+                {artistData.creative_process.creative_rituals || "No specific rituals shared."}
               </p>
+              <p className="mt-4 font-semibold">— {artistData.displayName}</p>
             </motion.div>
 
             <motion.div
               variants={itemVariants}
               className="bg-white/10 border border-white/20 p-6 rounded-2xl shadow-md backdrop-blur-sm"
             >
-              <h3 className="text-xl font-semibold mb-4">Looking For</h3>
+              <h3 className="text-xl font-semibold mb-4">
+                Current Projects & Opportunities
+              </h3>
               <p className="text-sm md:text-base">
-                Seeking unique visual artists and directors who can help bring
-                the next chapter to life. Also interested in collaborating with
-                forward-thinking producers who understand the Weeknd aesthetic
-                but can bring new perspectives.
+                Current Projects: {artistData.availability.current_projects.join(", ")}<br />
+                Looking For: {artistData.availability.looking_for.join(", ")}
               </p>
             </motion.div>
           </motion.div>
@@ -616,7 +696,7 @@ const ArtistProfile = () => {
           >
             <input
               type="text"
-              placeholder="CURRENT PROJECTS..."
+              placeholder="SEARCH PROJECTS..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="px-4 py-2 border border-black bg-white/35 rounded-lg text-black font-bold w-64"
@@ -657,32 +737,29 @@ const ArtistProfile = () => {
           {/* Middle Cards */}
           <motion.div
             initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 8, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.4 }}
             className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6"
           >
-            <GlassCard title="COMMERCE" className='bg-amber-100'>
-              <p className="text-lg">Merchandise now available on</p>
-              <p className="text-sm italic my-2">
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua."
-              </p>
+            <GlassCard title="COMMERCE">
+              <p className="text-lg">{artistData.commerce}</p>
               <div className="flex justify-center mt-4">
-                <button className="flex items-center gap-2 px-6 py-3 rounded-full text-white font-bold shadow-lg bg-black hover:scale-105 transition-all duration-300">
+                <a
+                  href={artistData.commerce.split(" at ")[1]}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-6 py-3 rounded-full text-white font-bold shadow-lg bg-black hover:scale-105 transition-all duration-300"
+                >
                   Store
-                </button>
+                </a>
               </div>
             </GlassCard>
 
             <GlassCard title="SOCIAL IMPACT">
-              <p className="text-lg">Highlight advocacy or charity work.</p>
-              <p className="text-sm italic my-2">
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua."
-              </p>
+              <p className="text-lg">{artistData.social_impact}</p>
               <div className="flex flex-wrap justify-center gap-3 mt-4">
-                {["WORK 1", "WORK 2", "WORK 3", "WORK 4"].map((work, idx) => (
+                {["Mental Health", "Community Support", "Charity Events"].map((work, idx) => (
                   <button
                     key={idx}
                     className="px-4 py-2 rounded-full text-white font-bold text-sm shadow-md bg-black hover:scale-105 transition-all duration-300"
@@ -711,7 +788,7 @@ const ArtistProfile = () => {
                 boxShadow: "0 4px 30px rgba(0,0,0,0.3)"
               }}
             >
-              <span className="text-purple-300">//classification</span> → Internal categorization (e.g., genre bucket, label type).
+              <span className="text-purple-300">//classification</span> → {artistData.classification}
             </div>
 
             <div
@@ -723,7 +800,7 @@ const ArtistProfile = () => {
                 boxShadow: "0 8px 40px rgba(255,255,255,0.4), inset 0 1px 0 rgba(255,255,255,0.6)"
               }}
             >
-              <span className="text-purple-600 font-bold">lazie_indie_association</span> → Specific Org membership.
+              <span className="text-purple-600 font-bold">lazie_indie_association</span> → {artistData.lazie_indie_association}
             </div>
           </motion.div>
         </div>
@@ -741,7 +818,7 @@ const ArtistProfile = () => {
           <h2 className="text-2xl md:text-3xl font-bold flex items-center gap-2">
             <span>💬</span> ONLINE PRESENCE
           </h2>
-          <p className="mt-2 font-semibold uppercase">Reviews</p>
+          <p className="mt-2 font-semibold uppercase">Fan & Press Quotes</p>
           <p className="text-sm text-white/50 mt-1">Scroll to explore →</p>
         </motion.div>
 
@@ -774,21 +851,16 @@ const ArtistProfile = () => {
           viewport={{ once: true }}
           className="absolute inset-0"
         >
-          {/* Top-right inverted hands image */}
           <img
             src={launch1}
             alt="Top Right Hands"
             className="absolute right-0 bottom-35 w-[50vw] max-w-[900px] transform rotate-[260deg] z-0 opacity-80"
           />
-
-          {/* Bottom-left flat hands image */}
           <img
             src={launch1}
             alt="Bottom Left Hands"
             className="absolute top-35 left-0 w-[50vw] max-w-[900px] transform rotate-[90deg] z-0 opacity-80"
           />
-
-          {/* Overlay */}
           <div className="absolute inset-0 bg-black/60 z-10" />
         </motion.div>
 
@@ -818,27 +890,21 @@ const ArtistProfile = () => {
               transition={{ duration: 0.6 }}
               className="flex flex-col items-center gap-10 text-sm md:items-end"
             >
-              <a
-                href="https://www.instagram.com/weeknd_official"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex flex-col items-center text-center hover:scale-105 transition-transform"
-              >
-                <FaInstagram size={28} className="text-pink-500 mb-2" />
-                <span className="uppercase font-semibold">Instagram</span>
-                <span className="text-white/70">@weeknd_official</span>
-              </a>
-
-              <a
-                href="https://www.facebook.com/weeknd_official"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex flex-col items-center text-center hover:scale-105 transition-transform"
-              >
-                <FaFacebookF size={28} className="text-blue-500 mb-2" />
-                <span className="uppercase font-semibold">Facebook</span>
-                <span className="text-white/70">@weeknd_official</span>
-              </a>
+              {artistData.online_presence.social_media.slice(0, 2).map((social, idx) => (
+                <a
+                  key={idx}
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex flex-col items-center text-center hover:scale-105 transition-transform"
+                >
+                  {social.platform === "Instagram" && <FaInstagram size={28} className="text-pink-500 mb-2" />}
+                  {social.platform === "Facebook" && <FaFacebookF size={28} className="text-blue-500 mb-2" />}
+                  <span className="uppercase font-semibold">{social.platform}</span>
+                  <span className="text-white/70">@{social.url.split("/").pop()}</span>
+                  <span className="text-white/70">{social.followers}</span>
+                </a>
+              ))}
             </motion.div>
 
             {/* Center Globe GIF */}
@@ -860,27 +926,21 @@ const ArtistProfile = () => {
               transition={{ duration: 0.6 }}
               className="flex flex-col items-center gap-10 text-sm md:items-start"
             >
-              <a
-                href="https://twitter.com/weeknd"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex flex-col items-center text-center hover:scale-105 transition-transform"
-              >
-                <FaXTwitter size={28} className="text-white mb-2" />
-                <span className="uppercase font-semibold">Twitter</span>
-                <span className="text-white/70">@weeknd</span>
-              </a>
-
-              <a
-                href="https://www.youtube.com/@weekndLive"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex flex-col items-center text-center hover:scale-105 transition-transform"
-              >
-                <FaYoutube size={28} className="text-red-600 mb-2" />
-                <span className="uppercase font-semibold">YouTube</span>
-                <span className="text-white/70">@weekndLive</span>
-              </a>
+              {artistData.online_presence.social_media.slice(2).map((social, idx) => (
+                <a
+                  key={idx}
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex flex-col items-center text-center hover:scale-105 transition-transform"
+                >
+                  {social.platform === "Twitter" && <FaXTwitter size={28} className="text-white mb-2" />}
+                  {social.platform === "YouTube" && <FaYoutube size={28} className="text-red-600 mb-2" />}
+                  <span className="uppercase font-semibold">{social.platform}</span>
+                  <span className="text-white/70">@{social.url.split("/").pop()}</span>
+                  <span className="text-white/70">{social.followers}</span>
+                </a>
+              ))}
             </motion.div>
           </motion.div>
         </div>
@@ -908,27 +968,22 @@ const ArtistProfile = () => {
               STREAMING PLATFORMS
             </h2>
             <p className="text-sm text-white/60 mb-4">
-              now streaming on various platforms
+              Now streaming on various platforms
             </p>
             <p className="text-sm text-white/80 mb-6 leading-relaxed">
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud in reprehenderit in voluptate
-              velit esse cillum dolore eu fugiat nulla "
+              Discover {artistData.displayName}'s music across major platforms, with {artistData.online_presence.streaming_platforms[0].stats} on {artistData.online_presence.streaming_platforms[0].platform}.
             </p>
             <div className="flex flex-wrap gap-6 text-white/90">
-              <div className="flex items-center gap-2">
-                <FaApple size={20} />
-                <span>Apple Music</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <FaSpotify size={20} />
-                <span>Spotify</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <FaSoundcloud size={20} />
-                <span>SoundCloud</span>
-              </div>
+              {artistData.online_presence.streaming_platforms.map((platform, idx) => (
+                <div key={idx} className="flex items-center gap-2">
+                  {platform.platform === "Apple Music" && <FaApple size={20} />}
+                  {platform.platform === "Spotify" && <FaSpotify size={20} />}
+                  {platform.platform === "SoundCloud" && <FaSoundcloud size={20} />}
+                  <a href={platform.url} target="_blank" rel="noopener noreferrer">
+                    {platform.platform}
+                  </a>
+                </div>
+              ))}
             </div>
           </motion.div>
 
@@ -943,20 +998,11 @@ const ArtistProfile = () => {
             <h2 className="text-xl md:text-2xl font-bold text-white mb-4">
               QUOTES
             </h2>
-            <p className="text-sm text-white/80 leading-relaxed mb-4">
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud in reprehenderit in voluptate
-              velit esse cillum dolore eu fugiat nulla "
-            </p>
-            <p className="text-sm text-white/80 leading-relaxed">
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.{" "}
-              <span className="text-blue-300">Ut enim ad minim veniam</span>,
-              quis nostrud in{" "}
-              <span className="text-blue-300">reprehenderit in voluptate</span>{" "}
-              velit esse cillum dolore eu fugiat nulla "
-            </p>
+            {artistData.quotes.map((quote, idx) => (
+              <p key={idx} className="text-sm text-white/80 leading-relaxed mb-4">
+                "{quote}" — {artistData.displayName}
+              </p>
+            ))}
           </motion.div>
         </div>
       </section>
@@ -994,13 +1040,13 @@ const ArtistProfile = () => {
                 <h4 className="text-white/60 mb-2">SOCIALS</h4>
                 <ul className="space-y-1">
                   <li>
-                    <a href="#">Instagram</a>
+                    <a href={artistData.online_presence.social_media.find(s => s.platform === "Instagram")?.url}>Instagram</a>
                   </li>
                   <li>
-                    <a href="#">Twitter</a>
+                    <a href={artistData.online_presence.social_media.find(s => s.platform === "Twitter")?.url}>Twitter</a>
                   </li>
                   <li>
-                    <a href="#">Facebook</a>
+                    <a href={artistData.online_presence.social_media.find(s => s.platform === "Facebook")?.url}>Facebook</a>
                   </li>
                 </ul>
               </div>
