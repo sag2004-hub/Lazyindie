@@ -33,6 +33,48 @@ import launch1 from "../assets/launch1.png";
 import gif6 from "../assets/gif6.gif";
 import footerImg from "../assets/footer.png";
 
+// Availability page imports
+import bgImage from "../assets/i17.png";
+import artist6 from "../assets/artist6.jpg";
+import i18 from "../assets/i18.png";
+import i19 from "../assets/i19.png";
+import i20 from "../assets/i20.png";
+
+// Icons for Availability section
+const StarIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.516 8.271-7.444-3.908-7.444 3.908 1.516-8.271-6.064-5.828 8.332-1.151z" />
+  </svg>
+);
+
+const StarIcon2 = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-black" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.516 8.271-7.444-3.908-7.444 3.908 1.516-8.271-6.064-5.828 8.332-1.151z" />
+  </svg>
+);
+
+const MagnifyingGlassIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+  </svg>
+);
+
+// Glassmorphism Card Component (more white version)
+const GlassCard = ({ title, children }) => (
+  <div
+    className="p-6 rounded-2xl border border-white/40 hover:shadow-lg hover:scale-[1.02] transition-all duration-300"
+    style={{
+      background: "rgba(255, 255, 255, 0.4)",
+      backdropFilter: "blur(18px) saturate(200%)",
+      WebkitBackdropFilter: "blur(18px) saturate(200%)",
+      boxShadow: "0 8px 30px rgba(0,0,0,0.15)"
+    }}
+  >
+    <h3 className="text-black text-xl font-bold mb-2">{title}</h3>
+    <div className="text-black text-sm leading-relaxed">{children}</div>
+  </div>
+);
+
 // Animation variants (from ArtistProfile)
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -65,93 +107,137 @@ const fadeIn = {
   },
 };
 
-// Album data (from Discography)
-const albums = [
-  {
-    src: album1,
-    name: "Echoes of Silence",
-    releaseDate: "2020-06-12",
-    label: "XO Records",
-    details: "A haunting yet melodic journey through heartbreak and mystery.",
+// Sample artist data aligned with the schema
+const artistData = {
+  artistID: "ART378238264",
+  displayName: "Weeknd",
+  priceUSD: 2400,
+  imageUrl: profileImg,
+  vibeTags: ["Dark R&B", "Synthwave", "Pop"],
+  identity: {
+    realName: "Abel Makkonen Tesfaye",
+    aliases: ["The Weeknd", "Starboy"],
+    origin: "Toronto, Canada",
+    location: "Los Angeles, USA",
+    languages: ["English", "Amharic"],
+    gender: "Male",
+    birthYear: 1990,
   },
-  {
-    src: album2,
-    name: "Dawn FM",
-    releaseDate: "2022-01-07",
-    label: "Republic Records",
-    details: "A synthwave experience wrapped in nostalgia and vision.",
+  artistic_background: {
+    roles: ["Singer", "Songwriter", "Producer"],
+    genres: ["R&B", "Pop", "Synthwave", "Electronic"],
+    influences: ["Michael Jackson", "Prince", "Depeche Mode"],
+    skills: ["Vocal Performance", "Music Production", "Songwriting"],
+    signature_style: "Cinematic, moody soundscapes with introspective lyrics",
   },
-  {
-    src: album3,
-    name: "After Hours",
-    releaseDate: "2020-03-20",
-    label: "XO & Republic",
-    details: "Dark, vulnerable, and captivating storytelling through R&B.",
+  career: {
+    education: "Self-taught",
+    collaborations: ["Daft Punk", "Drake", "Lana Del Rey"],
+    performances: ["Coachella 2018", "Super Bowl LV Halftime Show"],
+    awards: ["Grammy Award for Best Urban Contemporary Album", "Juno Award for Artist of the Year"],
+    career_evolution: "From underground mixtapes to global pop stardom",
+    years_active: "2010-present",
   },
-  {
-    src: album4,
-    name: "Starboy",
-    releaseDate: "2016-11-25",
-    label: "XO & Republic",
-    details: "Blending electronic, pop, and urban music into a global hit.",
+  discography: [
+    {
+      title: "Echoes of Silence",
+      type: "Mixtape",
+      year: 2011,
+      label: "XO Records",
+      details: "A haunting yet melodic journey through heartbreak and mystery.",
+    },
+    {
+      title: "Dawn FM",
+      type: "Album",
+      year: 2022,
+      label: "Republic Records",
+      details: "A synthwave experience wrapped in nostalgia and vision.",
+    },
+    {
+      title: "After Hours",
+      type: "Album",
+      year: 2020,
+      label: "XO & Republic",
+      details: "Dark, vulnerable, and captivating storytelling through R&B.",
+    },
+    {
+      title: "Starboy",
+      type: "Album",
+      year: 2016,
+      label: "XO & Republic",
+      details: "Blending electronic, pop, and urban music into a global hit.",
+    },
+    {
+      title: "Beauty Behind the Madness",
+      type: "Album",
+      year: 2015,
+      label: "XO & Republic",
+      details: "The album that skyrocketed The Weeknd to superstardom.",
+    },
+    {
+      title: "Trilogy",
+      type: "Compilation",
+      year: 2012,
+      label: "XO & Republic",
+      details: "A compilation of three haunting mixtapes that defined a genre.",
+    },
+  ],
+  creative_process: {
+    songwriting_process: "I typically start with a melody that comes to me in the early morning hours. I record voice memos on my phone, then build from there. Lyrics usually come last, and I draw inspiration from personal experiences, dreams, and literature.",
+    production_process: "I produce most of my music in my home studio in Los Angeles. I use a combination of analog synths and digital processing to create layered, atmospheric soundscapes. I'm particularly fond of incorporating found sounds and field recordings.",
+    creative_rituals: "I often work at night with dim lighting to set the mood, and I always have coffee nearby.",
   },
-  {
-    src: album5,
-    name: "Beauty Behind the Madness",
-    releaseDate: "2015-08-28",
-    label: "XO & Republic",
-    details: "The album that skyrocketed The Weeknd to superstardom.",
+  availability: {
+    current_projects: ["New album in production", "World tour planning"],
+    looking_for: ["Visual artists for music videos", "Innovative producers"],
   },
-  {
-    src: album6,
-    name: "Trilogy",
-    releaseDate: "2012-11-13",
-    label: "XO & Republic",
-    details: "A compilation of three haunting mixtapes that defined a genre.",
+  online_presence: {
+    website: "https://www.theweeknd.com",
+    social_media: [
+      { platform: "Instagram", url: "https://www.instagram.com/weeknd_official", followers: "17.5M" },
+      { platform: "Facebook", url: "https://www.facebook.com/weeknd_official", followers: "5M" },
+      { platform: "Twitter", url: "https://twitter.com/weeknd", followers: "12M" },
+      { platform: "YouTube", url: "https://www.youtube.com/@weekndLive", followers: "10M" },
+    ],
+    streaming_platforms: [
+      { platform: "Apple Music", url: "https://music.apple.com/us/artist/the-weeknd", stats: "45M monthly listeners" },
+      { platform: "Spotify", url: "https://spotify.com/theweeknd", stats: "80M monthly listeners" },
+      { platform: "SoundCloud", url: "https://soundcloud.com/theweeknd", stats: "2M followers" },
+    ],
   },
-];
+  commerce: "Official merchandise available at https://shop.theweeknd.com",
+  social_impact: "Supports mental health awareness through the Dawn FM Fund, donating proceeds to community programs.",
+  quotes: [
+    "Music is my therapy and my escape.",
+    "I create to connect with people on a deeper level.",
+  ],
+  fan_press_quotes: [
+    "A transformative artist who redefines R&B with every release. - Rolling Stone",
+    "The Weeknd's ability to craft cinematic worlds is unmatched. - Pitchfork",
+  ],
+  classification: "Global Pop Icon",
+  lazie_indie_association: "Featured Artist in Lazie Indie 2025 Showcase",
+  long_narrative: "Abel Makkonen Tesfaye, known as The Weeknd, emerged from Toronto's underground scene with raw mixtapes that captivated listeners with their dark, cinematic sound. His journey from anonymity to global stardom is a testament to his relentless creativity and vision.",
+};
 
-// Review data (from ArtistProfile)
-const reviews = [
-  {
-    name: "Rupam Islam",
-    rating: 4,
-    text: "Weeknd's music has been transformative for my creative process. His unique blend of dark R&B and pop creates an atmosphere unlike any other artist today.",
-    width: 482,
-  },
-  {
-    name: "Sophie Chen",
-    rating: 5,
-    text: "The production quality on every track is exceptional. The way he layers vocals and instruments creates such a rich, immersive experience.",
-    width: 482,
-  },
-  {
-    name: "Arijit Singh",
-    rating: 4,
-    text: "As a fellow artist, I deeply admire Weeknd's songwriting. His ability to craft narratives that feel both deeply personal and universally relatable is remarkable. The way he blends vulnerability with confidence in his lyrics is something I strive for in my own work.",
-    width: 898,
-  },
-  {
-    name: "Kr$na",
-    rating: 4,
-    text: "Weeknd's evolution as an artist is inspiring. From the raw sounds of Trilogy to the polished production of After Hours, he's managed to stay true to his vision while pushing boundaries.",
-    width: 477,
-  },
-  {
-    name: "Maria Garcia",
-    rating: 5,
-    text: "The thematic depth in his albums is incredible. Each project tells a complete story, with visuals and music working together to create a cohesive artistic statement. The way he builds worlds around his music is something more artists should aspire to.",
-    width: 898,
-  },
-  {
-    name: "David Kim",
-    rating: 4,
-    text: "His vocal range and control are unmatched in contemporary R&B. The emotion he conveys through his voice alone is powerful enough to carry entire songs.",
-    width: 477,
-  },
-];
+// Album data (updated to match schema)
+const albums = artistData.discography.map((item, index) => ({
+  src: [album1, album2, album3, album4, album5, album6][index],
+  name: item.title,
+  releaseDate: item.year.toString(),
+  label: item.label,
+  details: item.details,
+}));
 
-// Review card component (from ArtistProfile)
+// Review data (updated to use fan_press_quotes)
+const reviews = artistData.fan_press_quotes.map((quote, index) => ({
+  name: ["Rolling Stone", "Pitchfork", "Billboard", "NME"][index % 4],
+  rating: 4 + (index % 2),
+  text: quote,
+  width: index % 2 === 0 ? 482 : 898,
+}));
+
+// Review card component (unchanged)
 const ReviewCard = ({ name, rating, text, width, index }) => (
   <motion.div
     initial={{ opacity: 0, x: index % 2 === 0 ? 50 : -50 }}
@@ -165,7 +251,7 @@ const ReviewCard = ({ name, rating, text, width, index }) => (
       background: "rgba(255, 255, 255, 0.05)",
       overflow: "hidden",
       borderRadius: 16,
-      flexShrink: 0, // Ensure cards don't shrink in horizontal layout
+      flexShrink: 0,
       marginBottom: 20,
       backdropFilter: "blur(10px)",
       border: "1px solid rgba(255,255,255,0.1)",
@@ -178,7 +264,7 @@ const ReviewCard = ({ name, rating, text, width, index }) => (
         position: "absolute",
         justifyContent: "flex-start",
         alignItems: "center",
-        gap: width > 800 ? 574 : width > 480 ? 136 : 209, // Original gap logic
+        gap: width > 800 ? 574 : width > 480 ? 136 : 209,
         display: "inline-flex",
       }}
     >
@@ -231,7 +317,261 @@ const tabs = ["Bio", "Artistic Background", "Career Highlights"];
 
 const ArtistProfile = () => {
   const [activeTab, setActiveTab] = useState("Bio");
-  const [hovered, setHovered] = useState(null); // State for Discography component
+  const [hovered, setHovered] = useState(null);
+  const [searchTerm, setSearchTerm] = useState("");
+
+  // Gallery data for Availability section (updated to reflect current_projects)
+  const gallery = artistData.availability.current_projects.map((project, i) => ({
+    id: i,
+    title: project,
+    img: artist6,
+  }));
+
+  const filteredGallery = gallery.filter((item) =>
+    item.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const handleSearch = () => {
+    alert(`Searching for: ${searchTerm}`);
+  };
+
+  // Render tab content based on activeTab
+  const renderTabContent = () => {
+    switch (activeTab) {
+      case "Bio":
+        return (
+          <>
+            <p className="text-sm text-gray-300 leading-relaxed">
+              {artistData.long_narrative || "No long narrative available."}
+            </p>
+            <p className="text-sm text-gray-300 leading-relaxed">
+              Real Name: {artistData.identity.realName}<br />
+              Aliases: {artistData.identity.aliases.join(", ")}<br />
+              Born: {artistData.identity.birthYear}<br />
+              Gender: {artistData.identity.gender || "Not specified"}
+            </p>
+            <button className="text-sm text-blue-400 hover:underline">
+              VIEW MORE
+            </button>
+          </>
+        );
+      case "Artistic Background":
+  return (
+    <div className="space-y-6 overflow-hidden">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {/* Roles Card */}
+        <div className="bg-gradient-to-br from-gray-800/60 to-gray-900/60 border border-white/10 p-4 rounded-xl backdrop-blur-sm shadow-[0_8px_32px_0_rgba(0,0,0,0.3)]">
+          <div className="flex items-center gap-2 mb-3">
+            <div className="w-2 h-6 bg-white rounded-full"></div>
+            <h3 className="text-white font-bold text-lg">ROLES</h3>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            {artistData.artistic_background.roles.map((role, index) => (
+              <span 
+                key={index} 
+                className="bg-gray-700/60 px-3 py-1.5 rounded-lg text-sm text-gray-200 border border-white/10"
+              >
+                {role}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* Genres Card */}
+        <div className="bg-gradient-to-br from-gray-800/60 to-gray-900/60 border border-white/10 p-4 rounded-xl backdrop-blur-sm shadow-[0_8px_32px_0_rgba(0,0,0,0.3)]">
+          <div className="flex items-center gap-2 mb-3">
+            <div className="w-2 h-6 bg-white rounded-full"></div>
+            <h3 className="text-white font-bold text-lg">GENRES</h3>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            {artistData.artistic_background.genres.map((genre, index) => (
+              <span 
+                key={index} 
+                className="bg-gray-700/60 px-3 py-1.5 rounded-lg text-sm text-gray-200 border border-white/10"
+              >
+                {genre}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* Influences Card */}
+        <div className="bg-gradient-to-br from-gray-800/60 to-gray-900/60 border border-white/10 p-4 rounded-xl backdrop-blur-sm shadow-[0_8px_32px_0_rgba(0,0,0,0.3)]">
+          <div className="flex items-center gap-2 mb-3">
+            <div className="w-2 h-6 bg-white rounded-full"></div>
+            <h3 className="text-white font-bold text-lg">INFLUENCES</h3>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            {artistData.artistic_background.influences.map((influence, index) => (
+              <span 
+                key={index} 
+                className="bg-gray-700/60 px-3 py-1.5 rounded-lg text-sm text-gray-200 border border-white/10"
+              >
+                {influence}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* Skills Card */}
+        <div className="bg-gradient-to-br from-gray-800/60 to-gray-900/60 border border-white/10 p-4 rounded-xl backdrop-blur-sm shadow-[0_8px_32px_0_rgba(0,0,0,0.3)]">
+          <div className="flex items-center gap-2 mb-3">
+            <div className="w-2 h-6 bg-white rounded-full"></div>
+            <h3 className="text-white font-bold text-lg">SKILLS</h3>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            {artistData.artistic_background.skills.map((skill, index) => (
+              <span 
+                key={index} 
+                className="bg-gray-700/60 px-3 py-1.5 rounded-lg text-sm text-gray-200 border border-white/10"
+              >
+                {skill}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Signature Style Card */}
+      <div className="bg-gradient-to-br from-gray-800/60 to-gray-900/60 border border-white/10 p-5 rounded-xl backdrop-blur-sm shadow-[0_8px_32px_0_rgba(0,0,0,0.3)]">
+        <div className="flex items-center gap-2 mb-3">
+          <div className="w-2 h-6 bg-white rounded-full"></div>
+          <h3 className="text-white font-bold text-lg">SIGNATURE STYLE</h3>
+        </div>
+        <p className="text-gray-300 pl-2">
+          {artistData.artistic_background.signature_style || "No signature style specified"}
+        </p>
+      </div>
+
+      {/* View More Button */}
+      <div className="flex justify-center mt-6">
+        <button className="text-sm bg-gradient-to-r from-gray-700 to-black border border-white/20 px-6 py-3 rounded-lg hover:bg-gray-600 transition-all duration-300 flex items-center gap-2 group">
+          <span>VIEW MORE</span>
+          <svg 
+            xmlns="http://www.w3.org/2000/svg" 
+            className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" 
+            viewBox="0 0 20 20" 
+            fill="currentColor"
+          >
+            <path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  );
+      case "Career Highlights":
+  return (
+    <div className="space-y-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {/* Education Card */}
+        <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 border border-white/20 p-4 rounded-xl backdrop-blur-sm">
+          <h3 className="text-white font-bold mb-2 flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z" />
+            </svg>
+            EDUCATION
+          </h3>
+          <p className="text-gray-300">{artistData.career.education || "Not specified"}</p>
+        </div>
+
+        {/* Collaborations Card */}
+        <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 border border-white/20 p-4 rounded-xl backdrop-blur-sm">
+          <h3 className="text-white font-bold mb-2 flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path fillRule="evenodd" d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z" clipRule="evenodd" />
+            </svg>
+            COLLABORATIONS
+          </h3>
+          <div className="flex flex-wrap gap-2">
+            {artistData.career.collaborations.map((collab, index) => (
+              <span 
+                key={index} 
+                className="bg-gray-700/50 px-3 py-1 rounded-full text-sm text-gray-300"
+              >
+                {collab}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* Performances Card */}
+        <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 border border-white/20 p-4 rounded-xl backdrop-blur-sm">
+          <h3 className="text-white font-bold mb-2 flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
+            </svg>
+            PERFORMANCES
+          </h3>
+          <div className="flex flex-wrap gap-2">
+            {artistData.career.performances.map((performance, index) => (
+              <span 
+                key={index} 
+                className="bg-gray-700/50 px-3 py-1 rounded-full text-sm text-gray-300"
+              >
+                {performance}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* Awards Card */}
+        <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 border border-white/20 p-4 rounded-xl backdrop-blur-sm">
+          <h3 className="text-white font-bold mb-2 flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+            </svg>
+            AWARDS
+          </h3>
+          <div className="flex flex-wrap gap-2">
+            {artistData.career.awards.map((award, index) => (
+              <span 
+                key={index} 
+                className="bg-gray-700/50 px-3 py-1 rounded-full text-sm text-gray-300"
+              >
+                {award}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* Career Evolution Card */}
+        <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 border border-white/20 p-4 rounded-xl backdrop-blur-sm">
+          <h3 className="text-white font-bold mb-2 flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path fillRule="evenodd" d="M12.395 2.553a1 1 0 00-1.45-.385c-.345.23-.614.558-.822.88-.214.33-.403.713-.57 1.116-.334.804-.614 1.768-.84 2.734a31.365 31.365 0 00-.613 3.58 2.64 2.64 0 01-.945-1.067c-.328-.68-.398-1.534-.398-2.654A1 1 0 005.05 6.05 6.981 6.981 0 003 11a7 7 0 1011.95-4.95c-.592-.591-.98-.985-1.348-1.467-.363-.476-.724-1.063-1.207-2.03zM12.12 15.12A3 3 0 017 13s.879.5 2.5.5c0-1 .5-4 1.25-4.5.5 1 .786 1.293 1.371 1.879A2.99 2.99 0 0113 13a2.99 2.99 0 01-.879 2.121z" clipRule="evenodd" />
+            </svg>
+            CAREER EVOLUTION
+          </h3>
+          <p className="text-gray-300">{artistData.career.career_evolution || "Not specified"}</p>
+        </div>
+
+        {/* Years Active Card */}
+        <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 border border-white/20 p-4 rounded-xl backdrop-blur-sm">
+          <h3 className="text-white font-bold mb-2 flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
+            </svg>
+            YEARS ACTIVE
+          </h3>
+          <p className="text-gray-300">{artistData.career.years_active || "Not specified"}</p>
+        </div>
+      </div>
+
+      {/* View More Button */}
+      <div className="flex justify-center mt-4">
+        <button className="text-sm bg-gradient-to-r from-gray-700 to-black border border-white/20 px-6 py-3 rounded-lg hover:scale-105 transition-transform duration-300 flex items-center gap-2">
+          VIEW MORE
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+            <path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  );
+      default:
+        return null;
+    }
+  };
 
   return (
     <div className="min-h-screen bg-black text-white font-sans relative overflow-hidden">
@@ -240,38 +580,49 @@ const ArtistProfile = () => {
         className="relative w-full h-[220px] bg-cover bg-center"
         style={{ backgroundImage: `url(${bgImg})` }}
         initial={{ y: -100, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
+        animate={{ y: 0, opacity: 50 }}
         transition={{ duration: 1 }}
       >
         <div className="absolute inset-0 bg-black opacity-60" />
       </motion.div>
 
+      {/* Additional background section with i18.png */}
+      <motion.div
+        className="relative w-full h-[450px] bg-cover bg-center"
+        style={{ backgroundImage: `url(${i18})` }}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, delay: 0.5 }}
+      >
+        <div className="absolute inset-0 bg-black/30" />
+      </motion.div>
+
       {/* Main content */}
       <motion.div
-        className="relative z-10 -mt-16 flex flex-col lg:flex-row p-8 gap-8 max-w-7xl mx-auto"
+        className="relative z-10 -mt-100 flex flex-col lg:flex-row max-w-7xl mx-auto"
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, delay: 1 }} // delay to wait for bg animation
+        transition={{ duration: 1, delay: 1.2 }}
       >
         {/* Left section */}
         <div className="lg:w-1/3 flex flex-col items-center lg:items-start">
           <img
-            src={profileImg}
-            alt="Weeknd"
+            src={artistData.imageUrl}
+            alt={artistData.displayName}
             className="rounded-full w-40 h-40 object-cover border-4 border-gray-700"
           />
           <div className="mt-6">
             <p className="uppercase text-gray-400 text-sm">Location</p>
             <div className="flex items-center space-x-2 mt-1">
               <FaFlagUsa className="text-red-500" />
-              <span>USA</span>
+              <span>{artistData.identity.location}</span>
             </div>
           </div>
 
           <div className="mt-6">
             <p className="uppercase text-gray-400 text-sm">Languages</p>
             <div className="flex flex-wrap gap-2 mt-2">
-              {["English", "French", "German"].map((lang) => (
+              {artistData.identity.languages.map((lang) => (
                 <span
                   key={lang}
                   className="px-3 py-1 text-sm rounded-full bg-gray-800"
@@ -283,14 +634,14 @@ const ArtistProfile = () => {
           </div>
 
           <div className="mt-6">
-            <p className="uppercase text-gray-400 text-sm">Genre</p>
+            <p className="uppercase text-gray-400 text-sm">Vibe Tags</p>
             <div className="flex flex-wrap gap-2 mt-2">
-              {["Rock", "Pop", "EDM", "Hip Hop", "Lorem Ipsum"].map((genre) => (
+              {artistData.vibeTags.map((tag) => (
                 <span
-                  key={genre}
+                  key={tag}
                   className="px-3 py-1 text-sm rounded-full bg-gray-800"
                 >
-                  {genre}
+                  {tag}
                 </span>
               ))}
             </div>
@@ -298,18 +649,46 @@ const ArtistProfile = () => {
         </div>
 
         {/* Right section */}
-        <div className="flex-1">
-          <p className="text-gray-400 uppercase text-sm">Singer</p>
-          <h1 className="text-5xl font-bold mt-1">Weeknd</h1>
+<div className="flex-1">
+  <p className="text-gray-400 uppercase text-sm">{artistData.artistic_background.roles[0]}</p>
+  
+  {/* Artist Name with Stats */}
+  <div className="flex flex-wrap items-center gap-4 mt-1">
+    <h1 className="text-5xl font-bold">{artistData.displayName}</h1>
+    
+    {/* Star Rating */}
+    <div className="flex items-center gap-1 bg-black/30 px-3 py-1 rounded-full">
+      <div className="flex items-center">
+        {Array(5).fill().map((_, i) => (
+          <Star
+            key={i}
+            size={20}
+            color={i < 4 ? "#FFBE0B" : "#555"}
+            fill={i < 4 ? "#FFBE0B" : "none"}
+          />
+        ))}
+      </div>
+      <span className="text-sm font-bold ml-1">4.8</span>
+    </div>
+    
+    {/* Followers Count */}
+    <div className="flex items-center gap-1 bg-black/30 px-3 py-1 rounded-full">
+      <User size={16} />
+      <span className="text-sm font-bold">
+        12.8M Followers
+      </span>
+    </div>
+  </div>
 
-          <div className="flex gap-4 mt-4">
-            <span className="px-4 py-1 bg-gray-800 rounded-full text-sm">
-              ID : 378238264
-            </span>
-            <span className="px-4 py-1 bg-gray-800 rounded-full text-sm">
-              Price : $2,400 USD
-            </span>
-          </div>
+  {/* Rest of the code remains the same */}
+  <div className="flex gap-4 mt-4">
+    <span className="px-4 py-1 bg-gray-800 rounded-full text-sm">
+      ID : {artistData.artistID}
+    </span>
+    <span className="px-4 py-1 bg-gray-800 rounded-full text-sm">
+      Price : ${artistData.priceUSD.toLocaleString()} USD
+    </span>
+  </div>
 
           {/* Tabs */}
           <div className="flex gap-6 mt-8 border-b border-gray-700">
@@ -330,91 +709,111 @@ const ArtistProfile = () => {
 
           {/* Tab Content */}
           <div className="mt-6 space-y-4 max-h-[250px] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-transparent">
-            <p className="text-sm text-gray-300 leading-relaxed">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-              commodo consequat.
-            </p>
-            <p className="text-sm text-gray-300 leading-relaxed">
-              Duis aute irure dolor in reprehenderit in voluptate velit esse
-              cillum dolore eu fugiat nulla pariatur.
-            </p>
-            <button className="text-sm text-blue-400 hover:underline">
-              VIEW MORE
-            </button>
+            {renderTabContent()}
           </div>
         </div>
       </motion.div>
 
-      {/* Discography Section (formerly Discography component) */}
-      <motion.section
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-        className="w-full min-h-screen bg-black text-white font-monda px-8 py-16"
-      >
-        <div className="flex flex-col lg:flex-row gap-20">
-          {/* Info Section */}
-          <div className="lg:w-[25%] flex flex-col space-y-5">
-            <div className="flex items-center space-x-4">
-              <FaMusic className="text-green-400 text-7xl" />
-              <h1 className="text-3xl md:text-5xl font-bold">DISCOGRAPHY</h1>
-            </div>
-            <img src={logo} alt="Logo" className="w-20" />
-            <h2 className="text-xl md:text-3xl font-bold">RECENTS</h2>
-            <p className="text-sm md:text-base leading-relaxed text-justify">
-              Explore the musical evolution through each of these iconic albums.
-              From ethereal sounds to bold lyrical storytelling, this collection
-              showcases versatility and emotional depth. Get lost in melodies,
-              lyrics, and moods.
-            </p>
-          </div>
-
-          {/* Album Carousel */}
-          <div className="flex-1 overflow-x-auto scrollbar-thin scrollbar-track-gray-800 scrollbar-thumb-green-500 rounded-md">
-            <div className="flex gap-6 h-[500px] md:h-[600px]">
-              {albums.map((album, index) => {
-                const isHovered = hovered === index;
-                const isAnyHovered = hovered !== null;
-
-                return (
-                  <div
-                    key={index}
-                    onMouseEnter={() => setHovered(index)}
-                    onMouseLeave={() => setHovered(null)}
-                    className={`relative rounded-xl overflow-hidden transition-all duration-500 flex-shrink-0
-                     ${
-                       isHovered
-                         ? "w-[60vw] md:w-[35vw]"
-                         : isAnyHovered
-                         ? "w-[7vw] md:w-[6vw]"
-                         : index === 0
-                         ? "w-[60vw] md:w-[35vw]"
-                         : "w-[10vw] md:w-[8vw]"
-                     } h-full group cursor-pointer`}
-                  >
-                    <img
-                      src={album.src}
-                      alt={`Album ${index + 1}`}
-                      className="w-full h-full object-cover rounded-xl"
-                    />
-                    <div className="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-start p-4 text-white">
-                      <p className="text-lg md:text-xl font-bold mb-2">
-                        {album.name}
-                      </p>
-                      <p className="text-sm">Release: {album.releaseDate}</p>
-                      <p className="text-sm">Label: {album.label}</p>
-                      <p className="text-sm mt-2">{album.details}</p>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
+      {/* Discography Section */}
+<motion.section
+  initial={{ opacity: 0, y: 50 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true, margin: "-100px" }}
+  transition={{ duration: 0.6, ease: "easeOut" }}
+  className="w-full min-h-screen bg-black text-white font-monda px-8 py-16"
+>
+  <div className="flex flex-col lg:flex-row gap-20">
+    {/* Info Section */}
+    <div className="lg:w-[25%] flex flex-col space-y-5">
+      <div className="flex items-center space-x-4">
+        {/* Enhanced logo with larger size and visual effects */}
+        <div className="relative flex-shrink-0">
+          <div className="absolute inset-0 bg-gradient-to-br from-green-500/40 to-purple-500/40 rounded-full blur-xl z-[-1] animate-pulse-slow"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-green-500/20 to-purple-500/20 rounded-full blur-md z-[-1]"></div>
+          <img 
+            src={i20} 
+            alt="Artist Logo" 
+            className="w-10 h-10 object-contain transition-all duration-500 hover:scale-110"
+          />
         </div>
-      </motion.section>
+        <h1 className="text-3xl md:text-5xl font-bold">DISCOGRAPHY</h1>
+      </div>
+      
+      {/* Release Date Filter */}
+      <div className="space-y-3">
+        <div className="text-white text-xl font-bold">RELEASE DATE</div>
+        
+        <div className="flex flex-wrap gap-2">
+          {[2020, 2021, 2022, 2023, 2024, 2025].map(year => (
+            <div 
+              key={year}
+              className="px-4 py-2 flex items-center justify-center transition-all duration-200 hover:scale-105 cursor-pointer"
+              style={{
+                background: 'radial-gradient(ellipse 92.09% 170.98% at 50.00% 50.00%, #242934 0%, #111111 69%)',
+                borderRadius: '11.05px',
+                backdropFilter: 'blur(12.78px)',
+              }}
+            >
+              <div className="text-white text-sm font-normal">{year}</div>
+            </div>
+          ))}
+        </div>
+        
+        <div className="text-white/40 text-sm font-normal">Select Year</div>
+      </div>
+      
+      <h2 className="text-xl md:text-3xl font-bold">RECENTS</h2>
+      <p className="text-sm md:text-base leading-relaxed text-justify">
+        Explore {artistData.displayName}'s musical evolution through each of these iconic {artistData.discography.length} releases.
+        From ethereal sounds to bold lyrical storytelling, this collection
+        showcases versatility and emotional depth. Get lost in melodies,
+        lyrics, and moods.
+      </p>
+    </div>
+
+    {/* Album Carousel */}
+    <div className="flex-1 overflow-x-auto scrollbar-thin scrollbar-track-gray-800 scrollbar-thumb-green-500 rounded-md">
+      <div className="flex gap-6 h-[500px] md:h-[600px]">
+        {albums.map((album, index) => {
+          const isHovered = hovered === index;
+          const isAnyHovered = hovered !== null;
+
+          return (
+            <div
+              key={index}
+              onMouseEnter={() => setHovered(index)}
+              onMouseLeave={() => setHovered(null)}
+              className={`relative rounded-xl overflow-hidden transition-all duration-500 flex-shrink-0
+               ${
+                 isHovered
+                   ? "w-[60vw] md:w-[35vw]"
+                   : isAnyHovered
+                   ? "w-[7vw] md:w-[6vw]"
+                   : index === 0
+                   ? "w-[60vw] md:w-[35vw]"
+                   : "w-[10vw] md:w-[8vw]"
+               } h-full group cursor-pointer`}
+            >
+              <img
+                src={album.src}
+                alt={`Album ${album.name}`}
+                className="w-full h-full object-cover rounded-xl"
+              />
+              <div className="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-start p-4 text-white">
+                <p className="text-lg md:text-xl font-bold mb-2">
+                  {album.name}
+                </p>
+                <p className="text-sm">Release: {album.releaseDate}</p>
+                <p className="text-sm">Label: {album.label}</p>
+                <p className="text-sm mt-2">{album.details}</p>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  </div>
+</motion.section>
 
       {/* Creative Process Section */}
       <section className="relative w-full min-h-screen overflow-hidden">
@@ -440,7 +839,10 @@ const ArtistProfile = () => {
             transition={{ delay: 0.2 }}
             className="text-3xl md:text-5xl font-bold mb-10 flex items-center gap-2"
           >
-            <span>🧠 CREATIVE PROCESSES</span>
+            <div className="bg-white p-2 rounded">
+              <StarIcon2 />
+            </div>
+            <span>CREATIVE PROCESSES</span>
           </motion.h2>
 
           <motion.div
@@ -458,12 +860,9 @@ const ArtistProfile = () => {
                 Songwriting Process
               </h3>
               <p className="text-sm md:text-base">
-                "I typically start with a melody that comes to me in the early
-                morning hours. I record voice memos on my phone, then build from
-                there. Lyrics usually come last, and I draw inspiration from
-                personal experiences, dreams, and literature."
+                {artistData.creative_process.songwriting_process}
               </p>
-              <p className="mt-4 font-semibold">— Weeknd</p>
+              <p className="mt-4 font-semibold">— {artistData.displayName}</p>
             </motion.div>
 
             <motion.div
@@ -474,12 +873,9 @@ const ArtistProfile = () => {
                 Production Process
               </h3>
               <p className="text-sm md:text-base">
-                "I produce most of my music in my home studio in Los Angeles. I
-                use a combination of analog synths and digital processing to
-                create layered, atmospheric soundscapes. I'm particularly fond
-                of incorporating found sounds and field recordings."
+                {artistData.creative_process.production_process}
               </p>
-              <p className="mt-4 font-semibold">— Weeknd</p>
+              <p className="mt-4 font-semibold">— {artistData.displayName}</p>
             </motion.div>
 
             <motion.div
@@ -487,34 +883,184 @@ const ArtistProfile = () => {
               className="bg-white/10 border border-white/20 p-6 rounded-2xl shadow-md backdrop-blur-sm"
             >
               <h3 className="text-xl font-semibold mb-4">
-                Current Projects
+                Creative Rituals
               </h3>
               <p className="text-sm md:text-base">
-                Currently working on new material that explores darker themes
-                while pushing sonic boundaries. Collaborating with innovative
-                producers to create something that feels both fresh and
-                authentically Weeknd.
+                {artistData.creative_process.creative_rituals || "No specific rituals shared."}
               </p>
+              <p className="mt-4 font-semibold">— {artistData.displayName}</p>
             </motion.div>
 
             <motion.div
               variants={itemVariants}
               className="bg-white/10 border border-white/20 p-6 rounded-2xl shadow-md backdrop-blur-sm"
             >
-              <h3 className="text-xl font-semibold mb-4">Looking For</h3>
+              <h3 className="text-xl font-semibold mb-4">
+                Current Projects & Opportunities
+              </h3>
               <p className="text-sm md:text-base">
-                Seeking unique visual artists and directors who can help bring
-                the next chapter to life. Also interested in collaborating with
-                forward-thinking producers who understand the Weeknd aesthetic
-                but can bring new perspectives.
+                Current Projects: {artistData.availability.current_projects.join(", ")}<br />
+                Looking For: {artistData.availability.looking_for.join(", ")}
               </p>
             </motion.div>
           </motion.div>
         </div>
       </section>
 
-      {/* Review Section */}
-      <section className="w-full px-4 md:px-20 py-16 bg-black text-white">
+      {/* Availability & Opportunities Section */}
+      <section
+        className="relative w-full min-h-screen flex flex-col items-center p-4 lg:p-10 font-sans"
+        style={{
+          backgroundImage: `url(${bgImage})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
+        {/* Light Overlay */}
+        <div className="absolute inset-0 bg-white/1 z-0"></div>
+
+        <div className="w-full max-w-7xl flex flex-col gap-6 relative z-10">
+          {/* Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="flex items-center gap-4"
+          >
+            <div className="bg-black p-2 rounded">
+              <StarIcon />
+            </div>
+            <h1
+              className="text-black text-2xl md:text-3xl font-bold tracking-wider"
+              style={{ textShadow: "2px 2px 4px rgba(0,0,0,0.5)" }}
+            >
+              AVAILABILITY & OPPORTUNITIES
+            </h1>
+          </motion.div>
+
+          {/* Search Bar */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="flex items-center gap-2 mt-2"
+          >
+            <input
+              type="text"
+              placeholder="SEARCH PROJECTS..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="px-4 py-2 border border-black bg-white/35 rounded-lg text-black font-bold w-64"
+            />
+            <button
+              onClick={handleSearch}
+              className="p-2 border border-black bg-white/35 rounded-lg hover:bg-gray-200"
+            >
+              <MagnifyingGlassIcon />
+            </button>
+          </motion.div>
+
+          {/* Image Gallery */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="flex gap-4 overflow-x-auto mt-4 pb-4 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-transparent"
+          >
+            {filteredGallery.map((item, index) => (
+              <motion.div
+                key={item.id}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
+                className="flex-shrink-0 w-72 h-56 rounded-lg overflow-hidden shadow-md border border-purple-300 hover:scale-105 transition-transform"
+              >
+                <img src={item.img} alt={item.title} className="w-full h-full object-cover" />
+              </motion.div>
+            ))}
+            {filteredGallery.length === 0 && (
+              <p className="text-white italic">No results found.</p>
+            )}
+          </motion.div>
+
+          {/* Middle Cards */}
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6"
+          >
+            <GlassCard title="COMMERCE">
+              <p className="text-lg">{artistData.commerce}</p>
+              <div className="flex justify-center mt-4">
+                <a
+                  href={artistData.commerce.split(" at ")[1]}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-6 py-3 rounded-full text-white font-bold shadow-lg bg-black hover:scale-105 transition-all duration-300"
+                >
+                  Store
+                </a>
+              </div>
+            </GlassCard>
+
+            <GlassCard title="SOCIAL IMPACT">
+              <p className="text-lg">{artistData.social_impact}</p>
+              <div className="flex flex-wrap justify-center gap-3 mt-4">
+                {["Mental Health", "Community Support", "Charity Events"].map((work, idx) => (
+                  <button
+                    key={idx}
+                    className="px-4 py-2 rounded-full text-white font-bold text-sm shadow-md bg-black hover:scale-105 transition-all duration-300"
+                  >
+                    {work}
+                  </button>
+                ))}
+              </div>
+            </GlassCard>
+          </motion.div>
+
+          {/* Bottom Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6"
+          >
+            <div
+              className="p-6 rounded-2xl font-mono text-white"
+              style={{
+                background: "rgba(0, 0, 0, 0.4)",
+                backdropFilter: "blur(14px) saturate(180%)",
+                WebkitBackdropFilter: "blur(14px) saturate(180%)",
+                boxShadow: "0 4px 30px rgba(0,0,0,0.3)"
+              }}
+            >
+              <span className="text-purple-300">//classification</span> → {artistData.classification}
+            </div>
+
+            <div
+              className="p-6 rounded-2xl font-mono text-black hover:scale-[1.02] transition-all duration-300"
+              style={{
+                background: "rgba(255, 255, 255, 0.9)",
+                backdropFilter: "blur(20px) saturate(200%)",
+                WebkitBackdropFilter: "blur(20px) saturate(200%)",
+                boxShadow: "0 8px 40px rgba(255,255,255,0.4), inset 0 1px 0 rgba(255,255,255,0.6)"
+              }}
+            >
+              <span className="text-purple-600 font-bold">lazie_indie_association</span> → {artistData.lazie_indie_association}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Review Section (Online Presence) */}
+      {/* <section className="w-full px-4 md:px-20 py-16 bg-black text-white">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -525,7 +1071,7 @@ const ArtistProfile = () => {
           <h2 className="text-2xl md:text-3xl font-bold flex items-center gap-2">
             <span>💬</span> ONLINE PRESENCE
           </h2>
-          <p className="mt-2 font-semibold uppercase">Reviews</p>
+          <p className="mt-2 font-semibold uppercase">Fan & Press Quotes</p>
           <p className="text-sm text-white/50 mt-1">Scroll to explore →</p>
         </motion.div>
 
@@ -548,7 +1094,49 @@ const ArtistProfile = () => {
             ))}
           </div>
         </motion.div>
-      </section>
+      </section> */}
+      {/* Review Section (Online Presence) */}
+<section className="w-full px-4 md:px-20 py-16 bg-black text-white">
+  <motion.div
+    initial={{ opacity: 0 }}
+    whileInView={{ opacity: 1 }}
+    viewport={{ once: true, margin: "-100px" }}
+    transition={{ duration: 0.6 }}
+    className="mb-6"
+  >
+    <h2 className="text-2xl md:text-3xl font-bold flex items-center gap-2">
+      {/* Cloud icon replaced with your i19.png logo */}
+      <img 
+        src={i19} 
+        alt="Online Presence" 
+        className="w-8 h-8 object-contain"
+      />
+      <span>ONLINE PRESENCE</span>
+    </h2>
+    <p className="mt-2 font-semibold uppercase">Fan & Press Quotes</p>
+    <p className="text-sm text-white/50 mt-1">Scroll to explore →</p>
+  </motion.div>
+
+  <motion.div
+    initial={{ opacity: 0 }}
+    whileInView={{ opacity: 1 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.8 }}
+    className="relative"
+  >
+    <div
+      className="flex gap-5 overflow-x-auto pb-4 scroll-smooth"
+      style={{
+        scrollbarWidth: "thin",
+        scrollbarColor: "rgba(255,255,255,0.3) rgba(255,255,255,0.1)",
+      }}
+    >
+      {reviews.map((review, idx) => (
+        <ReviewCard key={idx} index={idx} {...review} />
+      ))}
+    </div>
+  </motion.div>
+</section>
 
       {/* Social Media Section */}
       <section className="relative w-full min-h-screen bg-black overflow-hidden flex items-center justify-center">
@@ -558,21 +1146,16 @@ const ArtistProfile = () => {
           viewport={{ once: true }}
           className="absolute inset-0"
         >
-          {/* Top-right inverted hands image */}
           <img
             src={launch1}
             alt="Top Right Hands"
             className="absolute right-0 bottom-35 w-[50vw] max-w-[900px] transform rotate-[260deg] z-0 opacity-80"
           />
-
-          {/* Bottom-left flat hands image */}
           <img
             src={launch1}
             alt="Bottom Left Hands"
             className="absolute top-35 left-0 w-[50vw] max-w-[900px] transform rotate-[90deg] z-0 opacity-80"
           />
-
-          {/* Overlay */}
           <div className="absolute inset-0 bg-black/60 z-10" />
         </motion.div>
 
@@ -602,27 +1185,21 @@ const ArtistProfile = () => {
               transition={{ duration: 0.6 }}
               className="flex flex-col items-center gap-10 text-sm md:items-end"
             >
-              <a
-                href="https://www.instagram.com/weeknd_official"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex flex-col items-center text-center hover:scale-105 transition-transform"
-              >
-                <FaInstagram size={28} className="text-pink-500 mb-2" />
-                <span className="uppercase font-semibold">Instagram</span>
-                <span className="text-white/70">@weeknd_official</span>
-              </a>
-
-              <a
-                href="https://www.facebook.com/weeknd_official"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex flex-col items-center text-center hover:scale-105 transition-transform"
-              >
-                <FaFacebookF size={28} className="text-blue-500 mb-2" />
-                <span className="uppercase font-semibold">Facebook</span>
-                <span className="text-white/70">@weeknd_official</span>
-              </a>
+              {artistData.online_presence.social_media.slice(0, 2).map((social, idx) => (
+                <a
+                  key={idx}
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex flex-col items-center text-center hover:scale-105 transition-transform"
+                >
+                  {social.platform === "Instagram" && <FaInstagram size={28} className="text-pink-500 mb-2" />}
+                  {social.platform === "Facebook" && <FaFacebookF size={28} className="text-blue-500 mb-2" />}
+                  <span className="uppercase font-semibold">{social.platform}</span>
+                  <span className="text-white/70">@{social.url.split("/").pop()}</span>
+                  <span className="text-white/70">{social.followers}</span>
+                </a>
+              ))}
             </motion.div>
 
             {/* Center Globe GIF */}
@@ -644,30 +1221,58 @@ const ArtistProfile = () => {
               transition={{ duration: 0.6 }}
               className="flex flex-col items-center gap-10 text-sm md:items-start"
             >
-              <a
-                href="https://twitter.com/weeknd"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex flex-col items-center text-center hover:scale-105 transition-transform"
-              >
-                <FaXTwitter size={28} className="text-white mb-2" />
-                <span className="uppercase font-semibold">Twitter</span>
-                <span className="text-white/70">@weeknd</span>
-              </a>
-
-              <a
-                href="https://www.youtube.com/@weekndLive"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex flex-col items-center text-center hover:scale-105 transition-transform"
-              >
-                <FaYoutube size={28} className="text-red-600 mb-2" />
-                <span className="uppercase font-semibold">YouTube</span>
-                <span className="text-white/70">@weekndLive</span>
-              </a>
+              {artistData.online_presence.social_media.slice(2).map((social, idx) => (
+                <a
+                  key={idx}
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex flex-col items-center text-center hover:scale-105 transition-transform"
+                >
+                  {social.platform === "Twitter" && <FaXTwitter size={28} className="text-white mb-2" />}
+                  {social.platform === "YouTube" && <FaYoutube size={28} className="text-red-600 mb-2" />}
+                  <span className="uppercase font-semibold">{social.platform}</span>
+                  <span className="text-white/70">@{social.url.split("/").pop()}</span>
+                  <span className="text-white/70">{social.followers}</span>
+                </a>
+              ))}
             </motion.div>
           </motion.div>
         </div>
+      </section>
+
+      <section className="w-full px-4 md:px-20 py-16 bg-black text-white">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+          className="mb-6"
+        >
+          <h2 className="text-2xl md:text-3xl font-bold flex items-center gap-2">
+            <span></span>PROFESSIONAL PRESS COVERAGE
+          </h2>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="relative"
+        >
+          <div
+            className="flex gap-5 overflow-x-auto pb-4 scroll-smooth"
+            style={{
+              scrollbarWidth: "thin",
+              scrollbarColor: "rgba(255,255,255,0.3) rgba(255,255,255,0.1)",
+            }}
+          >
+            {reviews.map((review, idx) => (
+              <ReviewCard key={idx} index={idx} {...review} />
+            ))}
+          </div>
+        </motion.div>
       </section>
 
       {/* Streaming Platforms and Quotes Section with Background GIF */}
@@ -692,27 +1297,22 @@ const ArtistProfile = () => {
               STREAMING PLATFORMS
             </h2>
             <p className="text-sm text-white/60 mb-4">
-              now streaming on various platforms
+              Now streaming on various platforms
             </p>
             <p className="text-sm text-white/80 mb-6 leading-relaxed">
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud in reprehenderit in voluptate
-              velit esse cillum dolore eu fugiat nulla "
+              Discover {artistData.displayName}'s music across major platforms, with {artistData.online_presence.streaming_platforms[0].stats} on {artistData.online_presence.streaming_platforms[0].platform}.
             </p>
             <div className="flex flex-wrap gap-6 text-white/90">
-              <div className="flex items-center gap-2">
-                <FaApple size={20} />
-                <span>Apple Music</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <FaSpotify size={20} />
-                <span>Spotify</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <FaSoundcloud size={20} />
-                <span>SoundCloud</span>
-              </div>
+              {artistData.online_presence.streaming_platforms.map((platform, idx) => (
+                <div key={idx} className="flex items-center gap-2">
+                  {platform.platform === "Apple Music" && <FaApple size={20} />}
+                  {platform.platform === "Spotify" && <FaSpotify size={20} />}
+                  {platform.platform === "SoundCloud" && <FaSoundcloud size={20} />}
+                  <a href={platform.url} target="_blank" rel="noopener noreferrer">
+                    {platform.platform}
+                  </a>
+                </div>
+              ))}
             </div>
           </motion.div>
 
@@ -727,20 +1327,11 @@ const ArtistProfile = () => {
             <h2 className="text-xl md:text-2xl font-bold text-white mb-4">
               QUOTES
             </h2>
-            <p className="text-sm text-white/80 leading-relaxed mb-4">
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud in reprehenderit in voluptate
-              velit esse cillum dolore eu fugiat nulla "
-            </p>
-            <p className="text-sm text-white/80 leading-relaxed">
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.{" "}
-              <span className="text-blue-300">Ut enim ad minim veniam</span>,
-              quis nostrud in{" "}
-              <span className="text-blue-300">reprehenderit in voluptate</span>{" "}
-              velit esse cillum dolore eu fugiat nulla "
-            </p>
+            {artistData.quotes.map((quote, idx) => (
+              <p key={idx} className="text-sm text-white/80 leading-relaxed mb-4">
+                "{quote}" — {artistData.displayName}
+              </p>
+            ))}
           </motion.div>
         </div>
       </section>
@@ -778,13 +1369,13 @@ const ArtistProfile = () => {
                 <h4 className="text-white/60 mb-2">SOCIALS</h4>
                 <ul className="space-y-1">
                   <li>
-                    <a href="#">Instagram</a>
+                    <a href={artistData.online_presence.social_media.find(s => s.platform === "Instagram")?.url}>Instagram</a>
                   </li>
                   <li>
-                    <a href="#">Twitter</a>
+                    <a href={artistData.online_presence.social_media.find(s => s.platform === "Twitter")?.url}>Twitter</a>
                   </li>
                   <li>
-                    <a href="#">Facebook</a>
+                    <a href={artistData.online_presence.social_media.find(s => s.platform === "Facebook")?.url}>Facebook</a>
                   </li>
                 </ul>
               </div>
