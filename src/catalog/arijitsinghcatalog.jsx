@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import { FaThLarge } from "react-icons/fa";
 import { FaFlagUsa } from "react-icons/fa";
 import profileImg from "../assets/artist5.jpg";
 import bgImg from "../assets/catalog1.png";
@@ -40,6 +41,7 @@ import artist7 from "../assets/artist7.jpg";
 import i18 from "../assets/i18.png";
 import i19 from "../assets/i19.png";
 import i20 from "../assets/i20.png";
+import i21 from "../assets/i21.png";
 
 // Icons for Availability section
 const StarIcon = () => (
@@ -321,6 +323,7 @@ const ArtistProfile = () => {
   const [activeTab, setActiveTab] = useState("Bio");
   const [hovered, setHovered] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
+  const [activePanel, setActivePanel] = useState("association");
 
   // Gallery data for Availability section (updated to reflect current_projects)
   const gallery = artistData.availability.current_projects.map((project, i) => ({
@@ -1351,6 +1354,209 @@ const ArtistProfile = () => {
       >
         <span className="text-purple-600 font-bold">lazie_indie_association</span> → {artistData.lazie_indie_association}
       </div>
+    </motion.div>
+  </div>
+</section>
+
+{/* Classification and Association Section */}
+<section 
+  className="relative w-full min-h-screen overflow-hidden"
+  style={{ 
+    backgroundImage: `url(${i21})`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center'
+  }}
+>
+  {/* Headline at top left */}
+  <motion.div
+    className="absolute top-10 left-10 z-10 flex items-center gap-4"
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.6 }}
+  >
+    <FaThLarge className="text-white text-3xl md:text-4xl" />
+    <h1 className="text-white text-4xl md:text-6xl font-bold font-monda">
+      CLASSIFICATION AND ASSOCIATION
+    </h1>
+  </motion.div>
+
+  {/* Panels positioned 150px from top on right side */}
+  <div className="absolute top-[150px] right-10 z-10 flex gap-8">
+    {/* Association Panel */}
+    <motion.div
+      className={`bg-white/10 backdrop-blur-[25px] rounded-[30px] overflow-hidden cursor-pointer flex flex-col transition-all duration-500 ${
+        activePanel === "association" ? "w-[560px]" : "w-[120px]"
+      } h-[520px]`}
+      onClick={() => setActivePanel("association")}
+      initial={{ opacity: 0, x: 50 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6, delay: 0.2 }}
+    >
+      {activePanel === "association" ? (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+          className="h-full flex flex-col"
+        >
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: 0.2 }}
+            className="px-6 py-4 flex justify-center items-center"
+          >
+            <h2 className="text-white text-2xl md:text-3xl font-bold font-monda text-center">
+              LAZIEINDI ASSOCIATION
+            </h2>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="p-6 flex flex-col flex-grow overflow-y-auto"
+          >
+            <p className="text-white text-lg md:text-xl font-normal leading-relaxed text-justify">
+              Interviewed by Emma Goldberg for the Cover Story of Lazie Indie Magazine –
+              Edition 47 (November 2023) Featured in Lazie Indie Magazine's global
+              spotlight series and holiday editions, {artistData.displayName} is a central voice in
+              international independent music. A contributing columnist for Lazie Indie
+              Magazine, {artistData.displayName} has written 33 artist interviews and 6 cover stories,
+              offering deep insight into the indie world.
+            </p>
+            <a
+              href="#"
+              className="text-[#1e4ae9] text-lg font-normal mt-4 inline-block hover:underline"
+            >
+              view more
+            </a>
+          </motion.div>
+        </motion.div>
+      ) : (
+        <motion.div
+          className="flex items-center justify-center h-full"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.3 }}
+        >
+          <motion.div
+            className="flex flex-col items-center justify-center h-full"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.4 }}
+          >
+            {"LAZIE INDI ASSOCIATION".split(" ").map((word, i) => (
+              <motion.span
+                key={i}
+                className="text-white/50 text-center text-xl md:text-2xl font-bold font-monda"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ 
+                  duration: 0.4, 
+                  delay: i * 0.1,
+                  ease: "easeOut"
+                }}
+                style={{ 
+                  writingMode: "vertical-rl", 
+                  textOrientation: "mixed",
+                  margin: "8px 0"
+                }}
+              >
+                {word}
+              </motion.span>
+            ))}
+          </motion.div>
+        </motion.div>
+      )}
+    </motion.div>
+
+    {/* Summary Panel */}
+    <motion.div
+      className={`bg-white/10 backdrop-blur-[25px] rounded-[30px] overflow-hidden cursor-pointer flex flex-col transition-all duration-500 ${
+        activePanel === "summary" ? "w-[560px]" : "w-[120px]"
+      } h-[520px]`}
+      onClick={() => setActivePanel("summary")}
+      initial={{ opacity: 0, x: 50 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6, delay: 0.3 }}
+    >
+      {activePanel === "summary" ? (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+          className="h-full flex flex-col"
+        >
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: 0.2 }}
+            className="px-6 py-4 flex justify-center items-center"
+          >
+            <h2 className="text-white text-2xl md:text-3xl font-bold font-monda text-center">
+              SUMMARY NARRATIVE
+            </h2>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="p-6 flex flex-col flex-grow overflow-y-auto"
+          >
+            <p className="text-white text-lg md:text-xl font-normal leading-relaxed text-justify">
+              {artistData.displayName} stands as a bold and genre-defying artist known
+              for {artistData.identity.gender === 'Male' ? 'his' : 'her'} powerhouse vocals, 
+              cinematic songwriting, and fearless creative expression. 
+              {artistData.displayName}'s music spans the realms of {
+                artistData.artistic_background.genres.slice(0, 3).join(', ')
+              }, each track soaked in emotional weight and lyrical truth.
+            </p>
+            <a
+              href="#"
+              className="text-[#1e4ae9] text-lg font-normal mt-4 inline-block hover:underline"
+            >
+              view more
+            </a>
+          </motion.div>
+        </motion.div>
+      ) : (
+        <motion.div
+          className="flex items-center justify-center h-full"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.3 }}
+        >
+          <motion.div
+            className="flex flex-col items-center justify-center h-full"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.4 }}
+          >
+            {"SUMMARY NARRATIVE".split(" ").map((word, i) => (
+              <motion.span
+                key={i}
+                className="text-white/50 text-center text-xl md:text-2xl font-bold font-monda"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ 
+                  duration: 0.4, 
+                  delay: i * 0.1,
+                  ease: "easeOut"
+                }}
+                style={{ 
+                  writingMode: "vertical-rl", 
+                  textOrientation: "mixed",
+                  margin: "8px 0"
+                }}
+              >
+                {word}
+              </motion.span>
+            ))}
+          </motion.div>
+        </motion.div>
+      )}
     </motion.div>
   </div>
 </section>
