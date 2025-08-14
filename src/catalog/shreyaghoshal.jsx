@@ -1054,6 +1054,8 @@ const fadeUpVariant = {
 </section>
 
       {/* Availability & Opportunities Section */}
+{/* Availability & Opportunities Section */}
+
 <section
   className="relative w-full min-h-screen flex flex-col items-center p-4 lg:p-10 font-sans"
   style={{
@@ -1072,7 +1074,7 @@ const fadeUpVariant = {
       display: none; /* Chrome, Safari, Opera */
     }
   `}</style>
-  
+
   {/* Background Overlay */}
   <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-white/30 z-0"></div>
 
@@ -1107,8 +1109,8 @@ const fadeUpVariant = {
       {/* Book Icon - Appears when search is active */}
       <motion.div
         initial={{ opacity: 0, scale: 0, x: -50 }}
-        animate={{ 
-          opacity: searchActive ? 1 : 0, 
+        animate={{
+          opacity: searchActive ? 1 : 0,
           scale: searchActive ? 1 : 0,
           x: searchActive ? 0 : -50
         }}
@@ -1121,7 +1123,7 @@ const fadeUpVariant = {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
         </svg>
       </motion.div>
-      
+     
       {/* Toggle Box */}
       <motion.div
         className={`px-6 py-3 border border-black bg-white/80 rounded-lg text-black font-bold flex items-center justify-center overflow-hidden relative`}
@@ -1134,7 +1136,7 @@ const fadeUpVariant = {
       >
         <div className="relative w-full h-6 flex items-center justify-center">
           <motion.span
-            animate={{ 
+            animate={{
               opacity: searchActive ? 0 : 1,
               y: searchActive ? -20 : 0,
               scale: searchActive ? 0.8 : 1
@@ -1145,7 +1147,7 @@ const fadeUpVariant = {
             CURRENT PROJECTS
           </motion.span>
           <motion.span
-            animate={{ 
+            animate={{
               opacity: searchActive ? 1 : 0,
               y: searchActive ? 0 : 20,
               scale: searchActive ? 1 : 0.8
@@ -1157,7 +1159,7 @@ const fadeUpVariant = {
           </motion.span>
         </div>
       </motion.div>
-      
+     
       {/* Search Button */}
       <motion.button
         onClick={() => setSearchActive(true)}
@@ -1186,7 +1188,7 @@ const fadeUpVariant = {
       }`}
     >
       {/* Row-wise Glass Hover Effect with Text - Pop up from bottom */}
-      <div 
+      <div
         className="absolute inset-0 opacity-0 group-hover:opacity-100 transform translate-y-full group-hover:translate-y-0 transition-all duration-700 ease-out pointer-events-none z-20 flex items-center justify-center"
         style={{
           background: "linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.3) 50%, rgba(255, 255, 255, 0.1) 100%)",
@@ -1205,7 +1207,7 @@ const fadeUpVariant = {
           </p>
         </div>
       </div>
-      
+     
       {Array.from({ length: 4 }).map((_, index) => (
         <motion.div
           key={`current-${index}`}
@@ -1215,9 +1217,9 @@ const fadeUpVariant = {
           transition={{ duration: 0.4, delay: index * 0.1 }}
           className="flex-1 h-56 rounded-lg overflow-hidden shadow-md border border-purple-300 transition-transform relative z-10"
         >
-          <img 
-            src={artist6} 
-            alt={`Current Project ${index + 1}`} 
+          <img
+            src={artist6}
+            alt={`Current Project ${index + 1}`}
             className="w-full h-full object-cover"
           />
           <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
@@ -1237,7 +1239,7 @@ const fadeUpVariant = {
         className="relative flex gap-6 mt-4 group"
       >
         {/* Row-wise Glass Hover Effect with Text - Pop up from bottom */}
-        <div 
+        <div
           className="absolute inset-0 opacity-0 group-hover:opacity-100 transform translate-y-full group-hover:translate-y-0 transition-all duration-700 ease-out pointer-events-none z-30 flex items-center justify-center"
           style={{
             background: "linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0.1) 100%)",
@@ -1256,7 +1258,7 @@ const fadeUpVariant = {
             </p>
           </div>
         </div>
-        
+       
         {Array.from({ length: 4 }).map((_, index) => (
           <motion.div
             key={`looking-${index}`}
@@ -1266,7 +1268,7 @@ const fadeUpVariant = {
             className="flex-1 h-56 rounded-2xl overflow-hidden shadow-xl transition-transform relative z-20"
           >
             {/* Glass background div */}
-            <div 
+            <div
               className="absolute inset-0 z-0"
               style={{
                 background: "rgba(255, 255, 255, 0.15)",
@@ -1276,17 +1278,17 @@ const fadeUpVariant = {
                 boxShadow: "0 8px 32px rgba(0, 0, 0, 0.1)"
               }}
             />
-            
+           
             {/* Image with glass overlay */}
             <div className="relative z-10 w-full h-full">
-              <img 
-                src={artist7} 
-                alt={`Looking For ${index + 1}`} 
+              <img
+                src={artist7}
+                alt={`Looking For ${index + 1}`}
                 className="w-full h-full object-cover opacity-80"
               />
-              
+             
               {/* Content overlay with enhanced glass effect */}
-              <div 
+              <div
                 className="absolute bottom-0 left-0 right-0 p-4 z-20"
                 style={{
                   background: "linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent)",
@@ -1342,39 +1344,6 @@ const fadeUpVariant = {
           ))}
         </div>
       </GlassCard>
-    </motion.div>
-
-    {/* Bottom Section */}
-    <motion.div
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6, delay: 0.5 }}
-      className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8"
-    >
-      <div
-        className="p-6 rounded-2xl font-mono text-white"
-        style={{
-          background: "rgba(0, 0, 0, 0.7)",
-          backdropFilter: "blur(14px) saturate(180%)",
-          WebkitBackdropFilter: "blur(14px) saturate(180%)",
-          boxShadow: "0 4px 30px rgba(0,0,0,0.3)"
-        }}
-      >
-        <span className="text-purple-300">//classification</span> → {artistData.classification}
-      </div>
-
-      <div
-        className="p-6 rounded-2xl font-mono text-black hover:scale-[1.02] transition-all duration-300"
-        style={{
-          background: "rgba(255, 255, 255, 0.9)",
-          backdropFilter: "blur(20px) saturate(200%)",
-          WebkitBackdropFilter: "blur(20px) saturate(200%)",
-          boxShadow: "0 8px 40px rgba(255,255,255,0.4), inset 0 1px 0 rgba(255,255,255,0.6)"
-        }}
-      >
-        <span className="text-purple-600 font-bold">lazie_indie_association</span> → {artistData.lazie_indie_association}
-      </div>
     </motion.div>
   </div>
 </section>
@@ -1897,26 +1866,78 @@ const fadeUpVariant = {
     </section>
 
 <section
-      className="relative w-full bg-center bg-cover px-4 py-12 md:px-12 lg:px-20"
+      className="relative w-full bg-center bg-cover px-4 py-12 md:px-12 lg:px-20 overflow-hidden"
       style={{ backgroundImage: `url(${i24})` }}
     >
-      {/* Heading */}
+      {/* Animated background particles */}
+      <div className="absolute inset-0 pointer-events-none">
+        {[...Array(20)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-1 h-1 bg-white/20 rounded-full"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+            }}
+            animate={{
+              y: [0, -30, 0],
+              opacity: [0, 1, 0],
+            }}
+            transition={{
+              duration: 3 + Math.random() * 2,
+              repeat: Infinity,
+              delay: Math.random() * 2,
+              ease: "easeInOut",
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Heading with enhanced animations */}
       <motion.div
-        className="max-w-[1600px] mx-auto mb-8 flex flex-wrap items-baseline gap-4"
+        className="max-w-[1600px] mx-auto mb-8 flex flex-wrap items-baseline gap-4 relative"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
-        <span className="text-white font-['Monda'] font-bold leading-tight text-[clamp(2.5rem,6vw,7.5rem)]">
+        <motion.span 
+          className="text-white font-['Monda'] font-bold leading-tight text-[clamp(2.5rem,6vw,7.5rem)]"
+          initial={{ scale: 0.5, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ 
+            duration: 1, 
+            ease: "easeOut",
+            type: "spring",
+            stiffness: 100 
+          }}
+          whileHover={{ 
+            scale: 1.1, 
+            textShadow: "0 0 20px rgba(255,255,255,0.5)",
+            transition: { duration: 0.2 }
+          }}
+        >
           YES!
-        </span>
-        <span className="text-white font-['Monda'] leading-snug text-[clamp(1rem,2vw,1.75rem)]">
+        </motion.span>
+        <motion.span 
+          className="text-white font-['Monda'] leading-snug text-[clamp(1rem,2vw,1.75rem)]"
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+        >
           Lyia Meta can absolutely be included under the broad umbrella of
           Independent Musicians — and here's why --
-        </span>
+        </motion.span>
+        
+        {/* Animated accent line */}
+        <motion.div
+          className="absolute -bottom-2 left-0 h-1 bg-gradient-to-r from-white/80 to-transparent"
+          initial={{ width: 0 }}
+          animate={{ width: "60%" }}
+          transition={{ duration: 1.5, delay: 0.8, ease: "easeOut" }}
+        />
       </motion.div>
 
-      {/* Cards container */}
+      {/* Cards container with enhanced animations */}
       <motion.div
         className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16 max-w-[1650px] mx-auto"
         initial="hidden"
@@ -1925,7 +1946,7 @@ const fadeUpVariant = {
           hidden: {},
           visible: {
             transition: {
-              staggerChildren: 0.15,
+              staggerChildren: 0.2,
             },
           },
         }}
@@ -1933,49 +1954,169 @@ const fadeUpVariant = {
         {classificationItems.map((item, index) => (
           <motion.div
             key={index}
-            className="w-full max-w-[800px] py-8 px-6 bg-white/5 rounded-[30px] md:rounded-[45px] backdrop-blur-[30px] flex justify-center items-center transition-all duration-300 ease-in-out"
+            className="w-full max-w-[800px] py-8 px-6 bg-white/5 rounded-[30px] md:rounded-[45px] backdrop-blur-[30px] flex justify-center items-center transition-all duration-300 ease-in-out relative group cursor-pointer"
             style={{
               filter: "brightness(0.7)",
             }}
-            whileHover={{ scale: 1.05, filter: "brightness(1.1)" }}
+            whileHover={{ 
+              scale: 1.02, 
+              filter: "brightness(1.2)",
+              boxShadow: "0 15px 35px rgba(255,255,255,0.15)",
+            }}
             whileTap={{ scale: 0.98 }}
             variants={{
-              hidden: { opacity: 0, y: 20 },
-              visible: { opacity: 1, y: 0 },
+              hidden: { 
+                opacity: 0, 
+                y: 30,
+                scale: 0.95,
+              },
+              visible: { 
+                opacity: 1, 
+                y: 0,
+                scale: 1,
+              },
             }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
+            transition={{ 
+              duration: 0.8, 
+              ease: [0.25, 0.46, 0.45, 0.94],
+            }}
           >
-            <div className="text-center">
-              <span className="text-white/50 text-base md:text-lg font-bold font-['Monda'] block">
+            {/* Animated border glow */}
+            <motion.div
+              className="absolute inset-0 rounded-[30px] md:rounded-[45px] border border-white/10"
+              initial={{ opacity: 0.5 }}
+              whileHover={{ 
+                opacity: 1,
+                borderColor: "rgba(255,255,255,0.4)",
+                boxShadow: "inset 0 0 25px rgba(255,255,255,0.1), 0 0 25px rgba(255,255,255,0.1)",
+              }}
+              transition={{ duration: 0.4, ease: "easeInOut" }}
+            />
+            
+            {/* Content container */}
+            <motion.div
+              className="text-center relative z-10"
+            >
+              <motion.span 
+                className="text-white/50 text-base md:text-lg font-bold font-['Monda'] block"
+                initial={{ opacity: 0, y: 5 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 + index * 0.1, duration: 0.6 }}
+                whileHover={{
+                  color: "rgba(255,255,255,0.9)",
+                  transition: { duration: 0.3 }
+                }}
+              >
                 {item.title}
-              </span>
-              <span className="text-white text-sm md:text-lg font-bold font-['Monda'] block mt-2">
+              </motion.span>
+              <motion.span 
+                className="text-white text-sm md:text-lg font-bold font-['Monda'] block mt-2"
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6 + index * 0.1, duration: 0.6 }}
+                whileHover={{
+                  color: "rgba(255,255,255,1)",
+                  textShadow: "0 0 8px rgba(255,255,255,0.2)",
+                  transition: { duration: 0.3 }
+                }}
+              >
                 {item.description}
-              </span>
-            </div>
+              </motion.span>
+            </motion.div>
+
+            {/* Animated corner accents */}
+            <motion.div
+              className="absolute top-3 right-3 w-3 h-3 border-t border-r border-white/20"
+              initial={{ opacity: 0, scale: 0 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.8 + index * 0.1, duration: 0.5 }}
+              whileHover={{
+                borderColor: "rgba(255,255,255,0.6)",
+                scale: 1.3,
+                transition: { duration: 0.3 }
+              }}
+            />
+            <motion.div
+              className="absolute bottom-3 left-3 w-3 h-3 border-b border-l border-white/20"
+              initial={{ opacity: 0, scale: 0 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.9 + index * 0.1, duration: 0.5 }}
+              whileHover={{
+                borderColor: "rgba(255,255,255,0.6)",
+                scale: 1.3,
+                transition: { duration: 0.3 }
+              }}
+            />
           </motion.div>
         ))}
       </motion.div>
 
-      {/* Bottom left classification text */}
+      {/* Bottom left classification text with enhanced animations */}
       <motion.div
         className="absolute bottom-6 left-6 z-10"
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0, y: 40, scale: 0.8 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 0.8, ease: "easeOut", delay: 0.5 }}
+        whileHover={{ scale: 1.05 }}
       >
         <div className="relative pointer-events-none inline-block">
-          <div className="text-white/25 font-['Bebas_Neue'] leading-none text-[clamp(1rem,5vw,8rem)]">
+          <motion.div 
+            className="text-white/25 font-['Bebas_Neue'] leading-none text-[clamp(1rem,5vw,8rem)]"
+            animate={{
+              opacity: [1, 1, 1],
+            }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          >
             CLASSIFICATION
-          </div>
+          </motion.div>
           <div className="absolute inset-0 flex items-center justify-center">
-            <span className="text-white text-lg md:text-2xl font-bold font-['Monda'] tracking-wide text-center">
+            <motion.span 
+              className="text-white text-lg md:text-2xl font-bold font-['Monda'] tracking-wide text-center"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 1, duration: 0.6 }}
+              whileHover={{
+                textShadow: "0 0 15px rgba(255,255,255,0.5)",
+                letterSpacing: "0.2em",
+                transition: { duration: 0.3 }
+              }}
+            >
               LAZIE INDIE CLASSIFICATION
-            </span>
+            </motion.span>
           </div>
         </div>
       </motion.div>
-    </section>    
+
+      {/* Additional animated elements */}
+      <motion.div
+        className="absolute top-10 right-10 w-24 h-24 border border-white/10 rounded-full"
+        animate={{
+          rotate: 360,
+          scale: [1, 1.1, 1],
+        }}
+        transition={{
+          rotate: { duration: 20, repeat: Infinity, ease: "linear" },
+          scale: { duration: 3, repeat: Infinity, ease: "easeInOut" },
+        }}
+      />
+      
+      <motion.div
+        className="absolute bottom-1/4 right-1/4 w-2 h-16 bg-white/20"
+        animate={{
+          scaleY: [1, 0.3, 1],
+          opacity: [0.2, 0.6, 0.2],
+        }}
+        transition={{
+          duration: 2.5,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
+    </section>
 
       {/* Footer Section */}
       <motion.section
