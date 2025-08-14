@@ -42,6 +42,9 @@ import i18 from "../assets/i18.png";
 import i19 from "../assets/i19.png";
 import i20 from "../assets/i20.png";
 import i21 from "../assets/i21.png";
+import i22 from "../assets/i22.png";
+import i23 from "../assets/i23.png";
+import i24 from "../assets/i24.png";
 
 // Icons for Availability section
 const StarIcon = () => (
@@ -324,6 +327,7 @@ const ArtistProfile = () => {
   const [hovered, setHovered] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [activePanel, setActivePanel] = useState("association");
+  const [hover, setHover] = useState(false);
 
   // Gallery data for Availability section (updated to reflect current_projects)
   const gallery = artistData.availability.current_projects.map((project, i) => ({
@@ -331,7 +335,24 @@ const ArtistProfile = () => {
     title: project,
     img: artist6,
   }));
-
+const ensureEvenItems = (items) => {
+  return items.length % 2 !== 0
+    ? [...items, items[items.length - 1]]
+    : items;
+};
+const classificationItems = ensureEvenItems(
+    Array(5).fill({
+      title: "Creative Control & Self-Management",
+      description:
+        "Lyia oversees her own creative direction, songwriting, production partnerships, and career strategy — key traits of independent artistry.",
+    })
+  );
+  
+const fadeUpVariant = {
+    hidden: { opacity: 0, y: 40 },
+    visible: { opacity: 1, y: 0 },
+  };
+  
   const filteredGallery = gallery.filter((item) =>
     item.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -1837,6 +1858,124 @@ const ArtistProfile = () => {
           </motion.div>
         </div>
       </section>
+      <section
+  className="relative h-[50vh] bg-fixed bg-center bg-cover"
+  style={{
+    backgroundImage: `url(${i22})`,
+    backgroundAttachment: "fixed", // Corrected from 'dymnamic'
+    backgroundPosition: "center",
+    backgroundSize: "cover",
+  }}
+>
+  {/* Optional overlay content */}
+</section>
+
+<section
+      className="relative h-[801px] w-full bg-center bg-cover flex items-center justify-center"
+      style={{ backgroundImage: `url(${i23})` }}
+      onMouseEnter={() => setHover(true)} // Only set once
+    >
+      <div className="max-w-[1545px] px-6 flex flex-col items-center gap-8 text-center">
+        {[
+          `“ Lyia Meta’s journey is one of evolution—from canvas to stage, from Malaysia’s intimate blues joints to Grammy-nominated recordings. As an artist who wears many hats—vocalist, writer, producer, painter—her work is deeply textured and transcendent. Born and raised in Malaysia, she absorbed a kaleidoscope of cultures that would later shape her sound: raw, rich, and borderless. “`,
+          `Early on, Lyia knew she didn’t want to simply “fit in.” While many artists chose genre lanes or industry formulas, she followed feeling—crafting songs rooted in honesty, wrapped in melody, and painted with shadows and light. Her early recordings resonated across the indie airwaves of Europe and the U.S., gradually leading to international awards and major collaborations. Yet even as her recognition grew, she remained grounded in storytelling and connection.`,
+          `Early on, Lyia knew she didn’t want to simply “fit in.” While many artists chose genre lanes or industry formulas, she followed feeling—crafting songs rooted in honesty, wrapped in melody, and painted with shadows and light. Her early recordings resonated across the indie airwaves of Europe and the U.S., gradually leading to international awards and major collaborations. Yet even as her recognition grew, she remained grounded in storytelling and connection.`,
+          `Early on, Lyia knew she didn’t want to simply “fit in.” While many artists chose genre lanes or industry formulas, she followed feeling—crafting songs rooted in honesty, wrapped in melody, and painted with shadows and light. Her early recordings resonated across the indie airwaves of Europe and the U.S., gradually leading to international awards and major collaborations. Yet even as her recognition grew, she remained grounded in storytelling and connection.`,
+        ].map((text, index) => (
+          <motion.p
+            key={index}
+            className="text-white text-2xl font-normal font-['Monda'] max-w-[1524px]"
+            variants={fadeUpVariant}
+            initial="hidden"
+            animate={hover ? "visible" : "hidden"}
+            transition={{ duration: 0.8, delay: index * 0.2 }}
+          >
+            {text}
+          </motion.p>
+        ))}
+      </div>
+    </section>
+
+<section
+      className="relative w-full bg-center bg-cover px-4 py-12 md:px-12 lg:px-20"
+      style={{ backgroundImage: `url(${i24})` }}
+    >
+      {/* Heading */}
+      <motion.div
+        className="max-w-[1600px] mx-auto mb-8 flex flex-wrap items-baseline gap-4"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+      >
+        <span className="text-white font-['Monda'] font-bold leading-tight text-[clamp(2.5rem,6vw,7.5rem)]">
+          YES!
+        </span>
+        <span className="text-white font-['Monda'] leading-snug text-[clamp(1rem,2vw,1.75rem)]">
+          Lyia Meta can absolutely be included under the broad umbrella of
+          Independent Musicians — and here's why --
+        </span>
+      </motion.div>
+
+      {/* Cards container */}
+      <motion.div
+        className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16 max-w-[1650px] mx-auto"
+        initial="hidden"
+        animate="visible"
+        variants={{
+          hidden: {},
+          visible: {
+            transition: {
+              staggerChildren: 0.15,
+            },
+          },
+        }}
+      >
+        {classificationItems.map((item, index) => (
+          <motion.div
+            key={index}
+            className="w-full max-w-[800px] py-8 px-6 bg-white/5 rounded-[30px] md:rounded-[45px] backdrop-blur-[30px] flex justify-center items-center transition-all duration-300 ease-in-out"
+            style={{
+              filter: "brightness(0.7)",
+            }}
+            whileHover={{ scale: 1.05, filter: "brightness(1.1)" }}
+            whileTap={{ scale: 0.98 }}
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              visible: { opacity: 1, y: 0 },
+            }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+          >
+            <div className="text-center">
+              <span className="text-white/50 text-base md:text-lg font-bold font-['Monda'] block">
+                {item.title}
+              </span>
+              <span className="text-white text-sm md:text-lg font-bold font-['Monda'] block mt-2">
+                {item.description}
+              </span>
+            </div>
+          </motion.div>
+        ))}
+      </motion.div>
+
+      {/* Bottom left classification text */}
+      <motion.div
+        className="absolute bottom-6 left-6 z-10"
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut", delay: 0.5 }}
+      >
+        <div className="relative pointer-events-none inline-block">
+          <div className="text-white/25 font-['Bebas_Neue'] leading-none text-[clamp(1rem,5vw,8rem)]">
+            CLASSIFICATION
+          </div>
+          <div className="absolute inset-0 flex items-center justify-center">
+            <span className="text-white text-lg md:text-2xl font-bold font-['Monda'] tracking-wide text-center">
+              LAZIE INDIE CLASSIFICATION
+            </span>
+          </div>
+        </div>
+      </motion.div>
+    </section>    
 
       {/* Footer Section */}
       <motion.section

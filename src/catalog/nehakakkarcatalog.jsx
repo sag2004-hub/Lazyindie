@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import { FaThLarge } from "react-icons/fa";
 import { FaFlagUsa } from "react-icons/fa";
 import profileImg from "../assets/artist5.jpg";
 import bgImg from "../assets/catalog1.png";
@@ -36,9 +37,14 @@ import footerImg from "../assets/footer.png";
 // Availability page imports
 import bgImage from "../assets/i17.png";
 import artist6 from "../assets/artist6.jpg";
+import artist7 from "../assets/artist7.jpg";
 import i18 from "../assets/i18.png";
 import i19 from "../assets/i19.png";
 import i20 from "../assets/i20.png";
+import i21 from "../assets/i21.png";
+import i22 from "../assets/i22.png";
+import i23 from "../assets/i23.png";
+import i24 from "../assets/i24.png";
 
 // Icons for Availability section
 const StarIcon = () => (
@@ -316,9 +322,12 @@ const ReviewCard = ({ name, rating, text, width, index }) => (
 const tabs = ["Bio", "Artistic Background", "Career Highlights"];
 
 const ArtistProfile = () => {
+  const [searchActive, setSearchActive] = useState(false);
   const [activeTab, setActiveTab] = useState("Bio");
   const [hovered, setHovered] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
+  const [activePanel, setActivePanel] = useState("association");
+  const [hover, setHover] = useState(false);
 
   // Gallery data for Availability section (updated to reflect current_projects)
   const gallery = artistData.availability.current_projects.map((project, i) => ({
@@ -326,7 +335,24 @@ const ArtistProfile = () => {
     title: project,
     img: artist6,
   }));
-
+const ensureEvenItems = (items) => {
+  return items.length % 2 !== 0
+    ? [...items, items[items.length - 1]]
+    : items;
+};
+const classificationItems = ensureEvenItems(
+    Array(5).fill({
+      title: "Creative Control & Self-Management",
+      description:
+        "Lyia oversees her own creative direction, songwriting, production partnerships, and career strategy — key traits of independent artistry.",
+    })
+  );
+  
+const fadeUpVariant = {
+    hidden: { opacity: 0, y: 40 },
+    visible: { opacity: 1, y: 0 },
+  };
+  
   const filteredGallery = gallery.filter((item) =>
     item.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -816,7 +842,7 @@ const ArtistProfile = () => {
 </motion.section>
 
       {/* Creative Process Section */}
-      <section className="relative w-full min-h-screen overflow-hidden">
+      {/* <section className="relative w-full min-h-screen overflow-hidden">
         <motion.div
           initial="hidden"
           animate="visible"
@@ -905,159 +931,656 @@ const ArtistProfile = () => {
             </motion.div>
           </motion.div>
         </div>
-      </section>
+      </section> */}
+      {/* Creative Process Section */}
+<section className="relative w-full min-h-screen overflow-hidden">
+  {/* Background container with full coverage */}
+  <motion.div
+    initial="hidden"
+    animate="visible"
+    variants={fadeIn}
+    className="absolute inset-0 w-full h-full"
+  >
+    <img
+      src={i15}
+      alt="Background"
+      className="w-full h-full object-cover z-0 opacity-60 pointer-events-none"
+    />
+    <div className="absolute inset-0 bg-black/40 z-0" />
+  </motion.div>
+
+  <div className="relative z-10 max-w-6xl w-full mx-auto px-4 py-20">
+    <motion.h2
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.2 }}
+      className="text-3xl md:text-5xl font-bold mb-10 flex items-center gap-2"
+    >
+      <div className="bg-white p-2 rounded">
+        <StarIcon2 />
+      </div>
+      <span>CREATIVE PROCESSES</span>
+    </motion.h2>
+
+    <motion.div
+      variants={containerVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-100px" }}
+      className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16"
+    >
+      <motion.div
+  variants={itemVariants}
+  className="bg-white/20 backdrop-blur-xl border border-white/30 p-8 rounded-3xl shadow-lg"
+  style={{
+    background: "rgba(255, 255, 255, 0.15)",
+    boxShadow: "0 8px 32px 0 rgba(150, 150, 150, 0.15)",
+    backdropFilter: "blur(14px)",
+    WebkitBackdropFilter: "blur(14px)",
+  }}
+>
+  <div className="flex flex-col">
+    <div className="flex items-center gap-3 mb-6">
+      <div className="w-3 h-3 bg-white rounded-full flex-shrink-0"></div>
+      <h3 className="text-2xl font-bold text-white">Songwriting Process</h3>
+    </div>
+    
+    <div className="relative">
+      <div className="absolute top-0 left-0 w-1 h-full bg-white/40"></div>
+      <p className="text-white/90 pl-6 text-lg leading-relaxed">
+        {artistData.creative_process.songwriting_process}
+      </p>
+    </div>
+    
+    <p className="mt-6 text-white/80 font-bold text-right">— {artistData.displayName}</p>
+  </div>
+</motion.div>
+
+      <motion.div
+  variants={itemVariants}
+  className="bg-white/20 backdrop-blur-xl border border-white/30 p-8 rounded-3xl shadow-lg"
+  style={{
+    background: "rgba(255, 255, 255, 0.15)",
+    boxShadow: "0 8px 32px 0 rgba(150, 150, 150, 0.15)",
+    backdropFilter: "blur(14px)",
+    WebkitBackdropFilter: "blur(14px)",
+  }}
+>
+  <div className="flex flex-col">
+    <div className="flex items-center gap-3 mb-6">
+      <div className="w-3 h-3 bg-white rounded-full flex-shrink-0"></div>
+      <h3 className="text-2xl font-bold text-white">Production Process</h3>
+    </div>
+    
+    <div className="relative">
+      <div className="absolute top-0 left-0 w-1 h-full bg-white/40"></div>
+      <p className="text-white/90 pl-6 text-lg leading-relaxed">
+        {artistData.creative_process.production_process}
+      </p>
+    </div>
+    
+    <p className="mt-6 text-white/80 font-bold text-right">— {artistData.displayName}</p>
+  </div>
+</motion.div>
+
+      <motion.div
+  variants={itemVariants}
+  className="bg-white/20 backdrop-blur-xl border border-white/30 p-8 rounded-3xl shadow-lg md:col-span-2 w-full"
+  style={{
+    background: "rgba(255, 255, 255, 0.15)",
+    boxShadow: "0 8px 32px 0 rgba(150, 150, 150, 0.15)",
+    backdropFilter: "blur(14px)",
+    WebkitBackdropFilter: "blur(14px)",
+  }}
+>
+  <div className="flex flex-col">
+    <div className="flex items-center gap-3 mb-6">
+      <div className="w-3 h-3 bg-white rounded-full flex-shrink-0"></div>
+      <h3 className="text-2xl font-bold text-white">Creative Rituals</h3>
+    </div>
+    
+    <div className="relative">
+      <div className="absolute top-0 left-0 w-1 h-full bg-white/40"></div>
+      <p className="text-white/90 pl-6 text-lg leading-relaxed">
+        "I typically start with a melody that comes to me in the early morning hours. I record voice memos on my phone, then build from there. Lyrics usually come last, and I draw inspiration from personal experiences, dreams, and literature. I like to create a visual mood board for each song to help guide the emotional landscape I'm trying to create."
+      </p>
+    </div>
+    
+    <p className="mt-6 text-white/80 font-bold text-right">— {artistData.displayName}</p>
+  </div>
+</motion.div>
+    </motion.div>
+  </div>
+</section>
 
       {/* Availability & Opportunities Section */}
-      <section
-        className="relative w-full min-h-screen flex flex-col items-center p-4 lg:p-10 font-sans"
+<section
+  className="relative w-full min-h-screen flex flex-col items-center p-4 lg:p-10 font-sans"
+  style={{
+    backgroundImage: `url(${bgImage})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+  }}
+>
+  {/* CSS for scrollbar hiding */}
+  <style jsx>{`
+    .scrollbar-hide {
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
+    }
+    .scrollbar-hide::-webkit-scrollbar {
+      display: none; /* Chrome, Safari, Opera */
+    }
+  `}</style>
+  
+  {/* Background Overlay */}
+  <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-white/30 z-0"></div>
+
+  <div className="w-full max-w-7xl flex flex-col gap-6 relative z-10">
+    {/* Header */}
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+      className="flex items-center gap-4"
+    >
+      <div className="bg-black p-2 rounded">
+        <StarIcon />
+      </div>
+      <h1
+        className="text-black text-2xl md:text-3xl font-bold tracking-wider"
+        style={{ textShadow: "2px 2px 4px rgba(0,0,0,0.3)" }}
+      >
+        AVAILABILITY & OPPORTUNITIES
+      </h1>
+    </motion.div>
+
+    {/* Search Container */}
+    <motion.div
+      className="flex gap-2 mt-2 items-center"
+      initial={{ opacity: 0, x: -20 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6, delay: 0.2 }}
+    >
+      {/* Book Icon - Appears when search is active */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0, x: -50 }}
+        animate={{ 
+          opacity: searchActive ? 1 : 0, 
+          scale: searchActive ? 1 : 0,
+          x: searchActive ? 0 : -50
+        }}
+        transition={{ duration: 0.5, ease: "easeInOut" }}
+        className="bg-black p-3 rounded-lg flex items-center justify-center cursor-pointer"
+        onClick={() => setSearchActive(false)}
+        style={{ display: searchActive ? 'flex' : 'none' }}
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+        </svg>
+      </motion.div>
+      
+      {/* Toggle Box */}
+      <motion.div
+        className={`px-6 py-3 border border-black bg-white/80 rounded-lg text-black font-bold flex items-center justify-center overflow-hidden relative`}
+        animate={{
+          width: searchActive ? "280px" : "220px",
+          backgroundColor: searchActive ? "rgba(255, 255, 255, 0.95)" : "rgba(255, 255, 255, 0.8)",
+          borderColor: searchActive ? "#8b5cf6" : "#000000"
+        }}
+        transition={{ duration: 0.6, ease: "easeInOut" }}
+      >
+        <div className="relative w-full h-6 flex items-center justify-center">
+          <motion.span
+            animate={{ 
+              opacity: searchActive ? 0 : 1,
+              y: searchActive ? -20 : 0,
+              scale: searchActive ? 0.8 : 1
+            }}
+            transition={{ duration: 0.3 }}
+            className="absolute inset-0 flex items-center justify-center whitespace-nowrap text-sm font-bold"
+          >
+            CURRENT PROJECTS
+          </motion.span>
+          <motion.span
+            animate={{ 
+              opacity: searchActive ? 1 : 0,
+              y: searchActive ? 0 : 20,
+              scale: searchActive ? 1 : 0.8
+            }}
+            transition={{ duration: 0.3, delay: searchActive ? 0.2 : 0 }}
+            className="absolute inset-0 flex items-center justify-center whitespace-nowrap text-sm font-bold"
+          >
+            LOOKING FOR
+          </motion.span>
+        </div>
+      </motion.div>
+      
+      {/* Search Button */}
+      <motion.button
+        onClick={() => setSearchActive(true)}
+        animate={{
+          opacity: searchActive ? 0 : 1,
+          scale: searchActive ? 0 : 1,
+          x: searchActive ? 50 : 0,
+          rotate: searchActive ? 180 : 0
+        }}
+        transition={{ duration: 0.5, ease: "easeInOut" }}
+        className="p-3 border border-black bg-white/80 rounded-lg hover:bg-gray-200 flex items-center justify-center transition-all"
+        style={{ display: searchActive ? 'none' : 'flex' }}
+      >
+        <MagnifyingGlassIcon />
+      </motion.button>
+    </motion.div>
+
+    {/* Current Projects Gallery */}
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6, delay: 0.3 }}
+      className={`relative flex gap-4 mt-4 group ${
+        searchActive ? "hidden" : "block"
+      }`}
+    >
+      {/* Row-wise Glass Hover Effect with Text - Pop up from bottom */}
+      <div 
+        className="absolute inset-0 opacity-0 group-hover:opacity-100 transform translate-y-full group-hover:translate-y-0 transition-all duration-700 ease-out pointer-events-none z-20 flex items-center justify-center"
         style={{
-          backgroundImage: `url(${bgImage})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
+          background: "linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.3) 50%, rgba(255, 255, 255, 0.1) 100%)",
+          backdropFilter: "blur(15px) saturate(150%)",
+          WebkitBackdropFilter: "blur(15px) saturate(150%)",
+          borderRadius: "12px",
+          boxShadow: "0 8px 32px rgba(255, 255, 255, 0.2)"
         }}
       >
-        {/* Light Overlay */}
-        <div className="absolute inset-0 bg-white/1 z-0"></div>
-
-        <div className="w-full max-w-7xl flex flex-col gap-6 relative z-10">
-          {/* Header */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="flex items-center gap-4"
-          >
-            <div className="bg-black p-2 rounded">
-              <StarIcon />
-            </div>
-            <h1
-              className="text-black text-2xl md:text-3xl font-bold tracking-wider"
-              style={{ textShadow: "2px 2px 4px rgba(0,0,0,0.5)" }}
-            >
-              AVAILABILITY & OPPORTUNITIES
-            </h1>
-          </motion.div>
-
-          {/* Search Bar */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="flex items-center gap-2 mt-2"
-          >
-            <input
-              type="text"
-              placeholder="SEARCH PROJECTS..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="px-4 py-2 border border-black bg-white/35 rounded-lg text-black font-bold w-64"
-            />
-            <button
-              onClick={handleSearch}
-              className="p-2 border border-black bg-white/35 rounded-lg hover:bg-gray-200"
-            >
-              <MagnifyingGlassIcon />
-            </button>
-          </motion.div>
-
-          {/* Image Gallery */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="flex gap-4 overflow-x-auto mt-4 pb-4 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-transparent"
-          >
-            {filteredGallery.map((item, index) => (
-              <motion.div
-                key={item.id}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
-                className="flex-shrink-0 w-72 h-56 rounded-lg overflow-hidden shadow-md border border-purple-300 hover:scale-105 transition-transform"
-              >
-                <img src={item.img} alt={item.title} className="w-full h-full object-cover" />
-              </motion.div>
-            ))}
-            {filteredGallery.length === 0 && (
-              <p className="text-white italic">No results found.</p>
-            )}
-          </motion.div>
-
-          {/* Middle Cards */}
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6"
-          >
-            <GlassCard title="COMMERCE">
-              <p className="text-lg">{artistData.commerce}</p>
-              <div className="flex justify-center mt-4">
-                <a
-                  href={artistData.commerce.split(" at ")[1]}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-6 py-3 rounded-full text-white font-bold shadow-lg bg-black hover:scale-105 transition-all duration-300"
-                >
-                  Store
-                </a>
-              </div>
-            </GlassCard>
-
-            <GlassCard title="SOCIAL IMPACT">
-              <p className="text-lg">{artistData.social_impact}</p>
-              <div className="flex flex-wrap justify-center gap-3 mt-4">
-                {["Mental Health", "Community Support", "Charity Events"].map((work, idx) => (
-                  <button
-                    key={idx}
-                    className="px-4 py-2 rounded-full text-white font-bold text-sm shadow-md bg-black hover:scale-105 transition-all duration-300"
-                  >
-                    {work}
-                  </button>
-                ))}
-              </div>
-            </GlassCard>
-          </motion.div>
-
-          {/* Bottom Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6"
-          >
-            <div
-              className="p-6 rounded-2xl font-mono text-white"
-              style={{
-                background: "rgba(0, 0, 0, 0.4)",
-                backdropFilter: "blur(14px) saturate(180%)",
-                WebkitBackdropFilter: "blur(14px) saturate(180%)",
-                boxShadow: "0 4px 30px rgba(0,0,0,0.3)"
-              }}
-            >
-              <span className="text-purple-300">//classification</span> → {artistData.classification}
-            </div>
-
-            <div
-              className="p-6 rounded-2xl font-mono text-black hover:scale-[1.02] transition-all duration-300"
-              style={{
-                background: "rgba(255, 255, 255, 0.9)",
-                backdropFilter: "blur(20px) saturate(200%)",
-                WebkitBackdropFilter: "blur(20px) saturate(200%)",
-                boxShadow: "0 8px 40px rgba(255,255,255,0.4), inset 0 1px 0 rgba(255,255,255,0.6)"
-              }}
-            >
-              <span className="text-purple-600 font-bold">lazie_indie_association</span> → {artistData.lazie_indie_association}
-            </div>
-          </motion.div>
+        <div className="text-center">
+          <h3 className="text-black text-2xl font-bold mb-2 drop-shadow-lg">
+            ACTIVE COLLABORATIONS
+          </h3>
+          <p className="text-black/80 text-lg font-medium drop-shadow-md">
+            Currently working on these exciting projects
+          </p>
         </div>
-      </section>
+      </div>
+      
+      {Array.from({ length: 4 }).map((_, index) => (
+        <motion.div
+          key={`current-${index}`}
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4, delay: index * 0.1 }}
+          className="flex-1 h-56 rounded-lg overflow-hidden shadow-md border border-purple-300 transition-transform relative z-10"
+        >
+          <img 
+            src={artist6} 
+            alt={`Current Project ${index + 1}`} 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
+            <h3 className="text-white font-bold">Project {index + 1}</h3>
+            <p className="text-white/80 text-sm">Current Collaboration</p>
+          </div>
+        </motion.div>
+      ))}
+    </motion.div>
+
+    {/* Looking For Gallery - Glass cards with pop-up animation */}
+    <div className={`${searchActive ? "block" : "hidden"}`}>
+      <motion.div
+        initial={{ opacity: 0, y: 100 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.3 }}
+        className="relative flex gap-6 mt-4 group"
+      >
+        {/* Row-wise Glass Hover Effect with Text - Pop up from bottom */}
+        <div 
+          className="absolute inset-0 opacity-0 group-hover:opacity-100 transform translate-y-full group-hover:translate-y-0 transition-all duration-700 ease-out pointer-events-none z-30 flex items-center justify-center"
+          style={{
+            background: "linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0.1) 100%)",
+            backdropFilter: "blur(20px) saturate(180%)",
+            WebkitBackdropFilter: "blur(20px) saturate(180%)",
+            borderRadius: "20px",
+            boxShadow: "0 12px 40px rgba(255, 255, 255, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.4)"
+          }}
+        >
+          <div className="text-center">
+            <h3 className="text-black text-2xl font-bold mb-2 drop-shadow-lg">
+              SEEKING OPPORTUNITIES
+            </h3>
+            <p className="text-black/80 text-lg font-medium drop-shadow-md">
+              Open for new collaborations and creative ventures
+            </p>
+          </div>
+        </div>
+        
+        {Array.from({ length: 4 }).map((_, index) => (
+          <motion.div
+            key={`looking-${index}`}
+            initial={{ opacity: 0, y: 100, scale: 0.8 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.1 * index }}
+            className="flex-1 h-56 rounded-2xl overflow-hidden shadow-xl transition-transform relative z-20"
+          >
+            {/* Glass background div */}
+            <div 
+              className="absolute inset-0 z-0"
+              style={{
+                background: "rgba(255, 255, 255, 0.15)",
+                backdropFilter: "blur(20px) saturate(180%)",
+                WebkitBackdropFilter: "blur(20px) saturate(180%)",
+                border: "1px solid rgba(255, 255, 255, 0.2)",
+                boxShadow: "0 8px 32px rgba(0, 0, 0, 0.1)"
+              }}
+            />
+            
+            {/* Image with glass overlay */}
+            <div className="relative z-10 w-full h-full">
+              <img 
+                src={artist7} 
+                alt={`Looking For ${index + 1}`} 
+                className="w-full h-full object-cover opacity-80"
+              />
+              
+              {/* Content overlay with enhanced glass effect */}
+              <div 
+                className="absolute bottom-0 left-0 right-0 p-4 z-20"
+                style={{
+                  background: "linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent)",
+                  backdropFilter: "blur(10px)",
+                  WebkitBackdropFilter: "blur(10px)"
+                }}
+              >
+                <h3 className="text-white font-bold text-lg drop-shadow-lg">
+                  Opportunity {index + 1}
+                </h3>
+                <p className="text-white/90 text-sm drop-shadow-md">
+                  Looking for collaborators
+                </p>
+              </div>
+            </div>
+          </motion.div>
+        ))}
+      </motion.div>
+    </div>
+
+    {/* Middle Cards */}
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6, delay: 0.4 }}
+      className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8"
+    >
+      <GlassCard title="COMMERCE">
+        <p className="text-black text-lg">{artistData.commerce}</p>
+        <div className="flex justify-center mt-4">
+          <a
+            href={artistData.commerce.split(" at ")[1]}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 px-6 py-3 rounded-full text-white font-bold shadow-lg bg-black hover:scale-105 transition-all duration-300"
+          >
+            Visit Store
+          </a>
+        </div>
+      </GlassCard>
+
+      <GlassCard title="SOCIAL IMPACT">
+        <p className="text-black text-lg">{artistData.social_impact}</p>
+        <div className="flex flex-wrap justify-center gap-3 mt-4">
+          {["Mental Health", "Community Support", "Charity Events"].map((work, idx) => (
+            <button
+              key={idx}
+              className="px-4 py-2 rounded-full text-white font-bold text-sm shadow-md bg-black hover:scale-105 transition-all duration-300"
+            >
+              {work}
+            </button>
+          ))}
+        </div>
+      </GlassCard>
+    </motion.div>
+
+    {/* Bottom Section */}
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6, delay: 0.5 }}
+      className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8"
+    >
+      <div
+        className="p-6 rounded-2xl font-mono text-white"
+        style={{
+          background: "rgba(0, 0, 0, 0.7)",
+          backdropFilter: "blur(14px) saturate(180%)",
+          WebkitBackdropFilter: "blur(14px) saturate(180%)",
+          boxShadow: "0 4px 30px rgba(0,0,0,0.3)"
+        }}
+      >
+        <span className="text-purple-300">//classification</span> → {artistData.classification}
+      </div>
+
+      <div
+        className="p-6 rounded-2xl font-mono text-black hover:scale-[1.02] transition-all duration-300"
+        style={{
+          background: "rgba(255, 255, 255, 0.9)",
+          backdropFilter: "blur(20px) saturate(200%)",
+          WebkitBackdropFilter: "blur(20px) saturate(200%)",
+          boxShadow: "0 8px 40px rgba(255,255,255,0.4), inset 0 1px 0 rgba(255,255,255,0.6)"
+        }}
+      >
+        <span className="text-purple-600 font-bold">lazie_indie_association</span> → {artistData.lazie_indie_association}
+      </div>
+    </motion.div>
+  </div>
+</section>
+
+{/* Classification and Association Section */}
+<section 
+  className="relative w-full min-h-screen overflow-hidden"
+  style={{ 
+    backgroundImage: `url(${i21})`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center'
+  }}
+>
+  {/* Headline at top left */}
+  <motion.div
+    className="absolute top-10 left-10 z-10 flex items-center gap-4"
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.6 }}
+  >
+    <FaThLarge className="text-white text-3xl md:text-4xl" />
+    <h1 className="text-white text-4xl md:text-6xl font-bold font-monda">
+      CLASSIFICATION AND ASSOCIATION
+    </h1>
+  </motion.div>
+
+  {/* Panels positioned 150px from top on right side */}
+  <div className="absolute top-[150px] right-10 z-10 flex gap-8">
+    {/* Association Panel */}
+    <motion.div
+      className={`bg-white/10 backdrop-blur-[25px] rounded-[30px] overflow-hidden cursor-pointer flex flex-col transition-all duration-500 ${
+        activePanel === "association" ? "w-[560px]" : "w-[120px]"
+      } h-[520px]`}
+      onClick={() => setActivePanel("association")}
+      initial={{ opacity: 0, x: 50 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6, delay: 0.2 }}
+    >
+      {activePanel === "association" ? (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+          className="h-full flex flex-col"
+        >
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: 0.2 }}
+            className="px-6 py-4 flex justify-center items-center"
+          >
+            <h2 className="text-white text-2xl md:text-3xl font-bold font-monda text-center">
+              LAZIEINDI ASSOCIATION
+            </h2>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="p-6 flex flex-col flex-grow overflow-y-auto"
+          >
+            <p className="text-white text-lg md:text-xl font-normal leading-relaxed text-justify">
+              Interviewed by Emma Goldberg for the Cover Story of Lazie Indie Magazine –
+              Edition 47 (November 2023) Featured in Lazie Indie Magazine's global
+              spotlight series and holiday editions, {artistData.displayName} is a central voice in
+              international independent music. A contributing columnist for Lazie Indie
+              Magazine, {artistData.displayName} has written 33 artist interviews and 6 cover stories,
+              offering deep insight into the indie world.
+            </p>
+            <a
+              href="#"
+              className="text-[#1e4ae9] text-lg font-normal mt-4 inline-block hover:underline"
+            >
+              view more
+            </a>
+          </motion.div>
+        </motion.div>
+      ) : (
+        <motion.div
+          className="flex items-center justify-center h-full"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.3 }}
+        >
+          <motion.div
+            className="flex flex-col items-center justify-center h-full"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.4 }}
+          >
+            {"LAZIE INDI ASSOCIATION".split(" ").map((word, i) => (
+              <motion.span
+                key={i}
+                className="text-white/50 text-center text-xl md:text-2xl font-bold font-monda"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ 
+                  duration: 0.4, 
+                  delay: i * 0.1,
+                  ease: "easeOut"
+                }}
+                style={{ 
+                  writingMode: "vertical-rl", 
+                  textOrientation: "mixed",
+                  margin: "8px 0"
+                }}
+              >
+                {word}
+              </motion.span>
+            ))}
+          </motion.div>
+        </motion.div>
+      )}
+    </motion.div>
+
+    {/* Summary Panel */}
+    <motion.div
+      className={`bg-white/10 backdrop-blur-[25px] rounded-[30px] overflow-hidden cursor-pointer flex flex-col transition-all duration-500 ${
+        activePanel === "summary" ? "w-[560px]" : "w-[120px]"
+      } h-[520px]`}
+      onClick={() => setActivePanel("summary")}
+      initial={{ opacity: 0, x: 50 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6, delay: 0.3 }}
+    >
+      {activePanel === "summary" ? (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+          className="h-full flex flex-col"
+        >
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: 0.2 }}
+            className="px-6 py-4 flex justify-center items-center"
+          >
+            <h2 className="text-white text-2xl md:text-3xl font-bold font-monda text-center">
+              SUMMARY NARRATIVE
+            </h2>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="p-6 flex flex-col flex-grow overflow-y-auto"
+          >
+            <p className="text-white text-lg md:text-xl font-normal leading-relaxed text-justify">
+              {artistData.displayName} stands as a bold and genre-defying artist known
+              for {artistData.identity.gender === 'Male' ? 'his' : 'her'} powerhouse vocals, 
+              cinematic songwriting, and fearless creative expression. 
+              {artistData.displayName}'s music spans the realms of {
+                artistData.artistic_background.genres.slice(0, 3).join(', ')
+              }, each track soaked in emotional weight and lyrical truth.
+            </p>
+            <a
+              href="#"
+              className="text-[#1e4ae9] text-lg font-normal mt-4 inline-block hover:underline"
+            >
+              view more
+            </a>
+          </motion.div>
+        </motion.div>
+      ) : (
+        <motion.div
+          className="flex items-center justify-center h-full"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.3 }}
+        >
+          <motion.div
+            className="flex flex-col items-center justify-center h-full"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.4 }}
+          >
+            {"SUMMARY NARRATIVE".split(" ").map((word, i) => (
+              <motion.span
+                key={i}
+                className="text-white/50 text-center text-xl md:text-2xl font-bold font-monda"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ 
+                  duration: 0.4, 
+                  delay: i * 0.1,
+                  ease: "easeOut"
+                }}
+                style={{ 
+                  writingMode: "vertical-rl", 
+                  textOrientation: "mixed",
+                  margin: "8px 0"
+                }}
+              >
+                {word}
+              </motion.span>
+            ))}
+          </motion.div>
+        </motion.div>
+      )}
+    </motion.div>
+  </div>
+</section>
 
       {/* Review Section (Online Presence) */}
       {/* <section className="w-full px-4 md:px-20 py-16 bg-black text-white">
@@ -1335,6 +1858,124 @@ const ArtistProfile = () => {
           </motion.div>
         </div>
       </section>
+      <section
+  className="relative h-[50vh] bg-fixed bg-center bg-cover"
+  style={{
+    backgroundImage: `url(${i22})`,
+    backgroundAttachment: "fixed", // Corrected from 'dymnamic'
+    backgroundPosition: "center",
+    backgroundSize: "cover",
+  }}
+>
+  {/* Optional overlay content */}
+</section>
+
+<section
+      className="relative h-[801px] w-full bg-center bg-cover flex items-center justify-center"
+      style={{ backgroundImage: `url(${i23})` }}
+      onMouseEnter={() => setHover(true)} // Only set once
+    >
+      <div className="max-w-[1545px] px-6 flex flex-col items-center gap-8 text-center">
+        {[
+          `“ Lyia Meta’s journey is one of evolution—from canvas to stage, from Malaysia’s intimate blues joints to Grammy-nominated recordings. As an artist who wears many hats—vocalist, writer, producer, painter—her work is deeply textured and transcendent. Born and raised in Malaysia, she absorbed a kaleidoscope of cultures that would later shape her sound: raw, rich, and borderless. “`,
+          `Early on, Lyia knew she didn’t want to simply “fit in.” While many artists chose genre lanes or industry formulas, she followed feeling—crafting songs rooted in honesty, wrapped in melody, and painted with shadows and light. Her early recordings resonated across the indie airwaves of Europe and the U.S., gradually leading to international awards and major collaborations. Yet even as her recognition grew, she remained grounded in storytelling and connection.`,
+          `Early on, Lyia knew she didn’t want to simply “fit in.” While many artists chose genre lanes or industry formulas, she followed feeling—crafting songs rooted in honesty, wrapped in melody, and painted with shadows and light. Her early recordings resonated across the indie airwaves of Europe and the U.S., gradually leading to international awards and major collaborations. Yet even as her recognition grew, she remained grounded in storytelling and connection.`,
+          `Early on, Lyia knew she didn’t want to simply “fit in.” While many artists chose genre lanes or industry formulas, she followed feeling—crafting songs rooted in honesty, wrapped in melody, and painted with shadows and light. Her early recordings resonated across the indie airwaves of Europe and the U.S., gradually leading to international awards and major collaborations. Yet even as her recognition grew, she remained grounded in storytelling and connection.`,
+        ].map((text, index) => (
+          <motion.p
+            key={index}
+            className="text-white text-2xl font-normal font-['Monda'] max-w-[1524px]"
+            variants={fadeUpVariant}
+            initial="hidden"
+            animate={hover ? "visible" : "hidden"}
+            transition={{ duration: 0.8, delay: index * 0.2 }}
+          >
+            {text}
+          </motion.p>
+        ))}
+      </div>
+    </section>
+
+<section
+      className="relative w-full bg-center bg-cover px-4 py-12 md:px-12 lg:px-20"
+      style={{ backgroundImage: `url(${i24})` }}
+    >
+      {/* Heading */}
+      <motion.div
+        className="max-w-[1600px] mx-auto mb-8 flex flex-wrap items-baseline gap-4"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+      >
+        <span className="text-white font-['Monda'] font-bold leading-tight text-[clamp(2.5rem,6vw,7.5rem)]">
+          YES!
+        </span>
+        <span className="text-white font-['Monda'] leading-snug text-[clamp(1rem,2vw,1.75rem)]">
+          Lyia Meta can absolutely be included under the broad umbrella of
+          Independent Musicians — and here's why --
+        </span>
+      </motion.div>
+
+      {/* Cards container */}
+      <motion.div
+        className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16 max-w-[1650px] mx-auto"
+        initial="hidden"
+        animate="visible"
+        variants={{
+          hidden: {},
+          visible: {
+            transition: {
+              staggerChildren: 0.15,
+            },
+          },
+        }}
+      >
+        {classificationItems.map((item, index) => (
+          <motion.div
+            key={index}
+            className="w-full max-w-[800px] py-8 px-6 bg-white/5 rounded-[30px] md:rounded-[45px] backdrop-blur-[30px] flex justify-center items-center transition-all duration-300 ease-in-out"
+            style={{
+              filter: "brightness(0.7)",
+            }}
+            whileHover={{ scale: 1.05, filter: "brightness(1.1)" }}
+            whileTap={{ scale: 0.98 }}
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              visible: { opacity: 1, y: 0 },
+            }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+          >
+            <div className="text-center">
+              <span className="text-white/50 text-base md:text-lg font-bold font-['Monda'] block">
+                {item.title}
+              </span>
+              <span className="text-white text-sm md:text-lg font-bold font-['Monda'] block mt-2">
+                {item.description}
+              </span>
+            </div>
+          </motion.div>
+        ))}
+      </motion.div>
+
+      {/* Bottom left classification text */}
+      <motion.div
+        className="absolute bottom-6 left-6 z-10"
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut", delay: 0.5 }}
+      >
+        <div className="relative pointer-events-none inline-block">
+          <div className="text-white/25 font-['Bebas_Neue'] leading-none text-[clamp(1rem,5vw,8rem)]">
+            CLASSIFICATION
+          </div>
+          <div className="absolute inset-0 flex items-center justify-center">
+            <span className="text-white text-lg md:text-2xl font-bold font-['Monda'] tracking-wide text-center">
+              LAZIE INDIE CLASSIFICATION
+            </span>
+          </div>
+        </div>
+      </motion.div>
+    </section>    
 
       {/* Footer Section */}
       <motion.section
