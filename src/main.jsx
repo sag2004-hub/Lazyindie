@@ -12,7 +12,7 @@ import App from './App.jsx';
 // ✅ Solana wallet provider
 import SolanaProvider from './context/SolanaProvider.jsx';
 
-// ✅ Cart provider for global cart state
+
 import { CartProvider } from './context/CartContext';
 
 createRoot(document.getElementById('root')).render(
